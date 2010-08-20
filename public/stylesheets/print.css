@@ -1,6 +1,6 @@
 /*
 Syntax error: Invalid CSS after "  display:": expected pseudoclass or pseudoelement, was " none"
-        on line 12 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/print.scss
+        on line 12 of /srv/dev.cyt.ch/cymail/app/stylesheets/print.scss
 
 7: body.bp {
 8:   @include blueprint-print(true); }
@@ -15,7 +15,7 @@ Syntax error: Invalid CSS after "  display:": expected pseudoclass or pseudoelem
 17:   display: none
 
 Backtrace:
-/srv/dev.cyt.ch/cymail/public/stylesheets/sass/print.scss:12
+/srv/dev.cyt.ch/cymail/app/stylesheets/print.scss:12
 /var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/scss/parser.rb:804:in `expected'
 /var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/scss/parser.rb:779:in `expected'
 /var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/scss/parser.rb:762:in `expr!'
@@ -87,4 +87,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Invalid CSS after \"  display:\": expected pseudoclass or pseudoelement, was \" none\"\A         on line 12 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/print.scss\A \A 7: body.bp {\A 8:   @include blueprint-print(true); }\A 9: \A 10: #balance-sheet form,\A 11: #profit-sheet form\A 12:   display: none\A 13: #balance-sheet, #profit-sheet\A 14:   background: white\A 15: // Media print specific styles ****\A 16: #top-menu, #header, #main-menu, #sidebar, #footer, .contextual, .other-formats\A 17:   display: none"; }
+  content: "Syntax error: Invalid CSS after \"  display:\": expected pseudoclass or pseudoelement, was \" none\"\A         on line 12 of /srv/dev.cyt.ch/cymail/app/stylesheets/print.scss\A \A 7: body.bp {\A 8:   @include blueprint-print(true); }\A 9: \A 10: #balance-sheet form,\A 11: #profit-sheet form\A 12:   display: none\A 13: #balance-sheet, #profit-sheet\A 14:   background: white\A 15: // Media print specific styles ****\A 16: #top-menu, #header, #main-menu, #sidebar, #footer, .contextual, .other-formats\A 17:   display: none"; }

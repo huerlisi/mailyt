@@ -1,91 +1,89 @@
-/*
-Syntax error: Undefined mixin 'blueprint-ie'.
-        on line 8 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/ie.scss, in `blueprint-ie'
-        from line 8 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/ie.scss
-
-3: // To generate css equivalent to the blueprint css but with your configuration applied, uncomment:
-4: // @include blueprint-ie
-5: 
-6: //Recommended Blueprint configuration with scoping and semantic layout:
-7: body.bp {
-8:   @include blueprint-ie(true);
-9:   // Note: Blueprint centers text to fix IE6 container centering.
-10:   // This means all your texts will be centered under all version of IE by default.
-11:   // If your container does not have the .container class, don't forget to restore
-12:   // the correct behavior to your main container (but not the body tag!)
-13:   // Example:
-
-Backtrace:
-/srv/dev.cyt.ch/cymail/public/stylesheets/sass/ie.scss:8:in `blueprint-ie'
-/srv/dev.cyt.ch/cymail/public/stylesheets/sass/ie.scss:8
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/mixin_node.rb:74:in `perform!'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:301:in `_perform'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:209:in `perform'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `map'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:313:in `perform!'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/rule_node.rb:191:in `perform!'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:301:in `_perform'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:209:in `perform'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `map'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:313:in `perform!'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/root_node.rb:59:in `perform!'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:301:in `_perform'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:209:in `perform'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/root_node.rb:37:in `perform'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/root_node.rb:29:in `render'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:220:in `update_stylesheet'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:85:in `update_stylesheets'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:78:in `each'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:78:in `update_stylesheets'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:76:in `each'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:76:in `update_stylesheets'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:50:in `check_for_updates'
-/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin/rack.rb:40:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/head.rb:14:in `call'
-/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/flash.rb:177:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/cookies.rb:268:in `call'
-/var/lib/gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:32:in `call'
-/var/lib/gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
-/var/lib/gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:12:in `cache'
-/var/lib/gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:31:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
-/var/lib/gems/1.8/gems/activesupport-3.0.0.rc/lib/active_support/callbacks.rb:410:in `_run_call_callbacks'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
-/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/show_exceptions.rb:48:in `call'
-/var/lib/gems/1.8/gems/railties-3.0.0.rc/lib/rails/rack/logger.rb:13:in `call'
-/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
-/var/lib/gems/1.8/gems/activesupport-3.0.0.rc/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
-/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
-/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
-/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/static.rb:30:in `call'
-/var/lib/gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:168:in `call'
-/var/lib/gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:77:in `send'
-/var/lib/gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:77:in `method_missing'
-/usr/lib/ruby/1.8/phusion_passenger/rack/request_handler.rb:95:in `process_request'
-/usr/lib/ruby/1.8/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
-/usr/lib/ruby/1.8/phusion_passenger/rack/application_spawner.rb:118:in `run'
-/usr/lib/ruby/1.8/phusion_passenger/rack/application_spawner.rb:69:in `spawn_application'
-/usr/lib/ruby/1.8/phusion_passenger/utils.rb:184:in `safe_fork'
-/usr/lib/ruby/1.8/phusion_passenger/rack/application_spawner.rb:62:in `spawn_application'
-/usr/lib/ruby/1.8/phusion_passenger/rack/application_spawner.rb:45:in `spawn_application'
-/usr/lib/ruby/1.8/phusion_passenger/spawn_manager.rb:159:in `spawn_application'
-/usr/lib/ruby/1.8/phusion_passenger/spawn_manager.rb:287:in `handle_spawn_application'
-/usr/lib/ruby/1.8/phusion_passenger/abstract_server.rb:352:in `__send__'
-/usr/lib/ruby/1.8/phusion_passenger/abstract_server.rb:352:in `main_loop'
-/usr/lib/ruby/1.8/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
-/usr/lib/phusion_passenger/passenger-spawn-server:61
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined mixin 'blueprint-ie'.\A         on line 8 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/ie.scss, in `blueprint-ie'\A         from line 8 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/ie.scss\A \A 3: // To generate css equivalent to the blueprint css but with your configuration applied, uncomment:\A 4: // @include blueprint-ie\A 5: \A 6: //Recommended Blueprint configuration with scoping and semantic layout:\A 7: body.bp {\A 8:   @include blueprint-ie(true);\A 9:   // Note: Blueprint centers text to fix IE6 container centering.\A 10:   // This means all your texts will be centered under all version of IE by default.\A 11:   // If your container does not have the .container class, don't forget to restore\A 12:   // the correct behavior to your main container (but not the body tag!)\A 13:   // Example:"; }
+/* line 7, ../../app/stylesheets/ie.scss */
+body.bp {
+  text-align: center;
+}
+/* line 48, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+* html body.bp legend {
+  margin: 0px -8px 16px 0;
+  padding: 0;
+}
+/* line 52, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+html > body.bp p code {
+  *white-space: normal;
+}
+/* line 67, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp .container {
+  text-align: left;
+}
+/* line 69, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp sup {
+  vertical-align: text-top;
+}
+/* line 71, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp sub {
+  vertical-align: text-bottom;
+}
+/* line 73, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp hr {
+  margin: -8px auto 11px;
+}
+/* line 75, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp img {
+  -ms-interpolation-mode: bicubic;
+}
+/* line 77, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp fieldset {
+  padding-top: 0;
+}
+/* line 79, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp textarea {
+  overflow: auto;
+}
+/* line 82, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp input.text {
+  margin: 0.5em 0;
+  background-color: white;
+  border: 1px solid #bbbbbb;
+}
+/* line 86, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp input.text:focus {
+  border: 1px solid #666666;
+}
+/* line 88, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp input.title {
+  margin: 0.5em 0;
+  background-color: white;
+  border: 1px solid #bbbbbb;
+}
+/* line 92, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp input.title:focus {
+  border: 1px solid #666666;
+}
+/* line 94, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp input.checkbox {
+  position: relative;
+  top: 0.25em;
+}
+/* line 97, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp input.radio {
+  position: relative;
+  top: 0.25em;
+}
+/* line 100, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp input.button {
+  position: relative;
+  top: 0.25em;
+}
+/* line 103, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp textarea {
+  margin: 0.5em 0;
+}
+/* line 105, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp select {
+  margin: 0.5em 0;
+}
+/* line 107, ../../../../../var/lib/gems/1.8/gems/compass-0.10.4/frameworks/blueprint/stylesheets/blueprint/_ie.scss */
+body.bp button {
+  position: relative;
+  top: 0.25em;
+}
