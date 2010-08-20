@@ -1,0 +1,17 @@
+%h1 Listing mails
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @mails.each do |mail|
+    %tr
+      %td= link_to 'Show', mail
+      %td= link_to 'Edit', edit_mail_path(mail)
+      %td= link_to 'Destroy', mail, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New mail', new_mail_path
