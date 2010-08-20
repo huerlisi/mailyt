@@ -108,7 +108,6 @@ GEM
       activesupport (= 3.0.0.rc)
       bundler (>= 1.0.0.rc.1)
       railties (= 3.0.0.rc)
-    rails3-generators (0.12.1)
     railties (3.0.0.rc)
       actionpack (= 3.0.0.rc)
       activesupport (= 3.0.0.rc)
@@ -116,17 +115,6 @@ GEM
       thor (~> 0.14.0)
     rake (0.8.7)
     responders (0.6.2)
-    rspec (2.0.0.beta.19)
-      rspec-core (= 2.0.0.beta.19)
-      rspec-expectations (= 2.0.0.beta.19)
-      rspec-mocks (= 2.0.0.beta.19)
-    rspec-core (2.0.0.beta.19)
-    rspec-expectations (2.0.0.beta.19)
-      diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.0.beta.19)
-    rspec-rails (2.0.0.beta.19)
-      rspec (= 2.0.0.beta.19)
-      webrat (>= 0.7.2.beta.1)
     rubyzip (0.9.4)
     selenium-webdriver (0.0.27)
       ffi (>= 0.6.1)
@@ -139,10 +127,6 @@ GEM
       polyglot (>= 0.3.1)
     trollop (1.16.2)
     tzinfo (0.3.23)
-    webrat (0.7.2.beta.1)
-      nokogiri (>= 1.2.0)
-      rack (>= 1.0)
-      rack-test (>= 0.5.3)
 
 PLATFORMS
   ruby
@@ -159,8 +143,5 @@ DEPENDENCIES
   inherited_resources
   mysql
   rails (= 3.0.0.rc)
-  rails3-generators
-  rspec
-  rspec-rails (>= 2.0.0.beta.19)
   sqlite3-ruby
   will_paginate!
