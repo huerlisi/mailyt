@@ -10,5 +10,7 @@ describe "mails/index.html.haml" do
 
   it "renders a list of mails" do
     render
+    
+    rendered.should have_selector("table")
   end
 end

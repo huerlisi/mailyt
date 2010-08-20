@@ -1,0 +1,11 @@
+en:
+  activerecord:
+    models:
+      mail: E-Mail
+
+    attributes:
+      mail:
+        to:      An
+        date:    Datum
+        subject: Betreff
+        body:    Text
