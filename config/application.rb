@@ -43,6 +43,7 @@ module Cymail
     config.generators do |g|
       g.stylesheets false
       g.test_framework :shoulda
+      g.template_engine :haml
       g.fixture_replacement :factory_girl
     end
   end
