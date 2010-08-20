@@ -3,11 +3,11 @@ require "spec_helper"
 describe MailsController do
   describe "routing" do
 
-        it "recognizes and generates #index" do
+    it "recognizes and generates #index" do
       { :get => "/mails" }.should route_to(:controller => "mails", :action => "index")
     end
 
-        it "recognizes and generates #new" do
+    it "recognizes and generates #new" do
       { :get => "/mails/new" }.should route_to(:controller => "mails", :action => "new")
     end
 
