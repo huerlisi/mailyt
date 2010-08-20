@@ -14,16 +14,16 @@
     = javascript_include_tag :defaults
     = csrf_meta_tag
     %title
-      = "CyMail - #{controller.action_name.capitalize}"
+      = "CyEmail - #{controller.action_name.capitalize}"
   %body
     #container
       #header
         #logo{:style => 'margin: 14px; float: left;'}
           = image_tag('logo.png')
-          %h1{:style => 'display: inline; color: #002B3D'} CyMail
+          %h1{:style => 'display: inline; color: #002B3D'} CyEmail
         #main-menu
           %ul
-            %li= link_to "Mails", mails_path
+            %li= link_to "Emails", emails_path
 
       #content
         - if flash[:notice]

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "mails/show.html.haml" do
+describe "emails/show.html.haml" do
   before(:each) do
-    @mail = assign(:mail, stub_model(Mail))
+    @email = assign(:email, stub_model(Email))
   end
 
   it "renders attributes in <p>" do

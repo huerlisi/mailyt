@@ -1,10 +1,10 @@
 en:
   activerecord:
     models:
-      mail: E-Mail
+      email: E-Mail
 
     attributes:
-      mail:
+      email:
         to:      An
         name:    Name
         date:    Datum

@@ -1,12 +1,12 @@
 en:
   activerecord:
     models:
-      mail: mail
+      email: Mail
 
     attributes:
-      mail:
-        to:      to
-        name:    name
-        date:    date
-        subject: subject
-        body:    text
+      email:
+        to:      To
+        name:    Name
+        date:    Date
+        subject: Subject
+        body:    Body

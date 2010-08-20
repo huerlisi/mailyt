@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "Mails" do
-  describe "GET /mails" do
+describe "Emails" do
+  describe "GET /emails" do
     it "works! (now write some real specs)" do
-      get mails_path
+      get emails_path
     end
   end
 end

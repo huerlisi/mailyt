@@ -10,9 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100820092436) do
+ActiveRecord::Schema.define(:version => 20100820125044) do
 
-  create_table "mails", :force => true do |t|
+  create_table "emails", :force => true do |t|
     t.string   "from"
     t.string   "to"
     t.string   "subject"

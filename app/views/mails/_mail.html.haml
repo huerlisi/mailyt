@@ -1,8 +1,0 @@
-%tr
-  %td= mail.date
-  %td= mail.to
-  %td= mail.name
-  %td= link_to mail.subject, mail
-  %td.action-links
-    = link_to image_tag('16x16/edit.png', :title => 'Edit'), edit_mail_path(mail), :method => :get
-    = link_to image_tag('16x16/remove.png', :title => 'Destroy'), mail_path(mail), :remote => true, :method => :delete, :confirm => t_confirm_delete(mail)

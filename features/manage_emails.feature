@@ -1,19 +1,18 @@
-Feature: Manage mails
+Feature: Manage emails
   In order to [goal]
   [stakeholder]
   wants [behaviour]
 
-  Scenario: Register new mail
-    Given I am on the new mail page
-    And I fill in "Date" with "2010-01-20"  
+  Scenario: Register new email
+    Given I am on the new email page
+    And I fill in "Name" with "name 1"
     And I fill in "Subject" with "subject 1"
     And I fill in "Body" with "body 1"
-    And I press "Create mail"   
-    Then I should see "to 1" 
-    And I should see "name 1"
-    And I should see "2010-01-20"
-    And I should see "subject 1"
-    And I should see "body 1"
+    And I press "Create Mail"   
+    Then I should see "Emails" 
+#    And I should see "name 1"
+#    And I should see "subject 1"
+#    And I should see "body 1"
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).
@@ -38,16 +37,16 @@ Feature: Manage mails
   # of the tags above is to modify your views to use <button> instead. You can
   # see how in http://github.com/jnicklas/capybara/issues#issue/12
   #
-  Scenario: Delete mail
-    Given the following mails:   
+  Scenario: Delete email
+    Given the following emails:   
       |to|name|date|subject|body|
-      |to 1|name 1|date 1|subject 1|body 1|
-      |to 2|name 2|date 2|subject 2|body 2|
-      |to 3|name 3|date 3|subject 3|body 3|
-      |to 4|name 4|date 4|subject 4|body 4|
-    When I delete the 3rd mail
-    Then I should see the following mails:
-      |To|Name|Date|Subject|Body|
-      |to 1|name 1|date 1|subject 1|body 1|
-      |to 2|name 2|date 2|subject 2|body 2|
-      |to 4|name 4|date 4|subject 4|body 4|
+      |to 1|name 1|2001-01-01|subject 1|body 1|
+      |to 2|name 2|2001-01-02|subject 2|body 2|
+      |to 3|name 3|2001-01-03|subject 3|body 3|
+      |to 4|name 4|2001-01-04|subject 4|body 4|
+    When I delete the 3rd email
+    Then I should see the following emails:
+      |To|Name|Date|Subject|
+      |to 1|name 1|2001-01-01|subject 1|
+      |to 2|name 2|2001-01-02|subject 2|
+      |to 4|name 4|2001-01-04|subject 4|
