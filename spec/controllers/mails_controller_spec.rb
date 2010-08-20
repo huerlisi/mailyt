@@ -8,6 +8,7 @@ describe MailsController do
 
   describe "GET index" do
     it "assigns all mails as @mails" do
+      pending
       Mail.stub(:all) { [mock_mail] }
       get :index
       assigns(:mails).should eq([mock_mail])
