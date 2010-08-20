@@ -4,7 +4,7 @@ describe MailsController do
   describe "routing" do
 
     it "recognizes and generates #index" do
-      { :get => "/mails" }.should route_to(:controller => "mails", :action => "index")
+      { :get => "/" }.should route_to(:controller => "mails", :action => "index")
     end
 
     it "recognizes and generates #new" do
