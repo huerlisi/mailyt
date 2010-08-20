@@ -1,0 +1,100 @@
+/*
+Syntax error: Undefined mixin 'blueprint-liquid-grid'.
+        on line 5 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/partials/_layout.sass, in `blueprint-liquid-grid'
+        from line 5 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/partials/_layout.sass
+        from line 7 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/screen.scss
+
+1: // This import applies a global reset to any page that imports this stylesheet.
+2: @import "blueprint/reset";
+3: @import 'partials/base';
+4: 
+5: // Import all the default blueprint modules so that we can access their mixins.
+6: @import "blueprint";
+7: @import 'partials/layout';
+8: @import 'partials/header';
+9: @import 'partials/content';
+10: @import 'partials/sidebar';
+
+Backtrace:
+/srv/dev.cyt.ch/cymail/public/stylesheets/sass/partials/_layout.sass:5:in `blueprint-liquid-grid'
+/srv/dev.cyt.ch/cymail/public/stylesheets/sass/partials/_layout.sass:5
+/srv/dev.cyt.ch/cymail/public/stylesheets/sass/screen.scss:7
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/mixin_node.rb:74:in `perform!'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:301:in `_perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:209:in `perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `map'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:313:in `perform!'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/rule_node.rb:191:in `perform!'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:301:in `_perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:209:in `perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `map'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/import_node.rb:78:in `perform!'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:301:in `_perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/import_node.rb:64:in `_perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:209:in `perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/root_node.rb:37:in `perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `map'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:322:in `perform_children'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:313:in `perform!'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/root_node.rb:59:in `perform!'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:301:in `_perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/node.rb:209:in `perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/root_node.rb:37:in `perform'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/tree/root_node.rb:29:in `render'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:220:in `update_stylesheet'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:85:in `update_stylesheets'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:78:in `each'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:78:in `update_stylesheets'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:76:in `each'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:76:in `update_stylesheets'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin.rb:50:in `check_for_updates'
+/var/lib/gems/1.8/gems/haml-3.0.17/lib/sass/plugin/rack.rb:40:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/head.rb:14:in `call'
+/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/methodoverride.rb:24:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/params_parser.rb:21:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/flash.rb:177:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/session/abstract_store.rb:149:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/cookies.rb:268:in `call'
+/var/lib/gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:32:in `call'
+/var/lib/gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/connection_adapters/abstract/query_cache.rb:28:in `cache'
+/var/lib/gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:12:in `cache'
+/var/lib/gems/1.8/gems/activerecord-3.0.0.rc/lib/active_record/query_cache.rb:31:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/callbacks.rb:46:in `call'
+/var/lib/gems/1.8/gems/activesupport-3.0.0.rc/lib/active_support/callbacks.rb:410:in `_run_call_callbacks'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/callbacks.rb:44:in `call'
+/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/sendfile.rb:107:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/remote_ip.rb:48:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/show_exceptions.rb:48:in `call'
+/var/lib/gems/1.8/gems/railties-3.0.0.rc/lib/rails/rack/logger.rb:13:in `call'
+/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/runtime.rb:17:in `call'
+/var/lib/gems/1.8/gems/activesupport-3.0.0.rc/lib/active_support/cache/strategy/local_cache.rb:72:in `call'
+/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `synchronize'
+/var/lib/gems/1.8/gems/rack-1.2.1/lib/rack/lock.rb:11:in `call'
+/var/lib/gems/1.8/gems/actionpack-3.0.0.rc/lib/action_dispatch/middleware/static.rb:30:in `call'
+/var/lib/gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:168:in `call'
+/var/lib/gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:77:in `send'
+/var/lib/gems/1.8/gems/railties-3.0.0.rc/lib/rails/application.rb:77:in `method_missing'
+/usr/lib/ruby/1.8/phusion_passenger/rack/request_handler.rb:95:in `process_request'
+/usr/lib/ruby/1.8/phusion_passenger/abstract_request_handler.rb:207:in `main_loop'
+/usr/lib/ruby/1.8/phusion_passenger/rack/application_spawner.rb:118:in `run'
+/usr/lib/ruby/1.8/phusion_passenger/rack/application_spawner.rb:69:in `spawn_application'
+/usr/lib/ruby/1.8/phusion_passenger/utils.rb:184:in `safe_fork'
+/usr/lib/ruby/1.8/phusion_passenger/rack/application_spawner.rb:62:in `spawn_application'
+/usr/lib/ruby/1.8/phusion_passenger/rack/application_spawner.rb:45:in `spawn_application'
+/usr/lib/ruby/1.8/phusion_passenger/spawn_manager.rb:159:in `spawn_application'
+/usr/lib/ruby/1.8/phusion_passenger/spawn_manager.rb:287:in `handle_spawn_application'
+/usr/lib/ruby/1.8/phusion_passenger/abstract_server.rb:352:in `__send__'
+/usr/lib/ruby/1.8/phusion_passenger/abstract_server.rb:352:in `main_loop'
+/usr/lib/ruby/1.8/phusion_passenger/abstract_server.rb:196:in `start_synchronously'
+/usr/lib/phusion_passenger/passenger-spawn-server:61
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Undefined mixin 'blueprint-liquid-grid'.\A         on line 5 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/partials/_layout.sass, in `blueprint-liquid-grid'\A         from line 5 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/partials/_layout.sass\A         from line 7 of /srv/dev.cyt.ch/cymail/public/stylesheets/sass/screen.scss\A \A 1: // This import applies a global reset to any page that imports this stylesheet.\A 2: @import \"blueprint/reset\";\A 3: @import 'partials/base';\A 4: \A 5: // Import all the default blueprint modules so that we can access their mixins.\A 6: @import \"blueprint\";\A 7: @import 'partials/layout';\A 8: @import 'partials/header';\A 9: @import 'partials/content';\A 10: @import 'partials/sidebar';"; }
