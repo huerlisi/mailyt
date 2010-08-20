@@ -9,13 +9,14 @@ gem 'mysql', :group => :development
 # ===========
 group :development do
   gem 'rails3-generators'
+  gem 'rspec-rails', ">= 2.0.0.beta.19"
 end
 
 # Test
 # ====
 group :test do
-  gem 'mocha'
-  gem 'shoulda'
+  gem 'rspec'
+  gem 'rspec-rails', ">= 2.0.0.beta.19"
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'cucumber'
