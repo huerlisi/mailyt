@@ -1,10 +1,8 @@
-= form_for @mail do |f|
-  -if @mail.errors.any?
-    #errorExplanation
-      %h2= "#{pluralize(@mail.errors.count, "error")} prohibited this mail from being saved:"
-      %ul
-        - @mail.errors.full_messages.each do |msg|
-          %li= msg
-
-  .actions
-    = f.submit 'Save'
+= semantic_form_for @mail do |f|
+  = f.semantic_errors
+  = f.inputs do
+    = f.input :to
+    = f.input :subject
+    = f.input :body
+  = f.buttons do
+    = f.commit_button
