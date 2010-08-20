@@ -5,14 +5,15 @@ Feature: Manage emails
 
   Scenario: Register new email
     Given I am on the new email page
+    And I fill in "To" with "to 1"
     And I fill in "Name" with "name 1"
     And I fill in "Subject" with "subject 1"
     And I fill in "Body" with "body 1"
-    And I press "Create Mail"   
-    Then I should see "Emails" 
-#    And I should see "name 1"
-#    And I should see "subject 1"
-#    And I should see "body 1"
+    And I press "Create Mail"
+    Then I should be on the emails page
+    And I should see "to 1"
+    And I should see "name 1"
+    And I should see "subject 1"
 
   # Rails generates Delete links that use Javascript to pop up a confirmation
   # dialog and then do a HTTP POST request (emulated DELETE request).

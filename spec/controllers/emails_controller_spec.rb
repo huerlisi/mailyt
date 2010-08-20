@@ -51,7 +51,7 @@ describe EmailsController do
       it "redirects to the created email" do
         Email.stub(:new) { mock_email(:save => true) }
         post :create, :email => {}
-        response.should redirect_to(email_url(mock_email))
+        response.should redirect_to(emails_url)
       end
     end
 
