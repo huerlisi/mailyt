@@ -6,6 +6,7 @@ en:
     attributes:
       mail:
         to:      An
+        name:    Name
         date:    Datum
         subject: Betreff
         body:    Text
