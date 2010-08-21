@@ -24,7 +24,7 @@ Feature: Manage emails
       |to 4|name 4|2001-01-04|subject 4|body 4|
     When I delete the 3rd email
     Then I should see the following emails:
-      |To|Name|Date|Subject|
-      |to 1|name 1|2001-01-01|subject 1|
-      |to 2|name 2|2001-01-02|subject 2|
-      |to 4|name 4|2001-01-04|subject 4|
+      |To|Date|Subject|
+      |name 1 <to 1>|2001-01-01|subject 1|
+      |name 2 <to 2>|2001-01-02|subject 2|
+      |name 4 <to 4>|2001-01-04|subject 4|
