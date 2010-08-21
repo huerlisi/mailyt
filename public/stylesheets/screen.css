@@ -1059,7 +1059,101 @@ table.list td.checkbox {
   background-image: url(/images/16x16/index.png);
 }
 
-/* line 5, ../../app/stylesheets/partials/_content.sass */
+/* incase an inverted custom gradient isn't specified */
+/* line 7, ../../app/stylesheets/partials/content/_fancy_buttons.sass */
+#content input[type=submit] {
+  font-family: "Lucida Grande", Lucida, Arial, sans_serif;
+  background: url('/images/button_bg.png?1282429654') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+  font-family: "Lucida Grande", Lucida, Arial, sans_serif;
+  background: url('/images/button_bg.png?1282429654') repeat-x bottom left;
+  margin: 0;
+  width: auto;
+  overflow: visible;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  border-style: solid;
+  font-weight: bold;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -khtml-border-radius: 6px;
+  border-radius: 6px;
+  font-size: 18px;
+  line-height: 21.6px;
+  padding: 5px 18px;
+  border-width: 1px;
+  background-color: #1e77dc;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #c1d0e2), color-stop(10%, #82a1c4), color-stop(50%, #4b73a0), color-stop(50%, #466b95), color-stop(100%, #5c84b2));
+  background-image: -moz-linear-gradient(top, #c1d0e2 0%, #82a1c4 10%, #4b73a0 50%, #466b95 50%, #5c84b2 100%);
+  background-image: linear-gradient(top, #c1d0e2 0%, #82a1c4 10%, #4b73a0 50%, #466b95 50%, #5c84b2 100%);
+  border-color: #385576;
+  text-shadow: #0f3a6c 0px 1px 1px;
+}
+/* line 172, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 175, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]:focus {
+  outline: none;
+}
+/* line 172, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]::-moz-focus-inner {
+  border: none;
+  padding: 0;
+}
+/* line 175, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]:focus {
+  outline: none;
+}
+/* line 152, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]:active {
+  padding: 4px 17px;
+  border-width: 2px;
+}
+/* line 98, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit], #content input[type=submit]:visited {
+  color: white;
+}
+/* line 28, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]:hover, #content input[type=submit]:focus {
+  background-color: #1c6fcf;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #b6c8dd), color-stop(10%, #7899bf), color-stop(50%, #466b95), color-stop(50%, #41648b), color-stop(100%, #527cad));
+  background-image: -moz-linear-gradient(top, #b6c8dd 0%, #7899bf 10%, #466b95 50%, #41648b 50%, #527cad 100%);
+  background-image: linear-gradient(top, #b6c8dd 0%, #7899bf 10%, #466b95 50%, #41648b 50%, #527cad 100%);
+  border-color: #334d6c;
+  text-shadow: #0d335e 0px 1px 1px;
+}
+/* line 98, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]:hover, #content input[type=submit]:hover:visited, #content input[type=submit]:focus, #content input[type=submit]:focus:visited {
+  color: white;
+}
+/* line 33, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]:active {
+  background-color: #1a68c1;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #466b95), color-stop(30%, #49709c), color-stop(50%, #43668e), color-stop(50%, #3e5f84), color-stop(100%, #557faf));
+  background-image: -moz-linear-gradient(top, #466b95 0%, #49709c 30%, #43668e 50%, #3e5f84 50%, #557faf 100%);
+  background-image: linear-gradient(top, #466b95 0%, #49709c 30%, #43668e 50%, #3e5f84 50%, #557faf 100%);
+  border-color: #2e4661;
+  text-shadow: #0b2c51 0px -1px -1px;
+}
+/* line 98, ../../../../../var/lib/gems/1.8/gems/fancy-buttons-0.5.5/lib/stylesheets/_fancy-buttons.sass */
+#content input[type=submit]:active, #content input[type=submit]:active:visited {
+  color: white;
+}
+
+/* line 6, ../../app/stylesheets/partials/_content.sass */
 #content {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -1071,7 +1165,7 @@ table.list td.checkbox {
   border-radius: 5px;
 }
 
-/* line 11, ../../app/stylesheets/partials/_content.sass */
+/* line 12, ../../app/stylesheets/partials/_content.sass */
 h1,
 h2,
 h3 {
@@ -1079,35 +1173,35 @@ h3 {
   font-weight: bold;
 }
 
-/* line 16, ../../app/stylesheets/partials/_content.sass */
+/* line 17, ../../app/stylesheets/partials/_content.sass */
 h2 {
   font-size: 20px;
   margin-bottom: 20px;
 }
 
-/* line 19, ../../app/stylesheets/partials/_content.sass */
+/* line 20, ../../app/stylesheets/partials/_content.sass */
 h1 {
   font-size: 25px;
   margin-bottom: 25px;
 }
 
-/* line 22, ../../app/stylesheets/partials/_content.sass */
+/* line 23, ../../app/stylesheets/partials/_content.sass */
 h3 {
   font-size: 16px;
   margin-bottom: 16px;
 }
 
-/* line 25, ../../app/stylesheets/partials/_content.sass */
+/* line 26, ../../app/stylesheets/partials/_content.sass */
 a {
   text-decoration: none;
   color: #507aaa;
 }
-/* line 28, ../../app/stylesheets/partials/_content.sass */
+/* line 29, ../../app/stylesheets/partials/_content.sass */
 a:hover {
   color: #759fcf;
 }
 
-/* line 32, ../../app/stylesheets/partials/_content.sass */
+/* line 33, ../../app/stylesheets/partials/_content.sass */
 #cash_register_new {
   display: inline;
   float: left;
@@ -1354,7 +1448,7 @@ form.formtastic #errorExplanation {
   width: 70%;
 }
 
-/* line 42, ../../app/stylesheets/partials/_content.sass */
+/* line 43, ../../app/stylesheets/partials/_content.sass */
 #day_edit table th {
   padding-right: 20px;
 }
