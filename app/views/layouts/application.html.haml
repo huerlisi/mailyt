@@ -22,8 +22,7 @@
           = image_tag('logo.png')
           %h1{:style => 'display: inline; color: #002B3D'} CyMail
         #main-menu
-          %ul
-            %li= link_to "Mails", emails_path
+          = render_navigation(:level => 1)
 
       #content
         - if flash[:notice]
