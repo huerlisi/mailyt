@@ -12,3 +12,9 @@ end
 Then /^I should see the following emails:$/ do |expected_emails_table|
   expected_emails_table.diff!(tableish('table tr', 'td,th'))
 end
+
+When /^I click on the (.+) header$/ do |column|
+  within("table tr th.#{column}") do
+    click_link "Up"
+  end
+end

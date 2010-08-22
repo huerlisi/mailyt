@@ -3,7 +3,7 @@
 %h2= t_title
 %table.list
   %tr
-    %th{:style => "width: 10em"}= t_attr(:date)
+    = sort_header :date
     %th{:style => "width: 20em"}= t_attr(:to)
     %th= t_attr(:subject)
     %th.action-links

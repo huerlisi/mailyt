@@ -160,6 +160,7 @@ DEPENDENCIES
   fancy-buttons
   formtastic!
   haml
+  has_scope
   i18n_rails_helpers (>= 0.8.0)
   inherited_resources
   mysql

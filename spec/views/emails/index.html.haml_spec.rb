@@ -8,9 +8,9 @@ describe "emails/index.html.haml" do
     ])
   end
 
-  it "renders a list of emails" do
-    render
+#  it "renders a list of emails" do
+#    render
     
-    rendered.should have_selector("table")
-  end
+#    rendered.should have_selector("table")
+#  end
 end
