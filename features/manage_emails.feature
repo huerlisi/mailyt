@@ -17,11 +17,11 @@ Feature: Manage emails
 
   Scenario: Delete email
     Given the following emails:   
-      |to|name|date|subject|body|
-      |to 1|name 1|2001-01-01|subject 1|body 1|
-      |to 2|name 2|2001-01-02|subject 2|body 2|
-      |to 3|name 3|2001-01-03|subject 3|body 3|
-      |to 4|name 4|2001-01-04|subject 4|body 4|
+      |to|name|date|subject|
+      |to 1|name 1|2001-01-01|subject 1|
+      |to 2|name 2|2001-01-02|subject 2|
+      |to 3|name 3|2001-01-03|subject 3|
+      |to 4|name 4|2001-01-04|subject 4|
     When I delete the 3rd email
     Then I should see the following emails:
       |To|Date|Subject|
@@ -31,11 +31,11 @@ Feature: Manage emails
 
   Scenario: Sort inbox by descending date
     Given the following emails:
-      |to|name|date|subject|body|
-      |to 1|name 1|2001-01-01|subject 1|body 1|
-      |to 2|name 2|2001-01-02|subject 2|body 2|
-      |to 3|name 3|2001-01-03|subject 3|body 3|
-      |to 4|name 4|2001-01-04|subject 4|body 4|
+      |to|name|date|subject|
+      |to 1|name 1|2001-01-01|subject 1|
+      |to 2|name 2|2001-01-02|subject 2|
+      |to 3|name 3|2001-01-03|subject 3|
+      |to 4|name 4|2001-01-04|subject 4|
     When I am on the emails page
     And I click on the date header up link
     Then I should see the following emails:
@@ -47,11 +47,11 @@ Feature: Manage emails
 
   Scenario: Sort inbox by ascending subject
     Given the following emails:
-      |to|name|date|subject|body|
-      |to 1|name 1|2001-01-01|subject 1|body 1|
-      |to 2|name 2|2001-01-02|subject 2|body 2|
-      |to 3|name 3|2001-01-03|subject 3|body 3|
-      |to 4|name 4|2001-01-04|subject 4|body 4|
+      |to|name|date|subject|
+      |to 1|name 1|2001-01-01|subject 1|
+      |to 2|name 2|2001-01-02|subject 2|
+      |to 3|name 3|2001-01-03|subject 3|
+      |to 4|name 4|2001-01-04|subject 4|
     When I am on the emails page
     And I click on the subject header down link
     Then I should see the following emails:
@@ -63,11 +63,11 @@ Feature: Manage emails
 
   Scenario: Sort inbox by ascending to
     Given the following emails:
-      |to|name|date|subject|body|
-      |to 1|name 1|2001-01-01|subject 1|body 1|
-      |to 2|name 2|2001-01-02|subject 2|body 2|
-      |to 3|name 3|2001-01-03|subject 3|body 3|
-      |to 4|name 4|2001-01-04|subject 4|body 4|
+      |to|name|date|subject|
+      |to 1|name 1|2001-01-01|subject 1|
+      |to 2|name 2|2001-01-02|subject 2|
+      |to 3|name 3|2001-01-03|subject 3|
+      |to 4|name 4|2001-01-04|subject 4|
     When I am on the emails page
     And I click on the to header down link
     Then I should see the following emails:

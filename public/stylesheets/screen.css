@@ -2754,3 +2754,14 @@ tr.currency, th.currency {
   border-right: 0px none;
   border-bottom: 1px solid;
 }
+
+/* line 1, ../../app/stylesheets/partials/_cymail.sass */
+td div.subject {
+  font-weight: bold;
+}
+
+/* line 4, ../../app/stylesheets/partials/_cymail.sass */
+td div.body {
+  font-size: 80%;
+  font-style: italic;
+}
