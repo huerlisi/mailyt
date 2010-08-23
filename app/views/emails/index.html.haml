@@ -2,17 +2,6 @@
   = link_to t_action('new'), new_email_path, :class => "icon icon-add"
 %h2= t_title
 
-= search_form_for('', :url => emails_path) do |f|
-  = f.inputs do
-    = f.input :subject
-  = f.buttons do
-    = f.commit_button t(:search)
+= render 'search_form'
 
-%table.list
-  %tr
-    = sort_header :date
-    = sort_header :to
-    = sort_header :subject
-    %th.action-links
-
-  = render @emails
+= render 'list'

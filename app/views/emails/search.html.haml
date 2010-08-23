@@ -1,0 +1,7 @@
+%h2= t_title
+
+= render 'search_form'
+
+= paginated_section do
+  = render 'list' if @emails
+// highlight_words(@query)

@@ -1,0 +1,8 @@
+%table.list
+  %tr
+    = sort_header :date
+    = sort_header :to
+    = sort_header :subject
+    %th.action-links
+
+  = render @emails

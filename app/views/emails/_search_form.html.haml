@@ -1,0 +1,7 @@
+= search_form_for('search', :url => search_emails_path) do |f|
+  = f.inputs do
+    = f.input :text, :label => t_attr('text'), :hint => t('formtastic.hints.email.text'), :required => false
+  = f.buttons do
+    = f.commit_button t('formtastic.search')
+= javascript_tag "Form.Element.setValue('search_text', '#{escape_javascript(@query)}');"
+= javascript_tag "$('search_text').activate();"

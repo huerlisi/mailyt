@@ -25,8 +25,8 @@ When /^I click on the (.+) header down link/ do |column|
   end
 end
 
-When /^I filter by (.+) "([^"]*)"$/ do |column, value|
-  When "I fill in \"#{value}\" for \"_#{column}\""
+When /^I search for "([^"]*)"$/ do |value|
+  When "I fill in \"#{value}\" for \"Search\""
   When "I press \"Search\""
 end
   

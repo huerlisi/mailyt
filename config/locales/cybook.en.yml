@@ -1,6 +1,4 @@
 en:
-  search: Search
-
   activerecord:
     models:
       email: Mail
@@ -12,3 +10,14 @@ en:
         date:    Date
         subject: Subject
         body:    Body
+        text:    Search
+
+  formtastic:
+    search:      Search
+    hints:
+      email:
+        text:    To, subject, date, or body
+
+  crud:
+    title:
+      search: Suche
