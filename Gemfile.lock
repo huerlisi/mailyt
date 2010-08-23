@@ -9,8 +9,8 @@ GIT
       i18n (>= 0.4.0)
 
 GIT
-  remote: http://github.com/mislav/will_paginate.git
-  revision: 3615938
+  remote: http://github.com/huerlisi/will_paginate.git
+  revision: 75c4a10
   branch: rails3
   specs:
     will_paginate (3.0.pre2)

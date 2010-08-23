@@ -32,7 +32,7 @@ gem 'fancy-buttons'
 gem 'simple-navigation'
 
 gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git', :branch => 'rails3'
-gem 'will_paginate', :git => 'http://github.com/mislav/will_paginate.git', :branch => 'rails3'
+gem 'will_paginate', :git => 'http://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
 gem 'has_scope'
 gem 'inherited_resources'
 gem 'i18n_rails_helpers', '>= 0.8.0'
