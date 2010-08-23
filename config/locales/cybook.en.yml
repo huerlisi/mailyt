@@ -1,4 +1,6 @@
 en:
+  search: Search
+
   activerecord:
     models:
       email: Mail

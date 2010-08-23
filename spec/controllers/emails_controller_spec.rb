@@ -15,6 +15,14 @@ describe EmailsController do
     end
   end
 
+  describe "filtered index" do
+    it "assigns all mails matching subject as @emails" do
+      Email.stub(:by_subject).with("subject") { [mock_email] }
+      get :index, :search => { :subject => "subject" }
+      assigns(:emails).should eq([mock_email])
+    end
+  end
+  
   describe "GET show" do
     it "assigns the requested email as @email" do
       Email.stub(:find).with("37") { mock_email }

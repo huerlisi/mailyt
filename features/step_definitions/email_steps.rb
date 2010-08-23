@@ -24,3 +24,9 @@ When /^I click on the (.+) header down link/ do |column|
     click_link "Down"
   end
 end
+
+When /^I filter by (.+) "([^"]*)"$/ do |column, value|
+  When "I fill in \"#{value}\" for \"_#{column}\""
+  When "I press \"Search\""
+end
+  
