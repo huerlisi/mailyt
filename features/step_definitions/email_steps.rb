@@ -13,8 +13,14 @@ Then /^I should see the following emails:$/ do |expected_emails_table|
   expected_emails_table.diff!(tableish('table tr', 'td,th'))
 end
 
-When /^I click on the (.+) header$/ do |column|
+When /^I click on the (.+) header up link$/ do |column|
   within("table tr th.#{column}") do
     click_link "Up"
+  end
+end
+
+When /^I click on the (.+) header down link/ do |column|
+  within("table tr th.#{column}") do
+    click_link "Down"
   end
 end

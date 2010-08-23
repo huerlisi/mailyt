@@ -4,8 +4,8 @@
 %table.list
   %tr
     = sort_header :date
-    %th{:style => "width: 20em"}= t_attr(:to)
-    %th= t_attr(:subject)
+    = sort_header :to
+    = sort_header :subject
     %th.action-links
 
   = render @emails
