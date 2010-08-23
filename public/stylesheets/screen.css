@@ -2765,3 +2765,20 @@ td div.body {
   font-size: 80%;
   font-style: italic;
 }
+
+/* line 8, ../../app/stylesheets/partials/_cymail.sass */
+.match {
+  font-weight: bold;
+  color: #68b068;
+}
+
+/* line 12, ../../app/stylesheets/partials/_cymail.sass */
+table.list {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+  border-collapse: separate;
+}
