@@ -2829,37 +2829,31 @@ ul.list li:hover {
  ** */
 /* line 4, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
   background: white;
   /* self-clearing method: */
 }
 
-/* line 9, ../../app/stylesheets/partials/_pagination.sass */
+/* line 8, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination a, .digg_pagination span, .digg_pagination em {
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -khtml-border-radius: 5px;
-  border-radius: 5px;
+  -moz-border-radius: 3.333px;
+  -webkit-border-radius: 3.333px;
+  -o-border-radius: 3.333px;
+  -ms-border-radius: 3.333px;
+  -khtml-border-radius: 3.333px;
+  border-radius: 3.333px;
   padding: 0.2em 0.5em;
   display: block;
   float: left;
   margin-right: 1px;
 }
 
-/* line 16, ../../app/stylesheets/partials/_pagination.sass */
+/* line 15, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination span.disabled {
   color: #999999;
   border: 1px solid #dddddd;
 }
 
-/* line 20, ../../app/stylesheets/partials/_pagination.sass */
+/* line 19, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination em {
   font-weight: bold;
   background: #2e6ab1;
@@ -2867,20 +2861,20 @@ ul.list li:hover {
   border: 1px solid #2e6ab1;
 }
 
-/* line 26, ../../app/stylesheets/partials/_pagination.sass */
+/* line 25, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination a {
   text-decoration: none;
   color: #105cb6;
   border: 1px solid #9aafe5;
 }
 
-/* line 31, ../../app/stylesheets/partials/_pagination.sass */
+/* line 30, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination a:hover, .digg_pagination a:focus {
   color: #000033;
   border-color: #000033;
 }
 
-/* line 35, ../../app/stylesheets/partials/_pagination.sass */
+/* line 34, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination .page_info {
   background: #2e6ab1;
   color: white;
@@ -2890,14 +2884,14 @@ ul.list li:hover {
   text-align: center;
 }
 
-/* line 43, ../../app/stylesheets/partials/_pagination.sass */
+/* line 42, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination .page_info b {
   color: #000033;
   background: #6aa6ed;
   padding: 0.1em 0.25em;
 }
 
-/* line 48, ../../app/stylesheets/partials/_pagination.sass */
+/* line 47, ../../app/stylesheets/partials/_pagination.sass */
 .digg_pagination:after {
   content: ".";
   display: block;
@@ -2906,17 +2900,17 @@ ul.list li:hover {
   visibility: hidden;
 }
 
-/* line 55, ../../app/stylesheets/partials/_pagination.sass */
+/* line 54, ../../app/stylesheets/partials/_pagination.sass */
 * html .digg_pagination {
   height: 1%;
 }
 
-/* line 58, ../../app/stylesheets/partials/_pagination.sass */
+/* line 57, ../../app/stylesheets/partials/_pagination.sass */
 *:first-child + html .digg_pagination {
   overflow: hidden;
 }
 
-/* line 61, ../../app/stylesheets/partials/_pagination.sass */
+/* line 60, ../../app/stylesheets/partials/_pagination.sass */
 .digg_paggination a.per_page {
   border: 0;
 }
