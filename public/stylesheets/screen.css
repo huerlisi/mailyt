@@ -2857,6 +2857,7 @@ tr.currency, th.currency {
   min-height: 4em;
   font-size: 100%;
   font-style: normal;
+  white-space: pre-line;
 }
 
 /*
