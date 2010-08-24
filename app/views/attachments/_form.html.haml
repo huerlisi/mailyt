@@ -1,6 +1,7 @@
-= semantic_form_for @attachment do |f|
+= semantic_form_for @attachment, :html => {:multipart => true} do |f|
   = f.semantic_errors
   = f.inputs do
+    = f.input :title
     = f.input :attachment
 
   = f.buttons
