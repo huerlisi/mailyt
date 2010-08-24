@@ -9,5 +9,8 @@
 
   .body= auto_link(@email.body)
 
+  - @attachments = @email.attachments
+  .attachments= render 'attachments/list'
+
 - @emails = @email.replies
 = render 'list'

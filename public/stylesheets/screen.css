@@ -2878,6 +2878,14 @@ tr.currency, th.currency {
   font-style: normal;
   white-space: pre-line;
 }
+/* line 77, ../../app/stylesheets/partials/_cymail.sass */
+.email.view .attachments {
+  margin-top: 0.35em;
+}
+/* line 80, ../../app/stylesheets/partials/_cymail.sass */
+.email.view .attachments li.attachment {
+  margin: 0;
+}
 
 /*
  *Code based on will_paginate example CSS at http://github.com/mislav/will_paginate/tree/gh-pages
