@@ -28,22 +28,6 @@ Feature: Manage emails
       |name 2 <to 2>|2001-01-02|subject 2|
       |name 4 <to 4>|2001-01-04|subject 4|
 
-  Scenario: Sort inbox by descending date
-    Given the following emails:
-      |to|name|date|subject|
-      |to 1|name 1|2001-01-01|subject 1|
-      |to 2|name 2|2001-01-02|subject 2|
-      |to 3|name 3|2001-01-03|subject 3|
-      |to 4|name 4|2001-01-04|subject 4|
-    When I am on the emails page
-    And I click on the date header up link
-    Then I should see the following emails:
-      |To|Date|Subject|
-      |name 4 <to 4>|2001-01-04|subject 4|
-      |name 3 <to 3>|2001-01-03|subject 3|
-      |name 2 <to 2>|2001-01-02|subject 2|
-      |name 1 <to 1>|2001-01-01|subject 1|
-
   Scenario: Sort inbox by ascending subject
     Given the following emails:
       |to|name|date|subject|
@@ -52,7 +36,7 @@ Feature: Manage emails
       |to 3|name 3|2001-01-03|subject 3|
       |to 4|name 4|2001-01-04|subject 4|
     When I am on the emails page
-    And I click on the subject header down link
+    And I click on the ascending Subject sort link
     Then I should see the following emails:
       |To|Date|Subject|
       |name 1 <to 1>|2001-01-01|subject 1|
@@ -60,7 +44,7 @@ Feature: Manage emails
       |name 3 <to 3>|2001-01-03|subject 3|
       |name 4 <to 4>|2001-01-04|subject 4|
 
-  Scenario: Sort inbox by ascending to
+  Scenario: Sort inbox by ascending date
     Given the following emails:
       |to|name|date|subject|
       |to 1|name 1|2001-01-01|subject 1|
@@ -68,7 +52,7 @@ Feature: Manage emails
       |to 3|name 3|2001-01-03|subject 3|
       |to 4|name 4|2001-01-04|subject 4|
     When I am on the emails page
-    And I click on the to header down link
+    And I click on the ascending Date sort link
     Then I should see the following emails:
       |To|Date|Subject|
       |name 1 <to 1>|2001-01-01|subject 1|

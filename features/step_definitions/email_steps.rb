@@ -16,16 +16,12 @@ Then /^I should see the following emails:$/ do |expected_emails_table|
   end
 end
 
-When /^I click on the (.+) header up link$/ do |column|
-  within("table tr th.#{column}") do
-    click_link "Up"
-  end
+When /^I click on the ascending (.+) sort link$/ do |column|
+  click_link "Ascending #{column}"
 end
 
 When /^I click on the (.+) header down link/ do |column|
-  within("table tr th.#{column}") do
-    click_link "Down"
-  end
+  click_link "Descending #{column}"
 end
 
 When /^I search for "([^"]*)"$/ do |value|

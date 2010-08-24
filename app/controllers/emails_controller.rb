@@ -21,4 +21,16 @@ class EmailsController < InheritedResources::Base
     
     index!
   end
+
+  def index
+    params[:per_page] ||= 25
+    
+    params[:search] ||= {}
+    params[:search][:text] ||= params[:search][:query]
+    @query = params[:search][:text]
+    
+    @emails = apply_scopes(Email, params[:search].merge(params)).paginate :page => params[:page], :per_page => params[:per_page]
+    
+    index!
+  end
 end
