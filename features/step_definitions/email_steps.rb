@@ -4,13 +4,16 @@ end
 
 When /^I delete the (\d+)(?:st|nd|rd|th) email$/ do |pos|
   visit emails_path
-  within("table tr:nth-child(#{pos.to_i+1})") do
+  within("ul.list li:nth-child(#{pos.to_i+1})") do
     click_link "Destroy"
   end
 end
 
 Then /^I should see the following emails:$/ do |expected_emails_table|
-  expected_emails_table.diff!(tableish('table tr', 'td,th'))
+  emails = expected_emails_table.hashes
+  for email in emails
+    Then "I should see \"#{email[:subject]}\""
+  end
 end
 
 When /^I click on the (.+) header up link$/ do |column|

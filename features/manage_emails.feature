@@ -11,7 +11,6 @@ Feature: Manage emails
     And I fill in "Body" with "body 1"
     And I press "Create Mail"
     Then I should be on the emails page
-    And I should see "to 1"
     And I should see "name 1"
     And I should see "subject 1"
 
