@@ -2773,16 +2773,22 @@ li.email {
 
 /* line 10, ../../app/stylesheets/partials/_cymail.sass */
 li .header {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
   background-color: #f6f6f6;
   padding: 0.35em;
 }
 
-/* line 14, ../../app/stylesheets/partials/_cymail.sass */
+/* line 15, ../../app/stylesheets/partials/_cymail.sass */
 li span.subject {
   font-style: italic;
 }
 
-/* line 17, ../../app/stylesheets/partials/_cymail.sass */
+/* line 18, ../../app/stylesheets/partials/_cymail.sass */
 li div.body {
   font-size: 80%;
   font-style: italic;
@@ -2790,30 +2796,30 @@ li div.body {
   margin-right: 3em;
 }
 
-/* line 23, ../../app/stylesheets/partials/_cymail.sass */
+/* line 24, ../../app/stylesheets/partials/_cymail.sass */
 li span.address {
   font-weight: bold;
 }
 
-/* line 26, ../../app/stylesheets/partials/_cymail.sass */
+/* line 27, ../../app/stylesheets/partials/_cymail.sass */
 li span.date {
   font-size: 80%;
   float: right;
   margin-right: 40px;
 }
 
-/* line 31, ../../app/stylesheets/partials/_cymail.sass */
+/* line 32, ../../app/stylesheets/partials/_cymail.sass */
 li .action-links {
   float: right;
 }
 
-/* line 34, ../../app/stylesheets/partials/_cymail.sass */
+/* line 35, ../../app/stylesheets/partials/_cymail.sass */
 .match {
   font-weight: bold;
   color: #68b068;
 }
 
-/* line 38, ../../app/stylesheets/partials/_cymail.sass */
+/* line 39, ../../app/stylesheets/partials/_cymail.sass */
 ul.list {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2823,9 +2829,9 @@ ul.list {
   border-radius: 5px;
 }
 
-/* line 41, ../../app/stylesheets/partials/_cymail.sass */
+/* line 42, ../../app/stylesheets/partials/_cymail.sass */
 ul.list li:hover {
-  background-color: #ffffdd;
+  border-color: #000033;
 }
 
 /*
