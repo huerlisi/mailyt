@@ -1,0 +1,8 @@
+%li[attachment]{'data-href' => url_for(attachment.attachment.url)}
+  .header
+    .preview= image_tag(attachment.attachment.url(:thumb))
+    %span.subject= link_to attachment.attachment.original_filename, attachment.attachment.url
+    %span.size= "(%s)" % number_to_human_size(attachment.attachment_file_size)
+    .action-links
+      = link_to image_tag('16x16/remove.png', :title => 'Destroy'), attachment_path(attachment), :remote => true, :method => :delete, :confirm => t_confirm_delete(attachment), :title => 'Destroy'
+    %span.date= time_ago_in_words(attachment.attachment_updated_at) + " ago" if attachment.attachment_updated_at

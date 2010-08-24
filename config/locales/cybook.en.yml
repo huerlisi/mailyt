@@ -1,7 +1,8 @@
 en:
   activerecord:
     models:
-      email: Mail
+      email:      Mail
+      attachment: Attachment
 
     attributes:
       email:
