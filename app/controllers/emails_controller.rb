@@ -33,4 +33,12 @@ class EmailsController < InheritedResources::Base
     
     index!
   end
+
+  # GET /emails/1/reply
+  def reply
+    original = Email.find(params[:id])
+    @email = original.build_reply
+    
+    new!
+  end
 end

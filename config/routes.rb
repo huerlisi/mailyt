@@ -57,6 +57,9 @@ Cymail::Application.routes.draw do
     collection do
       get :search
     end
+    member do
+      get :reply
+    end
   end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
