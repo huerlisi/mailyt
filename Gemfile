@@ -36,3 +36,7 @@ gem 'will_paginate', :git => 'http://github.com/huerlisi/will_paginate.git', :br
 gem 'has_scope'
 gem 'inherited_resources'
 gem 'i18n_rails_helpers', '>= 0.8.0'
+
+# CyMail
+# ======
+gem 'paperclip'
