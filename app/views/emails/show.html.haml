@@ -2,6 +2,8 @@
   = link_to t_action('new'), new_email_path, :class => "icon icon-add"
   = link_to t_action('index'), emails_path, :class => "icon icon-index"
 
+%h1= @email.subject
+
 %li[@email]
   %span.date= time_ago_in_words(@email.date) + " ago" if @email.date
   %span.address= human_mail_address(@email.to, @email.name)
