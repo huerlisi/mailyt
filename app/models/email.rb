@@ -1,7 +1,7 @@
 class Email < ActiveRecord::Base
   # Associations
   belongs_to :in_reply_to, :class_name => 'Email'
-  has_many :replies, :class_name => 'Email', :foreign_key => :in_reply_to
+  has_many :replies, :class_name => 'Email', :foreign_key => :in_reply_to_id
   
   # Scopes
   scope :by_subject, proc {|value| where(:subject => value)}

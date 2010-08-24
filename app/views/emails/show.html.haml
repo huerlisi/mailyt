@@ -8,3 +8,6 @@
     %span.date= time_ago_in_words(@email.date) + " ago" if @email.date
 
   .body= auto_link(@email.body)
+
+- @emails = @email.replies
+= render 'list'
