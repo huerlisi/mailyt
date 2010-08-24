@@ -1,8 +1,8 @@
 %li[email]
   .header
-    %span.date= time_ago_in_words(email.date) + " ago" if email.date
     %span.address= human_mail_address(email.to, email.name)
     %span.subject= link_to email.subject, email
+    .action-links
+      = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_path(email), :remote => true, :method => :delete, :confirm => t_confirm_delete(email), :title => 'Destroy'
+    %span.date= time_ago_in_words(email.date) + " ago" if email.date
   .body= auto_link(truncate(email.body, :length => 300))
-  .action-links
-    = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_path(email), :remote => true, :method => :delete, :confirm => t_confirm_delete(email), :title => 'Destroy'

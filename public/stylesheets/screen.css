@@ -2799,22 +2799,21 @@ li span.address {
 li span.date {
   font-size: 80%;
   float: right;
+  margin-right: 40px;
 }
 
-/* line 30, ../../app/stylesheets/partials/_cymail.sass */
+/* line 31, ../../app/stylesheets/partials/_cymail.sass */
 li .action-links {
-  position: absolute;
-  right: 0.35em;
-  top: 1.7em;
+  float: right;
 }
 
-/* line 35, ../../app/stylesheets/partials/_cymail.sass */
+/* line 34, ../../app/stylesheets/partials/_cymail.sass */
 .match {
   font-weight: bold;
   color: #68b068;
 }
 
-/* line 39, ../../app/stylesheets/partials/_cymail.sass */
+/* line 38, ../../app/stylesheets/partials/_cymail.sass */
 ul.list {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2824,7 +2823,7 @@ ul.list {
   border-radius: 5px;
 }
 
-/* line 42, ../../app/stylesheets/partials/_cymail.sass */
+/* line 41, ../../app/stylesheets/partials/_cymail.sass */
 ul.list li:hover {
   background-color: #ffffdd;
 }
