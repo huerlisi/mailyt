@@ -2756,31 +2756,72 @@ tr.currency, th.currency {
 }
 
 /* line 1, ../../app/stylesheets/partials/_cymail.sass */
-td div.subject {
-  font-weight: bold;
-}
-
-/* line 4, ../../app/stylesheets/partials/_cymail.sass */
-td div.body {
-  font-size: 80%;
-  font-style: italic;
-}
-
-/* line 8, ../../app/stylesheets/partials/_cymail.sass */
-.match {
-  font-weight: bold;
-  color: #68b068;
-}
-
-/* line 12, ../../app/stylesheets/partials/_cymail.sass */
-table.list {
+li.email {
+  list-style-type: none;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   -o-border-radius: 5px;
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  border-collapse: separate;
+  border: 1px solid #e4e4e4;
+  margin-top: 0.7em;
+  margin-bottom: 0.7em;
+  padding: 0.35em;
+  position: relative;
+  min-height: 4em;
+}
+
+/* line 11, ../../app/stylesheets/partials/_cymail.sass */
+li span.subject {
+  font-style: italic;
+}
+
+/* line 14, ../../app/stylesheets/partials/_cymail.sass */
+li div.body {
+  font-size: 80%;
+  font-style: italic;
+  margin-left: 0.7em;
+  margin-right: 3em;
+}
+
+/* line 20, ../../app/stylesheets/partials/_cymail.sass */
+li span.address {
+  font-weight: bold;
+}
+
+/* line 23, ../../app/stylesheets/partials/_cymail.sass */
+li span.date {
+  font-size: 80%;
+  float: right;
+}
+
+/* line 27, ../../app/stylesheets/partials/_cymail.sass */
+li .action-links {
+  position: absolute;
+  right: 0.35em;
+  top: 1.7em;
+}
+
+/* line 32, ../../app/stylesheets/partials/_cymail.sass */
+.match {
+  font-weight: bold;
+  color: #68b068;
+}
+
+/* line 36, ../../app/stylesheets/partials/_cymail.sass */
+ul.list {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 39, ../../app/stylesheets/partials/_cymail.sass */
+ul.list li:hover {
+  background-color: #ffffdd;
 }
 
 /** 
