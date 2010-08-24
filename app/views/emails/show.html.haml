@@ -1,4 +1,13 @@
+.contextual
+  = link_to t_action('new'), new_email_path, :class => "icon icon-add"
+  = link_to t_action('index'), emails_path, :class => "icon icon-index"
 
-= link_to 'Edit', edit_email_path(@email)
-\|
-= link_to 'Back', emails_path
+%li[@email]
+  %span.date= time_ago_in_words(@email.date) + " ago" if @email.date
+  %span.address= human_mail_address(@email.to, @email.name)
+  %span.subject= link_to @email.subject, @email
+  .body= auto_link(truncate(@email.body, :length => 300))
+  .action-links
+    = link_to image_tag('16x16/edit.png', :title => 'Edit'), edit_email_path(@email), :method => :get, :title => 'Edit'
+    = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_path(@email), :remote => true, :method => :delete, :confirm => t_confirm_delete(@email), :title => 'Destroy'
+
