@@ -4,6 +4,13 @@ class EmailsController < InheritedResources::Base
   has_scope :order
   has_scope :by_text, :as => :text
 
+  def new
+    @email = Email.new(params[:email])
+    @email.attachments.build
+    
+    new!
+  end
+  
   def create
     create!{emails_path}
   end

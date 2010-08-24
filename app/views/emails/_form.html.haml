@@ -1,4 +1,4 @@
-= semantic_form_for @email do |f|
+= semantic_form_for @email, :html => {:multipart => true} do |f|
   = f.semantic_errors
   = f.inputs do
     = f.input :in_reply_to_id, :as => :hidden
@@ -6,5 +6,8 @@
     = f.input :name
     = f.input :subject
     = f.input :body
+    = f.semantic_fields_for :attachments do |a|
+      = a.input :attachment, :as => :file
+
   = f.buttons do
     = f.commit_button
