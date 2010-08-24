@@ -1,7 +1,8 @@
 %li[email]
-  %span.date= time_ago_in_words(email.date) + " ago" if email.date
-  %span.address= human_mail_address(email.to, email.name)
-  %span.subject= link_to email.subject, email
+  .header
+    %span.date= time_ago_in_words(email.date) + " ago" if email.date
+    %span.address= human_mail_address(email.to, email.name)
+    %span.subject= link_to email.subject, email
   .body= auto_link(truncate(email.body, :length => 300))
   .action-links
     = link_to image_tag('16x16/edit.png', :title => 'Edit'), edit_email_path(email), :method => :get, :title => 'Edit'
