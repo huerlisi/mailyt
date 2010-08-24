@@ -1,6 +1,6 @@
 %li[email]
   %span.date= time_ago_in_words(email.date) + " ago" if email.date
-  %span.address= mail_address(email.to, email.name)
+  %span.address= human_mail_address(email.to, email.name)
   %span.subject= link_to email.subject, email
   .body= auto_link(truncate(email.body, :length => 300))
   .action-links
