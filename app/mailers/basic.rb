@@ -13,7 +13,7 @@ class Basic < ActionMailer::Base
   # Recive email
    def receive(mail)
      mail
-     email = Email.new(:subject => mail.subject, :to => mail.to.join(', '), :from => mail.from.join(', '))
+     email = Email.new(:subject => mail.subject, :to => mail.to.join(', '), :from => mail.from.join(', '), :date => mail.date)
 
      if mail.multipart?
        email.body = Iconv.conv('UTF-8', mail.parts[0].charset, mail.parts[0].body.to_s)
