@@ -1,7 +1,7 @@
 require 'ostruct'
 
 class EmailsController < InheritedResources::Base
-  has_scope :order
+  has_scope :order, :default => 'date DESC'
   has_scope :by_text, :as => :text
 
   def new
