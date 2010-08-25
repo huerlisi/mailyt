@@ -13,6 +13,8 @@ class EmailsController < InheritedResources::Base
   
   def create
     create!{emails_path}
+    
+    Basic.text(@email).deliver
   end
 
   # GET /emails/search
