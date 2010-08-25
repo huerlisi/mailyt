@@ -13,7 +13,9 @@ class Basic < ActionMailer::Base
   # Recive email
    def receive(mail)
      mail
-     email = Email.new(:subject => mail.subject, :to => mail.to.join(', '), :from => mail.from.join(', '), :date => mail.date)
+     email = Email.new(:subject => mail.subject, :date => mail.date)
+     email.to = mail.to.join(', ') unless mail.to.nil?
+     email.from = mail.from.join(', ') unless mail.from.nil?
 
      if mail.multipart?
        email.body = Iconv.conv('UTF-8', mail.parts[0].charset, mail.parts[0].body.to_s)
