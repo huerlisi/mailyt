@@ -41,3 +41,4 @@ gem 'i18n_rails_helpers', '>= 0.8.0'
 # CyMail
 # ======
 gem 'paperclip'
+gem 'system_timer'
