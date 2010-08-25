@@ -11,6 +11,13 @@ class Email < ActiveRecord::Base
     where("(subject LIKE :like) OR (date = :value) OR (\"to\" LIKE :like) OR (name LIKE :like) OR (body LIKE :like)", :value => value, :like => "%#{value}%")
   }
 
+  def initialize(attributes = nil)
+    attributes ||= {}
+    defaults = {:date => DateTime.now}
+
+    super(defaults.merge(attributes))
+  end
+  
   def is_reply?
     !(in_reply_to.nil?)
   end
