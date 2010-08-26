@@ -25,9 +25,10 @@
           = render_navigation(:level => 1)
 
       #content
-        - if flash[:notice]
-          #flash.flash.notice
-            = flash[:notice]
+        - if notice
+          #notice.flash.notice= notice
+        - if alert
+          #alert.flash.alert= alert
         = yield
 
       #sidebar
