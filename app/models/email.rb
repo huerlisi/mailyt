@@ -18,6 +18,10 @@ class Email < ActiveRecord::Base
     super(defaults.merge(attributes))
   end
   
+  def to_s
+    "%s -> %s: %s" % [from, to, subject]
+  end
+  
   def reply?
     !(in_reply_to.nil?)
   end
