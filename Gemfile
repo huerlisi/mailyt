@@ -10,6 +10,9 @@ gem 'mysql', :group => :development
 group :development do
   gem 'rails3-generators'
   gem 'rspec-rails', ">= 2.0.0.beta.19"
+  # Haml generators
+  gem 'hpricot'
+  gem 'ruby_parser'
 end
 
 # Test
