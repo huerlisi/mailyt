@@ -18,7 +18,7 @@ class Email < ActiveRecord::Base
     super(defaults.merge(attributes))
   end
   
-  def is_reply?
+  def reply?
     !(in_reply_to.nil?)
   end
   

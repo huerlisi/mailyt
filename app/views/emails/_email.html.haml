@@ -1,4 +1,4 @@
-%li[email]{'data-href' => url_for(email), :class => (email.is_reply? ? 'reply' : '')}
+%li[email]{'data-href' => url_for(email), :class => (email.reply? ? 'reply' : '')}
   .header
     %span.address= human_mail_address(email.from, email.name)
     %span.subject= link_to email.subject, email
