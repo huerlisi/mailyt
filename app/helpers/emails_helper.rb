@@ -1,5 +1,6 @@
 module EmailsHelper
   def mail_address(email, name = nil)
+    return "" if email.nil?
     if name.blank?
       return email
     else
@@ -8,6 +9,8 @@ module EmailsHelper
   end
 
   def human_mail_address(email, name = nil)
+    return "" if email.nil?
+    
     if name.blank?
       return email
     else

@@ -1,6 +1,6 @@
 .view[@email]
   .header
-    %span.address= human_mail_address(@email.to, @email.name)
+    %span.address= ("%s -> %s" % [human_mail_address(@email.from), human_mail_address(@email.to, @email.name)]).html_safe
     %span.subject= link_to @email.subject, @email
     .action-links
       = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_path(@email), :remote => true, :method => :delete, :confirm => t_confirm_delete(@email), :title => 'Destroy'
