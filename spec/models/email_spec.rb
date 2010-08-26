@@ -1,15 +1,9 @@
 require 'spec_helper'
 
 describe Email do
-  it "is valid" do
-    Email.new.should be_valid
-  end
+  specify { should be_valid }
   
-  context "is new" do
-    let(:email) {Email.new}
-    
-    it "should not be a reply" do
-      email.should_not be_reply
-    end
+  context "when new" do
+    specify { should_not be_reply }
   end
 end
