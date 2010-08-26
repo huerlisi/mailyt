@@ -10,6 +10,16 @@ describe Email do
     its(:to_s) { should == " -> : " }
   end
 
+  describe "#new" do
+    it "sets date to now by default" do
+      Email.new.date.should == DateTime.now
+    end
+
+    it "uses date from hash" do
+      Email.new(:date => '2010-02-02').date.should == '2010-02-02'
+    end
+  end
+  
   describe "email returned by #build_reply" do
     let(:original) { Email.new(:subject => "Original", :body => "Some text.") }
     subject { original.build_reply }
