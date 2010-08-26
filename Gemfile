@@ -40,5 +40,11 @@ gem 'i18n_rails_helpers', '>= 0.8.0'
 
 # Mailyt
 # ======
+# Attachments
 gem 'paperclip'
+
+# IMAP fetcher
 gem 'system_timer'
+
+# Authentication
+gem 'devise', '>= 1.1'
