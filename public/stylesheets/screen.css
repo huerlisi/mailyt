@@ -1059,6 +1059,69 @@ table.list td.checkbox {
   background-image: url(/images/16x16/index.png);
 }
 
+/* line 4, ../../app/stylesheets/partials/content/_flash_errors.sass */
+#errorExplanation, div.flash, .nodata, .warning {
+  padding: 4px 4px 4px 30px;
+  margin-bottom: 12px;
+  font-size: 1.1em;
+  border: 1px solid;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border-radius: 5px;
+}
+
+/* line 11, ../../app/stylesheets/partials/content/_flash_errors.sass */
+div.flash {
+  margin-top: 8px;
+}
+/* line 13, ../../app/stylesheets/partials/content/_flash_errors.sass */
+div.flash.error {
+  background: url(../images/false.png) 8px 5px no-repeat;
+  background-color: #ffe3e3;
+  border-color: #550000;
+  color: #550000;
+}
+
+/* line 19, ../../app/stylesheets/partials/content/_flash_errors.sass */
+#errorExplanation {
+  background: url(../images/false.png) 8px 5px no-repeat;
+  background-color: #ffe3e3;
+  border-color: #550000;
+  color: #550000;
+}
+
+/* line 25, ../../app/stylesheets/partials/content/_flash_errors.sass */
+div.flash.notice {
+  background: url(../images/true.png) 8px 5px no-repeat;
+  background-color: #dfffdf;
+  border-color: #9fcf9f;
+  color: #005f00;
+}
+
+/* line 31, ../../app/stylesheets/partials/content/_flash_errors.sass */
+div.flash.alert {
+  background: url(../images/false.png) 8px 5px no-repeat;
+  background-color: #ffe3e3;
+  border-color: #550000;
+  color: #550000;
+}
+
+/* line 37, ../../app/stylesheets/partials/content/_flash_errors.sass */
+.nodata, .warning {
+  text-align: center;
+  background-color: #ffebc1;
+  border-color: #fdbf3b;
+  color: #a6750c;
+}
+
+/* line 43, ../../app/stylesheets/partials/content/_flash_errors.sass */
+#errorExplanation ul {
+  font-size: 0.9em;
+}
+
 /* incase an inverted custom gradient isn't specified */
 /* line 7, ../../app/stylesheets/partials/content/_fancy_buttons.sass */
 #content input[type=submit] {
@@ -1153,7 +1216,7 @@ table.list td.checkbox {
   color: white;
 }
 
-/* line 6, ../../app/stylesheets/partials/_content.sass */
+/* line 7, ../../app/stylesheets/partials/_content.sass */
 #content {
   font-family: Verdana, Arial, Helvetica, sans-serif;
   font-size: 14px;
@@ -1165,7 +1228,7 @@ table.list td.checkbox {
   border-radius: 5px;
 }
 
-/* line 12, ../../app/stylesheets/partials/_content.sass */
+/* line 13, ../../app/stylesheets/partials/_content.sass */
 h1,
 h2,
 h3 {
@@ -1173,35 +1236,35 @@ h3 {
   font-weight: bold;
 }
 
-/* line 17, ../../app/stylesheets/partials/_content.sass */
+/* line 18, ../../app/stylesheets/partials/_content.sass */
 h2 {
   font-size: 20px;
   margin-bottom: 20px;
 }
 
-/* line 20, ../../app/stylesheets/partials/_content.sass */
+/* line 21, ../../app/stylesheets/partials/_content.sass */
 h1 {
   font-size: 25px;
   margin-bottom: 25px;
 }
 
-/* line 23, ../../app/stylesheets/partials/_content.sass */
+/* line 24, ../../app/stylesheets/partials/_content.sass */
 h3 {
   font-size: 16px;
   margin-bottom: 16px;
 }
 
-/* line 26, ../../app/stylesheets/partials/_content.sass */
+/* line 27, ../../app/stylesheets/partials/_content.sass */
 a {
   text-decoration: none;
   color: #507aaa;
 }
-/* line 29, ../../app/stylesheets/partials/_content.sass */
+/* line 30, ../../app/stylesheets/partials/_content.sass */
 a:hover {
   color: #759fcf;
 }
 
-/* line 33, ../../app/stylesheets/partials/_content.sass */
+/* line 34, ../../app/stylesheets/partials/_content.sass */
 #cash_register_new {
   display: inline;
   float: left;
@@ -1448,7 +1511,7 @@ form.formtastic #errorExplanation {
   width: 70%;
 }
 
-/* line 43, ../../app/stylesheets/partials/_content.sass */
+/* line 44, ../../app/stylesheets/partials/_content.sass */
 #day_edit table th {
   padding-right: 20px;
 }
@@ -2089,392 +2152,6 @@ form.formtastic fieldset.buttons ol input.icon {
 #signature {
   margin-top: 1.5em;
   margin-left: 10.8cm;
-}
-
-/* line 5, ../../app/stylesheets/partials/_redmine.sass */
-a {
-  color: #2a5685;
-  text-decoration: none;
-}
-/* line 8, ../../app/stylesheets/partials/_redmine.sass */
-a:link, a:visited {
-  color: #2a5685;
-  text-decoration: none;
-}
-/* line 11, ../../app/stylesheets/partials/_redmine.sass */
-a:hover, a:active {
-  color: #c61a1a;
-  text-decoration: underline;
-}
-/* line 14, ../../app/stylesheets/partials/_redmine.sass */
-a img {
-  border: 0;
-}
-
-/* line 19, ../../app/stylesheets/partials/_redmine.sass */
-table.list {
-  border: 1px solid #e4e4e4;
-  border-collapse: collapse;
-  width: 100%;
-  margin-bottom: 4px;
-}
-/* line 24, ../../app/stylesheets/partials/_redmine.sass */
-table.list th {
-  background-color: #eeeeee;
-  padding: 4px;
-  white-space: nowrap;
-}
-/* line 28, ../../app/stylesheets/partials/_redmine.sass */
-table.list td {
-  vertical-align: top;
-}
-/* line 30, ../../app/stylesheets/partials/_redmine.sass */
-table.list td.id {
-  width: 2%;
-  text-align: center;
-}
-/* line 33, ../../app/stylesheets/partials/_redmine.sass */
-table.list td.checkbox {
-  width: 15px;
-  padding: 0px;
-}
-
-/* line 38, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry {
-  border: 1px solid #f8f8f8;
-}
-/* line 40, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry td {
-  white-space: nowrap;
-}
-/* line 42, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry td.filename {
-  width: 30%;
-}
-/* line 44, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry td.size {
-  text-align: right;
-  font-size: 90%;
-}
-/* line 47, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry td.revision, tr.entry td.author {
-  text-align: center;
-}
-/* line 49, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry td.age {
-  text-align: right;
-}
-/* line 51, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry span.expander {
-  background-image: url(../images/bullet_toggle_plus.png);
-  padding-left: 8px;
-  margin-left: 0;
-  cursor: pointer;
-}
-/* line 56, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry.open span.expander {
-  background-image: url(../images/bullet_toggle_minus.png);
-}
-/* line 58, ../../app/stylesheets/partials/_redmine.sass */
-tr.entry.file td.filename a {
-  margin-left: 16px;
-}
-/* line 60, ../../app/stylesheets/partials/_redmine.sass */
-tr.message {
-  height: 2.6em;
-}
-/* line 62, ../../app/stylesheets/partials/_redmine.sass */
-tr.message td.last_message {
-  font-size: 80%;
-}
-/* line 64, ../../app/stylesheets/partials/_redmine.sass */
-tr.message.locked td.subject a {
-  background-image: url(../images/locked.png);
-}
-/* line 66, ../../app/stylesheets/partials/_redmine.sass */
-tr.message.sticky td.subject a {
-  background-image: url(../images/sticky.png);
-  font-weight: bold;
-}
-
-/* line 71, ../../app/stylesheets/partials/_redmine.sass */
-table.list tbody tr:hover {
-  background-color: #ffffdd;
-}
-/* line 73, ../../app/stylesheets/partials/_redmine.sass */
-table td {
-  padding: 2px;
-}
-/* line 75, ../../app/stylesheets/partials/_redmine.sass */
-table p {
-  margin: 0;
-}
-
-/* line 78, ../../app/stylesheets/partials/_redmine.sass */
-.odd {
-  background-color: #f6f7f8;
-}
-
-/* line 81, ../../app/stylesheets/partials/_redmine.sass */
-.even {
-  background-color: white;
-}
-
-/* line 84, ../../app/stylesheets/partials/_redmine.sass */
-.box {
-  padding: 6px;
-  margin-bottom: 10px;
-  background-color: #f6f6f6;
-  color: #505050;
-  line-height: 1.5em;
-  border: 1px solid #e4e4e4;
-}
-
-/* line 92, ../../app/stylesheets/partials/_redmine.sass */
-div.square {
-  border: 1px solid #999999;
-  float: left;
-  margin: 0.3em 0.4em 0 0.4em;
-  overflow: hidden;
-  width: 0.6em;
-  height: 0.6em;
-}
-
-/* line 100, ../../app/stylesheets/partials/_redmine.sass */
-.contextual {
-  float: right;
-  white-space: nowrap;
-  line-height: 1.4em;
-  margin-top: 5px;
-  padding-left: 10px;
-  font-size: 0.9em;
-}
-/* line 107, ../../app/stylesheets/partials/_redmine.sass */
-.contextual input {
-  font-size: 0.9em;
-}
-
-/* line 110, ../../app/stylesheets/partials/_redmine.sass */
-input, select {
-  vertical-align: middle;
-  margin-top: 1px;
-  margin-bottom: 1px;
-}
-
-/* line 115, ../../app/stylesheets/partials/_redmine.sass */
-fieldset {
-  border: 1px solid #e4e4e4;
-  margin: 0;
-}
-
-/* line 119, ../../app/stylesheets/partials/_redmine.sass */
-legend {
-  color: #484848;
-}
-
-/* line 122, ../../app/stylesheets/partials/_redmine.sass */
-hr {
-  width: 100%;
-  height: 1px;
-  background: #cccccc;
-  border: 0;
-}
-
-/* line 128, ../../app/stylesheets/partials/_redmine.sass */
-blockquote {
-  font-style: italic;
-  border-left: 3px solid #e0e0e0;
-  padding-left: 0.6em;
-  margin-left: 2.4em;
-}
-/* line 133, ../../app/stylesheets/partials/_redmine.sass */
-blockquote blockquote {
-  margin-left: 0;
-}
-
-/* line 136, ../../app/stylesheets/partials/_redmine.sass */
-li p {
-  margin-top: 0;
-}
-
-/* line 140, ../../app/stylesheets/partials/_redmine.sass */
-p.breadcrumb {
-  font-size: 0.9em;
-  margin: 4px 0 4px 0;
-}
-/* line 143, ../../app/stylesheets/partials/_redmine.sass */
-p.subtitle {
-  font-size: 0.9em;
-  margin: -6px 0 12px 0;
-  font-style: italic;
-}
-/* line 147, ../../app/stylesheets/partials/_redmine.sass */
-p.footnote {
-  font-size: 0.9em;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
-/* line 153, ../../app/stylesheets/partials/_redmine.sass */
-fieldset#filters, fieldset#date-range {
-  padding: 0.7em;
-  margin-bottom: 8px;
-}
-/* line 157, ../../app/stylesheets/partials/_redmine.sass */
-fieldset#filters p {
-  margin: 1.2em 0 0.8em 2px;
-}
-/* line 159, ../../app/stylesheets/partials/_redmine.sass */
-fieldset#filters table {
-  border-collapse: collapse;
-}
-/* line 161, ../../app/stylesheets/partials/_redmine.sass */
-fieldset#filters table td {
-  padding: 0;
-  vertical-align: middle;
-}
-/* line 164, ../../app/stylesheets/partials/_redmine.sass */
-fieldset#filters tr.filter {
-  height: 2em;
-}
-/* line 166, ../../app/stylesheets/partials/_redmine.sass */
-fieldset#filters td.add-filter {
-  text-align: right;
-  vertical-align: top;
-}
-
-/* line 170, ../../app/stylesheets/partials/_redmine.sass */
-.buttons {
-  font-size: 0.9em;
-}
-
-/* line 173, ../../app/stylesheets/partials/_redmine.sass */
-.pagination {
-  font-size: 90%;
-}
-
-/* line 176, ../../app/stylesheets/partials/_redmine.sass */
-p.pagination {
-  margin-top: 8px;
-}
-
-/* line 179, ../../app/stylesheets/partials/_redmine.sass */
-.required {
-  color: #bb0000;
-}
-
-/* line 184, ../../app/stylesheets/partials/_redmine.sass */
-#errorExplanation, div.flash, .nodata, .warning {
-  padding: 4px 4px 4px 30px;
-  margin-bottom: 12px;
-  font-size: 1.1em;
-  border: 2px solid;
-}
-
-/* line 190, ../../app/stylesheets/partials/_redmine.sass */
-div.flash {
-  margin-top: 8px;
-}
-/* line 192, ../../app/stylesheets/partials/_redmine.sass */
-div.flash.error {
-  background: url(../images/false.png) 8px 5px no-repeat;
-  background-color: #ffe3e3;
-  border-color: #dd0000;
-  color: #550000;
-}
-
-/* line 198, ../../app/stylesheets/partials/_redmine.sass */
-#errorExplanation {
-  background: url(../images/false.png) 8px 5px no-repeat;
-  background-color: #ffe3e3;
-  border-color: #dd0000;
-  color: #550000;
-}
-
-/* line 204, ../../app/stylesheets/partials/_redmine.sass */
-div.flash.notice {
-  background: url(../images/true.png) 8px 5px no-repeat;
-  background-color: #dfffdf;
-  border-color: #9fcf9f;
-  color: #005f00;
-}
-
-/* line 210, ../../app/stylesheets/partials/_redmine.sass */
-.nodata, .warning {
-  text-align: center;
-  background-color: #ffebc1;
-  border-color: #fdbf3b;
-  color: #a6750c;
-}
-
-/* line 216, ../../app/stylesheets/partials/_redmine.sass */
-#errorExplanation ul {
-  font-size: 0.9em;
-}
-
-/* line 220, ../../app/stylesheets/partials/_redmine.sass */
-#ajax-indicator {
-  position: absolute;
-  /* fixed not supported by IE */
-  background-color: #eeeeee;
-  border: 1px solid #bbbbbb;
-  top: 35%;
-  left: 40%;
-  width: 20%;
-  font-weight: bold;
-  text-align: center;
-  padding: 0.6em;
-  z-index: 100;
-  filter: alpha(opacity=50);
-  opacity: 0.5;
-}
-
-/* line 235, ../../app/stylesheets/partials/_redmine.sass */
-html > body #ajax-indicator {
-  position: fixed;
-}
-
-/* line 238, ../../app/stylesheets/partials/_redmine.sass */
-#ajax-indicator span {
-  background-position: 0% 40%;
-  background-repeat: no-repeat;
-  background-image: url(../images/loading.gif);
-  padding-left: 26px;
-  vertical-align: bottom;
-}
-
-/* line 245, ../../app/stylesheets/partials/_redmine.sass */
-a.close-icon {
-  display: block;
-  margin-top: 3px;
-  overflow: hidden;
-  width: 12px;
-  height: 12px;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  background-image: url("../images/close.png");
-}
-/* line 254, ../../app/stylesheets/partials/_redmine.sass */
-a.close-icon:hover {
-  background-image: url("../images/close_hl.png");
-}
-
-/* line 258, ../../app/stylesheets/partials/_redmine.sass */
-.icon {
-  background-position: 0% 40%;
-  background-repeat: no-repeat;
-  padding-left: 20px;
-  padding-top: 2px;
-  padding-bottom: 3px;
-}
-
-/* line 265, ../../app/stylesheets/partials/_redmine.sass */
-.icon22 {
-  background-position: 0% 40%;
-  background-repeat: no-repeat;
-  padding-left: 26px;
-  line-height: 22px;
-  vertical-align: middle;
 }
 
 /* line 2, ../../app/stylesheets/partials/_accounting.sass */
