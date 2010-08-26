@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Cymail::Application.load_tasks
+Mailyt::Application.load_tasks
