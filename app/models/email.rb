@@ -25,6 +25,7 @@ class Email < ActiveRecord::Base
   def build_reply
     reply = Email.new(
       :in_reply_to => self,
+      :to          => self.from,
       :subject     => "Re: " + subject,
       :body        => body.gsub(/^/, "> ")
     )
