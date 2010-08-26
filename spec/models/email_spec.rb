@@ -20,6 +20,20 @@ describe Email do
     end
   end
   
+  describe "#reply?" do
+    let(:email) {Email.new}
+
+    it "is false if email has no assigned in_reply_to" do
+      email.should_receive(:in_reply_to).and_return(nil)
+      email.should_not be_reply
+    end
+
+    it "is true if email has an assigned in_reply_to" do
+      email.should_receive(:in_reply_to).and_return(mock(Email))
+      email.should be_reply
+    end
+  end
+  
   describe "email returned by #build_reply" do
     let(:original) { Email.new(:subject => "Original", :body => "Some text.") }
     subject { original.build_reply }
