@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Attachment do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "is valid" do
+    Attachment.new.should be_valid
+  end
 end
