@@ -1,0 +1,5 @@
+%li[email_account]{'data-href' => url_for(email_account)}
+  .header
+    %span.subject= link_to email_account, email_account
+    .action-links
+      = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_account_path(email_account), :remote => true, :method => :delete, :confirm => t_confirm_delete(email_account), :title => 'Destroy'

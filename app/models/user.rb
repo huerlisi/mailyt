@@ -9,4 +9,11 @@ class User < ActiveRecord::Base
   
   # Associations
   has_many :email_accounts
+
+  # Helpers
+  def to_s
+    return "" unless email.present?
+    
+    return email
+  end
 end

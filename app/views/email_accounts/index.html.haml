@@ -1,17 +1,4 @@
-%h1 Listing email_accounts
+%h2= t_title
 
-%table
-  %tr
-    %th
-    %th
-    %th
-
-  - @email_accounts.each do |email_account|
-    %tr
-      %td= link_to 'Show', email_account
-      %td= link_to 'Edit', edit_email_account_path(email_account)
-      %td= link_to 'Destroy', email_account, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New email_account', new_email_account_path
+= paginated_section do
+  = render 'list' if @email_accounts
