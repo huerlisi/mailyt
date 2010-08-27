@@ -4,9 +4,9 @@
   = f.semantic_errors
   = f.inputs do
     = f.input :email
-    = f.input :password, :hint => "leave blank if you don't want to change it"
+    = f.input :password
     = f.input :password_confirmation
-    = f.input :current_password, :required => true, :hint => "we need your current password to confirm your changes"
+    = f.input :current_password, :required => true
     
   = f.buttons do
     = f.commit_button "Update"

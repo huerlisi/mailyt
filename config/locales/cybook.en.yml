@@ -20,6 +20,9 @@ en:
     hints:
       email:
         text:    To, subject, date, or body
+      user:
+        password:         Leave blank if you don't want to change it
+        current_password: We need your current password to confirm your changes
 
   crud:
     title:
