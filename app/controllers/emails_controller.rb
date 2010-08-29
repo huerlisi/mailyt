@@ -10,7 +10,7 @@ class EmailsController < InheritedResources::Base
 
   protected
     def collection
-      @emails ||= end_of_association_chain.paginate(:page => params[:page], :per_page => params[:per_page])
+      @emails ||= end_of_association_chain.by_user(current_user).paginate(:page => params[:page], :per_page => params[:per_page])
     end
 
   # Actions

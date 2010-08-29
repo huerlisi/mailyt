@@ -7,6 +7,7 @@ class Email < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   
   # Scopes
+  scope :by_user, proc {|value| where(:user_id => value)}
   scope :by_subject, proc {|value| where(:subject => value)}
   scope :by_text, proc {|value|
     where("(subject LIKE :like) OR (date = :value) OR (\"to\" LIKE :like) OR (name LIKE :like) OR (body LIKE :like)", :value => value, :like => "%#{value}%")
