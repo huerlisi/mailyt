@@ -11,11 +11,10 @@ class ImapFetcherDaemon < Daemon::Base
     puts "Starting ImapFetcherDaemon"
 
     email_accounts = EmailAccount.all
-    fetchers = []
+    fetchers = {}
     for email_account in email_accounts
       puts "  for account #{email_account}"
 
-      email_account.user.make_current
       email_account_options = {
         :server => email_account.server,
         :username => email_account.username,
@@ -24,11 +23,12 @@ class ImapFetcherDaemon < Daemon::Base
       config = @config.merge(email_account_options)
 
       # Add your own receiver object below
-      fetchers << Fetcher.create({:receiver => nil}.merge(config))
+      fetchers[email_account] = Fetcher.create({:receiver => nil}.merge(config))
     end
 
     loop do
-      for fetcher in fetchers
+      fetchers.each do |account, fetcher|
+        account.user.make_current
         fetcher.fetch
       end
       sleep(@sleep_time)
