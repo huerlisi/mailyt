@@ -1,6 +1,10 @@
 require 'ostruct'
 
 class EmailsController < InheritedResources::Base
+  # Aspects
+  include SentientController
+  
+  # Scopes
   has_scope :order, :default => 'date DESC'
   has_scope :by_text, :as => :text
 
