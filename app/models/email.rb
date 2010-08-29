@@ -15,7 +15,7 @@ class Email < ActiveRecord::Base
 
   def initialize(attributes = nil)
     attributes ||= {}
-    defaults = {:date => DateTime.now}
+    defaults = {:date => DateTime.now, :user => User.current}
 
     super(defaults.merge(attributes))
   end
