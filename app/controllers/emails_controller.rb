@@ -8,6 +8,13 @@ class EmailsController < InheritedResources::Base
   has_scope :order, :default => 'date DESC'
   has_scope :by_text, :as => :text
 
+  protected
+    def collection
+      @emails ||= end_of_association_chain.paginate(:page => params[:page], :per_page => params[:per_page])
+    end
+
+  # Actions
+  public
   def new
     @email = Email.new(params[:email])
     @email.from = User.current.email
@@ -27,11 +34,9 @@ class EmailsController < InheritedResources::Base
   def search
     params[:per_page] ||= 25
     
-    params[:search] ||= {}
-    params[:search][:text] ||= params[:search][:query]
-    @query = params[:search][:text]
+    params[:text] ||= params[:search][:text] || params[:search][:query] if params[:search]
+    @query = params[:text]
     
-    @emails = apply_scopes(Email, params[:search].merge(params)).paginate :page => params[:page], :per_page => params[:per_page]
     
     index!
   end
@@ -39,11 +44,8 @@ class EmailsController < InheritedResources::Base
   def index
     params[:per_page] ||= 25
     
-    params[:search] ||= {}
-    params[:search][:text] ||= params[:search][:query]
-    @query = params[:search][:text]
-    
-    @emails = apply_scopes(Email, params[:search].merge(params)).paginate :page => params[:page], :per_page => params[:per_page]
+    params[:text] ||= params[:search][:text] || params[:search][:query] if params[:search]
+    @query = params[:text]
     
     index!
   end
