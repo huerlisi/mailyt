@@ -10,6 +10,7 @@ class EmailsController < InheritedResources::Base
 
   def new
     @email = Email.new(params[:email])
+    @email.from = User.current.email
     @email.attachments.build
     
     new!
@@ -51,6 +52,7 @@ class EmailsController < InheritedResources::Base
   def reply
     original = Email.find(params[:id])
     @email = original.build_reply
+    @email.from = User.current.email
     
     new!
   end

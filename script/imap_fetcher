@@ -9,11 +9,28 @@ class ImapFetcherDaemon < Daemon::Base
   @sleep_time = @config.delete(:sleep_time) || 60
   def self.start
     puts "Starting ImapFetcherDaemon"
-    # Add your own receiver object below
-    @fetcher = Fetcher.create({:receiver => nil}.merge(@config))
+
+    email_accounts = EmailAccount.all
+    fetchers = []
+    for email_account in email_accounts
+      puts "  for account #{email_account}"
+
+      email_account.user.make_current
+      email_account_options = {
+        :server => email_account.server,
+        :username => email_account.username,
+        :password => email_account.password
+      }
+      config = @config.merge(email_account_options)
+
+      # Add your own receiver object below
+      fetchers << Fetcher.create({:receiver => nil}.merge(config))
+    end
 
     loop do
-      @fetcher.fetch
+      for fetcher in fetchers
+        fetcher.fetch
+      end
       sleep(@sleep_time)
     end
   end
