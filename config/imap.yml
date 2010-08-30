@@ -1,0 +1,20 @@
+defaults: &defaults
+  type: imap                # pop OR imap
+  receiver: Basic           # ActionMailer that will receive mail
+  sleep_time: 10            # Poll Frequency. 60 seconds by default
+  authentication:           # LOGIN, CRAM-MD5, PASSWORD (IMAP Only)
+  processed_folder:
+  keep_messages:  true
+  sync_messages:  true
+
+development:
+  <<: *defaults
+  # Override other values here
+  
+test:
+  <<: *defaults
+  # Override other values here
+  
+production:
+  <<: *defaults
+  # Override other values here
