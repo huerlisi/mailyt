@@ -1,7 +1,7 @@
 %li[email]{'data-href' => url_for(email), :class => (email.reply? ? 'reply' : '')}
   .header
-    %span.address= human_mail_address(email.from, email.name)
     %span.subject= link_to email.subject, email
+    %span.address= human_mail_address(email.from, email.name)
     .action-links
       = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_path(email), :remote => true, :method => :delete, :confirm => t_confirm_delete(email), :title => 'Destroy'
       = link_to image_tag('16x16/reply.png', :title => 'Reply'), reply_email_path(email), :title => 'Reply'

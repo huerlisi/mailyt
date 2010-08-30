@@ -2464,7 +2464,7 @@ tr.currency, th.currency {
 }
 /* line 17, ../../app/stylesheets/partials/_cymail.sass */
 .email .subject, .attachment .subject, .email_account .subject {
-  font-style: italic;
+  font-weight: bold;
 }
 /* line 20, ../../app/stylesheets/partials/_cymail.sass */
 .email .size, .attachment .size, .email_account .size {
@@ -2491,7 +2491,7 @@ tr.currency, th.currency {
 }
 /* line 35, ../../app/stylesheets/partials/_cymail.sass */
 .email .address, .attachment .address, .email_account .address {
-  font-weight: bold;
+  font-style: italic;
 }
 /* line 38, ../../app/stylesheets/partials/_cymail.sass */
 .email .date, .attachment .date, .email_account .date {
