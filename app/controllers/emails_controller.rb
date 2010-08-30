@@ -2,6 +2,7 @@ require 'ostruct'
 
 class EmailsController < InheritedResources::Base
   # Aspects
+  respond_to :html, :js
   include SentientController
   
   # Scopes

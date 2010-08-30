@@ -1,0 +1,1 @@
+page.replace "email_#{@email.id}", ''
