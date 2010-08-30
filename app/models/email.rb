@@ -1,5 +1,6 @@
 class Email < ActiveRecord::Base
   # Associations
+  belongs_to :email_account
   belongs_to :user
   belongs_to :in_reply_to, :class_name => 'Email'
   has_many :replies, :class_name => 'Email', :foreign_key => :in_reply_to_id

@@ -1,5 +1,5 @@
 defaults: &defaults
-  type: imap                # pop OR imap
+  type: imap_sync           # pop OR imap
   receiver: Basic           # ActionMailer that will receive mail
   sleep_time: 10            # Poll Frequency. 60 seconds by default
   authentication:           # LOGIN, CRAM-MD5, PASSWORD (IMAP Only)

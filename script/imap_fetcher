@@ -16,9 +16,10 @@ class ImapFetcherDaemon < Daemon::Base
       puts "  for account #{email_account}"
 
       email_account_options = {
-        :server => email_account.server,
-        :username => email_account.username,
-        :password => email_account.password
+        :server         => email_account.server,
+        :username       => email_account.username,
+        :password       => email_account.password,
+        :email_account  => email_account
       }
       config = @config.merge(email_account_options)
 

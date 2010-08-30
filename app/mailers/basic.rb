@@ -10,18 +10,25 @@ class Basic < ActionMailer::Base
     mail :to => email.to, :from => email.from, :subject => email.subject
   end
 
-  def self.receive(raw_mail, uid)
+  # Just redefine ActionMailer.receive with an additional uid parameter
+  def self.receive(raw_mail, uid, email_account)
     ActiveSupport::Notifications.instrument("receive.action_mailer") do |payload|
       mail = Mail.new(raw_mail)
       set_payload_for_mail(payload, mail)
-      new.receive(mail, uid)
+      new.receive(mail, uid, email_account)
     end
   end
 
   # Recive email
-   def receive(mail, uid)
+   def receive(mail, uid, email_account)
      mail
-     email = Email.new(:uid => uid, :message_id => mail.message_id, :subject => mail.subject, :date => mail.date)
+     email = Email.new(
+       :email_account => email_account,
+       :uid => uid,
+       :message_id => mail.message_id,
+       :subject => mail.subject,
+       :date => mail.date
+     )
      email.to = mail.to.join(', ') unless mail.to.nil?
      email.from = mail.from.join(', ') unless mail.from.nil?
 
@@ -42,4 +49,8 @@ class Basic < ActionMailer::Base
      
      return mail
   end 
+
+  def sync_imap
+    
+  end
 end
