@@ -10,10 +10,18 @@ class Basic < ActionMailer::Base
     mail :to => email.to, :from => email.from, :subject => email.subject
   end
 
+  def self.receive(raw_mail, uid)
+    ActiveSupport::Notifications.instrument("receive.action_mailer") do |payload|
+      mail = Mail.new(raw_mail)
+      set_payload_for_mail(payload, mail)
+      new.receive(mail, uid)
+    end
+  end
+
   # Recive email
-   def receive(mail)
+   def receive(mail, uid)
      mail
-     email = Email.new(:message_id => mail.message_id, :subject => mail.subject, :date => mail.date)
+     email = Email.new(:uid => uid, :message_id => mail.message_id, :subject => mail.subject, :date => mail.date)
      email.to = mail.to.join(', ') unless mail.to.nil?
      email.from = mail.from.join(', ') unless mail.from.nil?
 

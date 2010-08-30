@@ -6,6 +6,7 @@ defaults: &defaults
   processed_folder:
   keep_messages:  true
   sync_messages:  true
+  pass_uid_to_fetcher: true
 
 development:
   <<: *defaults
