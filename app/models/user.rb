@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   include SentientUser
 
   # Associations
+  has_many :emails
   has_many :email_accounts
 
   # Helpers
