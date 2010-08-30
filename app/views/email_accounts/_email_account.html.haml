@@ -3,3 +3,4 @@
     %span.subject= link_to email_account, email_account
     .action-links
       = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_account_path(email_account), :remote => true, :method => :delete, :confirm => t_confirm_delete(email_account), :title => 'Destroy'
+      = link_to image_tag('16x16/edit.png', :title => 'Edit'), edit_email_account_path(email_account), :remote => true, :title => 'Edit'

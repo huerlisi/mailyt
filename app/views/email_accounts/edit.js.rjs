@@ -1,0 +1,1 @@
+page.replace "email_account_#{@email_account.id}", :partial => 'form'
