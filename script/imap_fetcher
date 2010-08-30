@@ -28,8 +28,13 @@ class ImapFetcherDaemon < Daemon::Base
 
     loop do
       fetchers.each do |account, fetcher|
-        account.user.make_current
-        fetcher.fetch
+        begin
+          account.user.make_current
+          fetcher.fetch
+        rescue Exception => e
+          puts "Failed fetching account #{email_account}:"
+          puts e.message
+        end
       end
       sleep(@sleep_time)
     end
