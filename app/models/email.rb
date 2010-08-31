@@ -40,7 +40,6 @@ class Email < ActiveRecord::Base
   end
 
   # IMAP
-  protected
   def sync_from_imap
     email_account.establish_imap_connection
     imap_connection = email_account.imap_connection
