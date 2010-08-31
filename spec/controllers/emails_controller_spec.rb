@@ -42,6 +42,12 @@ describe EmailsController do
       get :new
       assigns(:email).should be(mock_email)
     end
+
+    it "assigns a new email with from set" do
+      Email.should_receive(:new).and_return(mock_email(:from => 'new@example.com'))
+      get :new
+      assigns(:email).from.should == 'new@example.com'
+    end
   end
 
   describe "GET edit" do
