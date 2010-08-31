@@ -3,12 +3,8 @@ module Fetcher
     protected
     
     # Additional Options:
-    # * <tt>:sync_messages</tt> - use IMAP flag to only fetch new mails (defaults to false, implies keep_messages = true)
     # * <tt>:email_account</tt> - assign mails to EmailAccount object
     def initialize(options={})
-      @sync_messages = options.delete(:sync_messages)
-      options.merge({:keep_messages => true})
-      
       @email_account = options.delete(:email_account)
       super(options)
     end
@@ -21,24 +17,30 @@ module Fetcher
     # Retrieve messages from server
     def get_messages
       @connection.select(@in_folder)
-      # Fetch only un-fetched messages if sync_messages option is set, all otherwise
-      query = @sync_messages ? 'UNKEYWORD $fetched' : ['ALL']
+      # Fetch only un-fetched messages
+      query = 'UNKEYWORD $fetched'
       @connection.uid_search(query).each do |uid|
+        # Save seen flag
+        seen = @connection.uid_fetch(uid,'FLAGS').first.attr['FLAGS'].include?(:Seen)
+        # Fetch message
         msg = @connection.uid_fetch(uid,'RFC822').first.attr['RFC822']
+        # Restore seen flag
+        if seen
+          @connection.uid_store(uid, "+FLAGS", [:Seen])
+        else
+          @connection.uid_store(uid, "-FLAGS", [:Seen])
+        end
+
         begin
           process_message(msg, uid)
-          add_to_processed_folder(uid) if @processed_folder
         rescue
           Rails.logger.info("Fetcher: Message processing failed:")
           Rails.logger.info($!)
           handle_bogus_message(msg)
         end
         # Mark message as fetched
-        @connection.uid_store(uid, "+FLAGS", ['$fetched']) if @sync_messages
-        # Mark message as deleted 
-        @connection.uid_store(uid, "+FLAGS", [:Seen, :Deleted]) unless @keep_messages
+        @connection.uid_store(uid, "+FLAGS", ['$fetched'])
       end
     end
-    
   end
 end
