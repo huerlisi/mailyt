@@ -45,12 +45,10 @@ class Basic < ActionMailer::Base
        end
      end
      
+     email.sync_from_imap
+     
      email.save
      
      return mail
   end 
-
-  def sync_imap
-    
-  end
 end

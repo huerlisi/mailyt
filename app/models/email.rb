@@ -38,4 +38,29 @@ class Email < ActiveRecord::Base
     )
     return reply
   end
+
+  # IMAP
+  def sync_from_imap
+    email_account.establish_imap_connection
+    imap_connection = email_account.imap_connection
+    imap_connection.select('INBOX')
+
+    self.seen = imap_connection.uid_fetch(uid, 'FLAGS').first.attr['FLAGS'].include?(:Seen)
+
+    email_account.close_imap_connection
+  end
+
+  def sync_to_imap
+    email_account.establish_imap_connection
+    imap_connection = email_account.imap_connection
+    imap_connection.select('INBOX')
+
+    if seen?
+      imap_connection.uid_store(uid, '+FLAGS', [:Seen])
+    else
+      imap_connection.uid_store(uid, '-FLAGS', [:Seen])
+    end
+
+    email_account.close_imap_connection
+  end
 end
