@@ -30,6 +30,14 @@ class EmailsController < InheritedResources::Base
     Basic.text(@email).deliver
   end
 
+  def show
+    @email = Email.find(params[:id])
+    @email.seen = true
+    @email.save
+    
+    show!
+  end
+  
   # GET /emails/search
   # GET /emails/search.xml
   def search
