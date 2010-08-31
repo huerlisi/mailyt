@@ -4,11 +4,11 @@ module Fetcher
     
     # Additional Options:
     # * <tt>:sync_messages</tt> - use IMAP flag to only fetch new mails (defaults to false, implies keep_messages = true)
-    # * <tt>:pass_uid_to_fetcher</tt> - pass IMAP uid to fetcher (defaults to false)
     # * <tt>:email_account</tt> - assign mails to EmailAccount object
     def initialize(options={})
       @sync_messages = options.delete(:sync_messages)
-      @keep_messages = options.delete(:keep_messages) || @sync_messages
+      options.merge({:keep_messages => true})
+      
       @email_account = options.delete(:email_account)
       super(options)
     end
