@@ -2,16 +2,12 @@ require 'spec_helper'
 
 describe EmailsController do
   include Devise::TestHelpers
+  before do
+    sign_in Factory.create(:user)
+  end
 
   def mock_email(stubs={})
     @mock_email ||= mock_model(Email, stubs).as_null_object
-  end
-
-  before do
-    current_user = mock_model(User).as_null_object
-    User.stub(:current) { current_user }
-    Email.stub_chain(:by_user) { [mock_email] }
-    sign_in current_user
   end
   
   describe "GET index" do

@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe "emails/new.html.haml" do
+  include Devise::TestHelpers
+  before do
+    sign_in Factory.create(:user)
+  end
+
   before(:each) do
     assign(:email, stub_model(Email,
       :new_record? => true

@@ -5,7 +5,7 @@ describe "attachments/index.html.haml" do
     assign(:attachments, [
       stub_model(Attachment),
       stub_model(Attachment)
-    ])
+    ].paginate({:page => 1, :per_page => 30}))
   end
 
   it "renders a list of attachments" do

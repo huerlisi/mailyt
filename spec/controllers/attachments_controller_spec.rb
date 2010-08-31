@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe AttachmentsController do
+  include Devise::TestHelpers
+  before do
+    sign_in Factory.create(:user)
+  end
 
   def mock_attachment(stubs={})
     @mock_attachment ||= mock_model(Attachment, stubs).as_null_object
@@ -8,7 +12,7 @@ describe AttachmentsController do
 
   describe "GET index" do
     it "assigns all attachments as @attachments" do
-      Attachment.stub(:all) { [mock_attachment] }
+      controller.stub(:collection) {controller.instance_variable_set('@attachments', [mock_attachment])}
       get :index
       assigns(:attachments).should eq([mock_attachment])
     end

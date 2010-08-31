@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe EmailAccountsController do
+  include Devise::TestHelpers
+  before do
+    user = Factory.create(:user)
+    sign_in user
+    user.make_current
+  end
 
   def mock_email_account(stubs={})
     @mock_email_account ||= mock_model(EmailAccount, stubs).as_null_object
@@ -8,7 +14,7 @@ describe EmailAccountsController do
 
   describe "GET index" do
     it "assigns all email_accounts as @email_accounts" do
-      EmailAccount.stub(:all) { [mock_email_account] }
+      controller.stub(:collection) {controller.instance_variable_set('@email_accounts', [mock_email_account])}
       get :index
       assigns(:email_accounts).should eq([mock_email_account])
     end
