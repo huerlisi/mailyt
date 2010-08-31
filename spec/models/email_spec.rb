@@ -20,6 +20,10 @@ describe Email do
     it "uses date from hash" do
       Email.new(:date => '2010-02-02').date.should == '2010-02-02'
     end
+
+    it "uses from from hash" do
+      Email.new(:from => 'test@example.com').from.should == 'test@example.com'
+    end
   end
   
   describe "#reply?" do
