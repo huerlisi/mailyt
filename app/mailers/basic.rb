@@ -45,6 +45,10 @@ class Basic < ActionMailer::Base
        end
      end
      
+     if mail.in_reply_to
+       email.in_reply_to = Email.where(:message_id => mail.in_reply_to).first
+     end
+     
      email.sync_from_imap
      
      email.save
