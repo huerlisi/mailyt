@@ -17,6 +17,7 @@ describe "emails/new.html.haml" do
 
     rendered.should have_selector("form", :action => emails_path, :method => "post") do |form|
       form.should have_selector("input[type=text]#email_to")
+      form.should have_selector("input[type=hidden]#email_from")
       form.should have_selector("input[type=text]#email_subject")
       form.should have_selector("textarea#email_body")
 
