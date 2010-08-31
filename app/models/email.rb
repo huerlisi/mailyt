@@ -40,6 +40,7 @@ class Email < ActiveRecord::Base
   end
 
   # IMAP
+  protected
   def sync_from_imap
     email_account.establish_imap_connection
     imap_connection = email_account.imap_connection
@@ -50,6 +51,7 @@ class Email < ActiveRecord::Base
     email_account.close_imap_connection
   end
 
+  after_update :sync_to_imap
   def sync_to_imap
     email_account.establish_imap_connection
     imap_connection = email_account.imap_connection
@@ -61,6 +63,12 @@ class Email < ActiveRecord::Base
       imap_connection.uid_store(uid, '-FLAGS', [:Seen])
     end
 
+    if destroyed?
+      imap_connection.uid_store(uid, '+FLAGS', [:Deleted])
+    else
+      imap_connection.uid_store(uid, '-FLAGS', [:Deleted])
+    end
+    
     email_account.close_imap_connection
   end
 end
