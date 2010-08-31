@@ -157,6 +157,10 @@ GEM
     tzinfo (0.3.23)
     warden (0.10.7)
       rack (>= 1.0.0)
+    webrat (0.7.1)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
 
 PLATFORMS
   ruby
@@ -186,4 +190,5 @@ DEPENDENCIES
   simple-navigation
   sqlite3-ruby
   system_timer
+  webrat
   will_paginate!

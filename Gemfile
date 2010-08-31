@@ -25,6 +25,7 @@ group :test do
   gem 'cucumber'
   gem 'capybara'
   gem 'shoulda'
+  gem 'webrat'
 end
 
 # Standard helpers
