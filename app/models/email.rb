@@ -52,6 +52,8 @@ class Email < ActiveRecord::Base
   end
 
   after_update :sync_to_imap
+  after_destroy :sync_to_imap
+  
   def sync_to_imap
     email_account.establish_imap_connection
     imap_connection = email_account.imap_connection
