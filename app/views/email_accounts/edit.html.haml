@@ -1,6 +1,6 @@
 .contextual
   = link_to t_action('index'), email_accounts_path, :class => "icon icon-index"
-  = link_to t_action('delete'), email_account_path, :method => :delete, :confirm => t_confirm_delete(@email_account), :class => "icon icon-remove"
+  = link_to t_action('delete'), email_account_path(@email_account), :method => :delete, :confirm => t_confirm_delete(@email_account), :class => "icon icon-remove"
 %h2= t_title
 
 = render 'form'
