@@ -933,7 +933,7 @@ body .push-24 {
   margin-top: 20px;
 }
 
-/* line 3, ../../app/stylesheets/partials/_header.sass */
+/* line 5, ../../app/stylesheets/partials/_header.sass */
 #header {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -941,18 +941,45 @@ body .push-24 {
   -ms-border-radius: 5px;
   -khtml-border-radius: 5px;
   border-radius: 5px;
-  height: 80px;
+  height: 60px;
   background-color: #507aaa;
   color: white;
+  position: relative;
 }
 
 /* line 12, ../../app/stylesheets/partials/_header.sass */
+#logo {
+  position: absolute;
+  right: 1em;
+}
+
+/* line 16, ../../app/stylesheets/partials/_header.sass */
+#logo img {
+  float: left;
+  display: inline;
+}
+
+/* line 20, ../../app/stylesheets/partials/_header.sass */
+#logo-text {
+  float: right;
+  font-size: 24pt;
+  padding-top: 6px;
+  color: #002b3d;
+  text-shadow: #555555 1px 1px 1px;
+}
+
+/* line 27, ../../app/stylesheets/partials/_header.sass */
+#logo-yt {
+  color: #074a9d;
+}
+
+/* line 33, ../../app/stylesheets/partials/_header.sass */
 #main-menu li {
   margin: 0px 2px 0px 0px;
   padding: 0px 0px 0px 0px;
   white-space: nowrap;
 }
-/* line 16, ../../app/stylesheets/partials/_header.sass */
+/* line 37, ../../app/stylesheets/partials/_header.sass */
 #main-menu li a {
   display: block;
   color: white;
@@ -961,28 +988,28 @@ body .push-24 {
   margin: 0;
   padding: 4px 10px 4px 10px;
 }
-/* line 23, ../../app/stylesheets/partials/_header.sass */
+/* line 44, ../../app/stylesheets/partials/_header.sass */
 #main-menu li a:hover {
   background: #759fcf;
   color: white;
 }
-/* line 26, ../../app/stylesheets/partials/_header.sass */
+/* line 47, ../../app/stylesheets/partials/_header.sass */
 #main-menu li a.selected {
   background: white;
   color: #555555;
 }
-/* line 29, ../../app/stylesheets/partials/_header.sass */
+/* line 50, ../../app/stylesheets/partials/_header.sass */
 #main-menu li a.selected:hover {
   background: white;
   color: #555555;
 }
 
-/* line 33, ../../app/stylesheets/partials/_header.sass */
+/* line 54, ../../app/stylesheets/partials/_header.sass */
 #main-menu {
   position: absolute;
   bottom: 0px;
 }
-/* line 37, ../../app/stylesheets/partials/_header.sass */
+/* line 58, ../../app/stylesheets/partials/_header.sass */
 #main-menu li a {
   -moz-border-radius-topleft: 5px;
   -webkit-border-top-left-radius: 5px;
@@ -2202,7 +2229,7 @@ body {
 /* line 7, ../../app/stylesheets/partials/_cyt.sass */
 #header {
   background-color: #aeb9cf;
-  height: 5.3em;
+  height: 54px;
   margin: 0;
   color: #f8f8f8;
   padding: 4px 8px 0px 6px;
