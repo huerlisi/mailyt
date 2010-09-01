@@ -40,6 +40,12 @@ class Email < ActiveRecord::Base
     return reply
   end
 
+  def create_reply
+    reply = build_reply
+    reply.save
+    return reply
+  end
+
   def calculate_thread_id
     return id unless reply?
     

@@ -26,36 +26,35 @@ describe Email do
     end
   end
   
-  it "#sync_from_imap returns false if no email_account" do
-    email = Email.new(:email_account => nil)
-    email.sync_from_imap.should == false
-  end
-  
-  it "#sync_to_imap returns false if no email_account" do
-    email = Email.new(:email_account => nil)
-    email.sync_to_imap.should == false
+  describe "#sync_from_imap" do
+    it "returns false if no email_account" do
+      email = Email.new(:email_account => nil)
+      email.sync_from_imap.should == false
+    end
+    
+    it "returns false if no email_account" do
+      email = Email.new(:email_account => nil)
+      email.sync_to_imap.should == false
+    end
   end
   
   context "threading" do
-    it "#calculate_thread_id should be id when it has no parent" do
-      email = Factory(:simple_email)
-      email.calculate_thread_id.should == email.id
-    end
+    describe "#calculate_thread_id" do
+      let(:head) { Factory(:thread_head) }
+      let(:child) { head.create_reply }
+      let(:grand_child) { child.create_reply }
 
-    it "#calculate_thread_id should be parent.id + id when it his a reply" do
-      head = Factory(:thread_head)
-      child = head.build_reply
-      child.save
-      child.calculate_thread_id.should == [head.id, child.id].join(" ")
-    end
+      it "should return id string when it has no parent" do
+        head.calculate_thread_id.should == head.id
+      end
 
-    it "#calculate_thread_id should concatenated string of parent ids" do
-      head = Factory(:thread_head)
-      child = head.build_reply
-      child.save
-      grand_child = child.build_reply
-      grand_child.save
-      grand_child.calculate_thread_id.should == [head.id, child.id, grand_child.id].join(" ")
+      it "should return 'parent.id id' when it is a reply" do
+        child.calculate_thread_id.should == [head.id, child.id].join(" ")
+      end
+
+      it "should return concatenated string of parent ids" do
+        grand_child.calculate_thread_id.should == [head.id, child.id, grand_child.id].join(" ")
+      end
     end
   end
   
@@ -102,14 +101,24 @@ describe Email do
     end
   end
   
-  describe "email returned by #build_reply" do
+  context "replies" do
     let(:original) { Email.new(:subject => "Original", :body => "Some text.") }
-    subject { original.build_reply }
-    
-    specify { should be_kind_of Email }
-    specify { should be_reply }
-    its(:in_reply_to) { should == original }
-    its(:subject) { should == "Re: Original" }
-    its(:to) { should == original.from }
+
+    describe "#build_reply" do
+      subject { original.build_reply }
+      
+      specify { should be_kind_of Email }
+      specify { should be_reply }
+      its(:in_reply_to) { should == original }
+      its(:subject) { should == "Re: Original" }
+      its(:to) { should == original.from }
+    end
+
+    describe "#create_reply" do
+      subject { original.create_reply }
+      
+      specify { should be_valid }
+      specify { should be_persisted }
+    end
   end
 end
