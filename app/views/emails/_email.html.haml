@@ -5,5 +5,7 @@
     .action-links
       = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_path(email), :remote => true, :method => :delete, :title => 'Destroy'
       = link_to image_tag('16x16/reply.png', :title => 'Reply'), reply_email_path(email), :title => 'Reply'
+      = link_to image_tag('16x16/mark-unread.png', :title => 'Mark as unread'), mark_as_unread_email_path(email), :remote => true, :method => :post, :title => 'Mark as unread' if email.seen?
+      = link_to image_tag('16x16/mark-read.png', :title => 'Mark as read'), mark_as_read_email_path(email), :remote => true, :method => :post, :title => 'Mark as read' unless email.seen?
     %span.date= time_ago_in_words(email.date) + " ago" if email.date
   .body= auto_link(truncate(email.body, :length => 300))

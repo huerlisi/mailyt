@@ -67,4 +67,18 @@ class EmailsController < InheritedResources::Base
     
     new!
   end
+
+  # POST /emails/1/mark_as_unread
+  def mark_as_unread
+    @email = Email.find(params[:id])
+    @email.seen = false
+    @email.save
+  end
+
+  # POST /emails/1/mark_as_read
+  def mark_as_read
+    @email = Email.find(params[:id])
+    @email.seen = true
+    @email.save
+  end
 end

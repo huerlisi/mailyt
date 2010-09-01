@@ -2,7 +2,6 @@ require "spec_helper"
 
 describe EmailsController do
   describe "routing" do
-
     it "recognizes and generates #index" do
       { :get => "/" }.should route_to(:controller => "emails", :action => "index")
     end
@@ -31,5 +30,12 @@ describe EmailsController do
       { :delete => "/emails/1" }.should route_to(:controller => "emails", :action => "destroy", :id => "1")
     end
 
+    it "recognizes and generates #mark_as_read" do
+      { :post => "/emails/1/mark_as_read" }.should route_to(:controller => "emails", :action => "mark_as_read", :id => "1")
+    end
+
+    it "recognizes and generates #mark_as_unread" do
+      { :post => "/emails/1/mark_as_unread" }.should route_to(:controller => "emails", :action => "mark_as_unread", :id => "1")
+    end
   end
 end

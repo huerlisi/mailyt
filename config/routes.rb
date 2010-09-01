@@ -64,6 +64,7 @@ Mailyt::Application.routes.draw do
     end
     member do
       get :reply
+      post :mark_as_unread, :mark_as_read
     end
   end
 
