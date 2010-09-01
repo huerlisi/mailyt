@@ -1,3 +1,5 @@
+@import "compass/css3/box-shadow"
+
 .email.reply
   margin-left: 1.2em
 
@@ -5,13 +7,27 @@
   .subject
     font-weight: normal
 
+.email:hover
+  color: #484848
+  a
+    color: #484848
+
+.email.unseen
+  +box-shadow(#555555, 2px, 2px, 2px)
+  .subject
+    color: #484848
+
 .email, .attachment, .email_account
+  color: #999999
   list-style-type: none
   +border-radius($border_radius)
   border: 1px solid #E4E4E4
   margin-top: 0.7em
   margin-bottom: 0.7em
   min-height: 4em
+
+  a
+    color: #999999
 
   .header
     +border-radius($border_radius)
@@ -20,6 +36,8 @@
 
   .subject
     font-weight: bold
+    a
+      color: #484848
 
   .size
     font-style: italic

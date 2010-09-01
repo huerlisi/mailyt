@@ -2459,18 +2459,40 @@ tr.currency, th.currency {
   border-bottom: 1px solid;
 }
 
-/* line 1, ../../app/stylesheets/partials/_cymail.sass */
+/* line 3, ../../app/stylesheets/partials/_cymail.sass */
 .email.reply {
   margin-left: 1.2em;
 }
 
-/* line 5, ../../app/stylesheets/partials/_cymail.sass */
+/* line 7, ../../app/stylesheets/partials/_cymail.sass */
 .email.seen .subject {
   font-weight: normal;
 }
 
-/* line 8, ../../app/stylesheets/partials/_cymail.sass */
+/* line 10, ../../app/stylesheets/partials/_cymail.sass */
+.email:hover {
+  color: #484848;
+}
+/* line 12, ../../app/stylesheets/partials/_cymail.sass */
+.email:hover a {
+  color: #484848;
+}
+
+/* line 15, ../../app/stylesheets/partials/_cymail.sass */
+.email.unseen {
+  -moz-box-shadow: #555555 2px 2px 2px 0;
+  -webkit-box-shadow: #555555 2px 2px 2px 0;
+  -o-box-shadow: #555555 2px 2px 2px 0;
+  box-shadow: #555555 2px 2px 2px 0;
+}
+/* line 17, ../../app/stylesheets/partials/_cymail.sass */
+.email.unseen .subject {
+  color: #484848;
+}
+
+/* line 20, ../../app/stylesheets/partials/_cymail.sass */
 .email, .attachment, .email_account {
+  color: #999999;
   list-style-type: none;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2483,7 +2505,11 @@ tr.currency, th.currency {
   margin-bottom: 0.7em;
   min-height: 4em;
 }
-/* line 16, ../../app/stylesheets/partials/_cymail.sass */
+/* line 29, ../../app/stylesheets/partials/_cymail.sass */
+.email a, .attachment a, .email_account a {
+  color: #999999;
+}
+/* line 32, ../../app/stylesheets/partials/_cymail.sass */
 .email .header, .attachment .header, .email_account .header {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2494,23 +2520,27 @@ tr.currency, th.currency {
   background-color: #f6f6f6;
   padding: 0.35em;
 }
-/* line 21, ../../app/stylesheets/partials/_cymail.sass */
+/* line 37, ../../app/stylesheets/partials/_cymail.sass */
 .email .subject, .attachment .subject, .email_account .subject {
   font-weight: bold;
 }
-/* line 24, ../../app/stylesheets/partials/_cymail.sass */
+/* line 39, ../../app/stylesheets/partials/_cymail.sass */
+.email .subject a, .attachment .subject a, .email_account .subject a {
+  color: #484848;
+}
+/* line 42, ../../app/stylesheets/partials/_cymail.sass */
 .email .size, .attachment .size, .email_account .size {
   font-style: italic;
   font-size: 80%;
 }
-/* line 28, ../../app/stylesheets/partials/_cymail.sass */
+/* line 46, ../../app/stylesheets/partials/_cymail.sass */
 .email .body, .attachment .body, .email_account .body {
   font-size: 80%;
   font-style: italic;
   margin-left: 0.7em;
   margin-right: 3em;
 }
-/* line 34, ../../app/stylesheets/partials/_cymail.sass */
+/* line 52, ../../app/stylesheets/partials/_cymail.sass */
 .email .preview img, .attachment .preview img, .email_account .preview img {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2521,28 +2551,28 @@ tr.currency, th.currency {
   float: left;
   margin-right: 1em;
 }
-/* line 39, ../../app/stylesheets/partials/_cymail.sass */
+/* line 57, ../../app/stylesheets/partials/_cymail.sass */
 .email .address, .attachment .address, .email_account .address {
   font-style: italic;
 }
-/* line 42, ../../app/stylesheets/partials/_cymail.sass */
+/* line 60, ../../app/stylesheets/partials/_cymail.sass */
 .email .date, .attachment .date, .email_account .date {
   font-size: 80%;
   float: right;
   margin-right: 40px;
 }
-/* line 47, ../../app/stylesheets/partials/_cymail.sass */
+/* line 65, ../../app/stylesheets/partials/_cymail.sass */
 .email .action-links, .attachment .action-links, .email_account .action-links {
   float: right;
 }
 
-/* line 50, ../../app/stylesheets/partials/_cymail.sass */
+/* line 68, ../../app/stylesheets/partials/_cymail.sass */
 .match {
   font-weight: bold;
   color: #68b068;
 }
 
-/* line 54, ../../app/stylesheets/partials/_cymail.sass */
+/* line 72, ../../app/stylesheets/partials/_cymail.sass */
 .list {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2552,25 +2582,25 @@ tr.currency, th.currency {
   border-radius: 5px;
 }
 
-/* line 57, ../../app/stylesheets/partials/_cymail.sass */
+/* line 75, ../../app/stylesheets/partials/_cymail.sass */
 .list li:hover {
   border-color: #000033;
 }
 
-/* line 61, ../../app/stylesheets/partials/_cymail.sass */
+/* line 79, ../../app/stylesheets/partials/_cymail.sass */
 .attachment {
   min-height: 32px;
 }
-/* line 64, ../../app/stylesheets/partials/_cymail.sass */
+/* line 82, ../../app/stylesheets/partials/_cymail.sass */
 .attachment .header {
   height: 32px;
 }
 
-/* line 67, ../../app/stylesheets/partials/_cymail.sass */
+/* line 85, ../../app/stylesheets/partials/_cymail.sass */
 .email.view {
   border: 0;
 }
-/* line 70, ../../app/stylesheets/partials/_cymail.sass */
+/* line 88, ../../app/stylesheets/partials/_cymail.sass */
 .email.view .body {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2587,11 +2617,11 @@ tr.currency, th.currency {
   font-style: normal;
   white-space: pre-line;
 }
-/* line 81, ../../app/stylesheets/partials/_cymail.sass */
+/* line 99, ../../app/stylesheets/partials/_cymail.sass */
 .email.view .attachments {
   margin-top: 0.35em;
 }
-/* line 84, ../../app/stylesheets/partials/_cymail.sass */
+/* line 102, ../../app/stylesheets/partials/_cymail.sass */
 .email.view .attachments li.attachment {
   margin: 0;
 }
