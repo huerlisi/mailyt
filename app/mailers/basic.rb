@@ -53,6 +53,10 @@ class Basic < ActionMailer::Base
      
      email.save
      
+     # Should be callbacks
+     email.thread_id
+     email.thread_date
+     
      return mail
   end 
 end

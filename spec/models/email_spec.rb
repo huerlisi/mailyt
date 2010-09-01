@@ -36,6 +36,29 @@ describe Email do
     email.sync_to_imap.should == false
   end
   
+  context "threading" do
+    it "#calculate_thread_id should be id when it has no parent" do
+      email = Factory(:simple_email)
+      email.calculate_thread_id.should == email.id
+    end
+
+    it "#calculate_thread_id should be parent.id + id when it his a reply" do
+      head = Factory(:thread_head)
+      child = head.build_reply
+      child.save
+      child.calculate_thread_id.should == [head.id, child.id].join(" ")
+    end
+
+    it "#calculate_thread_id should concatenated string of parent ids" do
+      head = Factory(:thread_head)
+      child = head.build_reply
+      child.save
+      grand_child = child.build_reply
+      grand_child.save
+      grand_child.calculate_thread_id.should == [head.id, child.id, grand_child.id].join(" ")
+    end
+  end
+  
   it "#imap_connection delegates to it's email_account" do
     email_account = mock_model(EmailAccount)
     connection = double

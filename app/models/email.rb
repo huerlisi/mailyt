@@ -8,6 +8,7 @@ class Email < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   
   # Scopes
+  scope :threaded, order(:thread_id)
   scope :by_user, proc {|value| where(:user_id => value)}
   scope :by_subject, proc {|value| where(:subject => value)}
   scope :by_text, proc {|value|
@@ -39,6 +40,31 @@ class Email < ActiveRecord::Base
     return reply
   end
 
+  def calculate_thread_id
+    return id unless reply?
+    
+    return [in_reply_to.calculate_thread_id, id].join(' ')
+  end
+  
+  def thread_id
+    update_attribute(:thread_id, calculate_thread_id) unless self[:thread_id]
+
+    return self[:thread_id]
+  end
+  
+  def calculate_thread_date
+    return date if replies.empty?
+    
+    thread_dates = replies.collect{|reply| reply.calculate_thread_date}
+    return (thread_dates + [date]).max
+  end
+  
+  def thread_date
+    update_attribute(:thread_date, calculate_thread_date) unless self[:thread_date]
+
+    return self[:thread_date]
+  end
+  
   # IMAP
   def sync_from_imap
     return false unless email_account

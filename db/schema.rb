@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100830203319) do
+ActiveRecord::Schema.define(:version => 20100901140451) do
 
   create_table "attachments", :force => true do |t|
     t.string   "attachment_file_name"
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(:version => 20100830203319) do
     t.string   "message_id"
     t.integer  "uid"
     t.integer  "email_account_id"
+    t.string   "thread_id"
+    t.datetime "thread_date"
   end
 
   create_table "users", :force => true do |t|

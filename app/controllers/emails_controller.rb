@@ -6,7 +6,7 @@ class EmailsController < InheritedResources::Base
   include SentientController
   
   # Scopes
-  has_scope :order, :default => 'date DESC'
+  has_scope :order, :default => 'thread_date DESC, thread_id'
   has_scope :by_text, :as => :text
 
   protected
