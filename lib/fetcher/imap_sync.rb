@@ -18,7 +18,7 @@ module Fetcher
     def get_messages
       @connection.select(@in_folder)
       # Fetch only un-fetched messages
-      query = 'UNKEYWORD $fetched'
+      query = 'UNDELETED UNKEYWORD $fetched'
       @connection.uid_search(query).each do |uid|
         # Save seen flag
         seen = @connection.uid_fetch(uid,'FLAGS').first.attr['FLAGS'].include?(:Seen)
