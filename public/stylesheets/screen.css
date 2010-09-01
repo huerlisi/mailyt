@@ -2470,29 +2470,32 @@ tr.currency, th.currency {
 }
 
 /* line 10, ../../app/stylesheets/partials/_cymail.sass */
-.email:hover {
-  color: #484848;
-}
-/* line 12, ../../app/stylesheets/partials/_cymail.sass */
-.email:hover a {
-  color: #484848;
-}
-
-/* line 15, ../../app/stylesheets/partials/_cymail.sass */
 .email.unseen {
   -moz-box-shadow: #555555 2px 2px 2px 0;
   -webkit-box-shadow: #555555 2px 2px 2px 0;
   -o-box-shadow: #555555 2px 2px 2px 0;
   box-shadow: #555555 2px 2px 2px 0;
 }
-/* line 17, ../../app/stylesheets/partials/_cymail.sass */
-.email.unseen .subject {
+
+/* line 14, ../../app/stylesheets/partials/_cymail.sass */
+.list .email {
+  color: #999999;
+}
+/* line 16, ../../app/stylesheets/partials/_cymail.sass */
+.list .email a {
+  color: #999999;
+}
+/* line 18, ../../app/stylesheets/partials/_cymail.sass */
+.list .email:hover {
+  color: #484848;
+}
+/* line 20, ../../app/stylesheets/partials/_cymail.sass */
+.list .email:hover a {
   color: #484848;
 }
 
-/* line 20, ../../app/stylesheets/partials/_cymail.sass */
+/* line 23, ../../app/stylesheets/partials/_cymail.sass */
 .email, .attachment, .email_account {
-  color: #999999;
   list-style-type: none;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2504,10 +2507,6 @@ tr.currency, th.currency {
   margin-top: 0.7em;
   margin-bottom: 0.7em;
   min-height: 4em;
-}
-/* line 29, ../../app/stylesheets/partials/_cymail.sass */
-.email a, .attachment a, .email_account a {
-  color: #999999;
 }
 /* line 32, ../../app/stylesheets/partials/_cymail.sass */
 .email .header, .attachment .header, .email_account .header {
@@ -2537,8 +2536,8 @@ tr.currency, th.currency {
 .email .body, .attachment .body, .email_account .body {
   font-size: 80%;
   font-style: italic;
-  margin-left: 0.7em;
-  margin-right: 3em;
+  margin-left: 3em;
+  margin-right: 0.7em;
 }
 /* line 52, ../../app/stylesheets/partials/_cymail.sass */
 .email .preview img, .attachment .preview img, .email_account .preview img {
