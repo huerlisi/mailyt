@@ -44,7 +44,6 @@ class Email < ActiveRecord::Base
     return false unless email_account
     
     email_account.establish_imap_connection
-    imap_connection = imap_connection
     imap_connection.select('INBOX')
 
     self.seen = imap_connection.uid_fetch(uid, 'FLAGS').first.attr['FLAGS'].include?(:Seen)
