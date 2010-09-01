@@ -26,6 +26,35 @@ describe Email do
     end
   end
   
+  it "#imap_connection delegates to it's email_account" do
+    email_account = mock_model(EmailAccount)
+    connection = double
+    email_account.should_receive(:imap_connection).and_return(connection)
+
+    email = Email.new(:email_account => email_account)
+    email.send(:imap_connection).should == connection
+  end
+
+  context "with imap_connection" do
+    let(:connection) {
+      connection = mock
+      connection
+    }
+    
+    let(:email) {
+      email = Email.new(:uid => 1)
+      email.stub(:imap_connection).and_return(connection)
+      email
+     }
+
+    it "#imap_message" do
+      imap_answer = double
+      imap_answer.stub(:attr).and_return({'RFC822' => 'test'})
+      connection.should_receive(:uid_fetch).with(1, 'RFC822').and_return([imap_answer])
+      email.send(:imap_message).should == 'test'
+    end
+  end
+  
   describe "#reply?" do
     let(:email) {Email.new}
 

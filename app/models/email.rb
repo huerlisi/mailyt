@@ -42,7 +42,7 @@ class Email < ActiveRecord::Base
   # IMAP
   def sync_from_imap
     email_account.establish_imap_connection
-    imap_connection = email_account.imap_connection
+    imap_connection = imap_connection
     imap_connection.select('INBOX')
 
     self.seen = imap_connection.uid_fetch(uid, 'FLAGS').first.attr['FLAGS'].include?(:Seen)
@@ -55,7 +55,6 @@ class Email < ActiveRecord::Base
   
   def sync_to_imap
     email_account.establish_imap_connection
-    imap_connection = email_account.imap_connection
     imap_connection.select('INBOX')
 
     if seen?
@@ -65,11 +64,22 @@ class Email < ActiveRecord::Base
     end
 
     if destroyed?
+      imap_connection.uid_copy(uid, 'Trash')
       imap_connection.uid_store(uid, '+FLAGS', [:Deleted])
     else
       imap_connection.uid_store(uid, '-FLAGS', [:Deleted])
     end
     
     email_account.close_imap_connection
+  end
+
+  protected
+  def imap_connection
+    email_account.imap_connection
+  end
+
+  def imap_message
+    connection = imap_connection
+    return connection.uid_fetch(uid, 'RFC822').first.attr['RFC822']
   end
 end
