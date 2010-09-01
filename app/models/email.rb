@@ -41,6 +41,8 @@ class Email < ActiveRecord::Base
 
   # IMAP
   def sync_from_imap
+    return false unless email_account
+    
     email_account.establish_imap_connection
     imap_connection = imap_connection
     imap_connection.select('INBOX')
@@ -54,6 +56,8 @@ class Email < ActiveRecord::Base
   after_destroy :sync_to_imap
   
   def sync_to_imap
+    return false unless email_account
+    
     email_account.establish_imap_connection
     imap_connection.select('INBOX')
 

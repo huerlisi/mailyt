@@ -26,6 +26,16 @@ describe Email do
     end
   end
   
+  it "#sync_from_imap returns false if no email_account" do
+    email = Email.new(:email_account => nil)
+    email.sync_from_imap.should == false
+  end
+  
+  it "#sync_to_imap returns false if no email_account" do
+    email = Email.new(:email_account => nil)
+    email.sync_to_imap.should == false
+  end
+  
   it "#imap_connection delegates to it's email_account" do
     email_account = mock_model(EmailAccount)
     connection = double
