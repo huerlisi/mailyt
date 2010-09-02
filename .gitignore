@@ -5,5 +5,8 @@ tmp/**/*
 
 vendor/bundle
 
+# compass
+public/stylesheets
+
 # paperclip
 public/system
