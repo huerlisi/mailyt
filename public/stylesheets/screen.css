@@ -2552,26 +2552,28 @@ tr.currency, th.currency {
 }
 /* line 57, ../../app/stylesheets/partials/_cymail.sass */
 .email .address, .attachment .address, .email_account .address {
+  float: right;
+  margin-right: 2em;
   font-style: italic;
 }
-/* line 60, ../../app/stylesheets/partials/_cymail.sass */
+/* line 62, ../../app/stylesheets/partials/_cymail.sass */
 .email .date, .attachment .date, .email_account .date {
   font-size: 80%;
   float: right;
-  margin-right: 40px;
+  margin-right: 2em;
 }
-/* line 65, ../../app/stylesheets/partials/_cymail.sass */
+/* line 67, ../../app/stylesheets/partials/_cymail.sass */
 .email .action-links, .attachment .action-links, .email_account .action-links {
   float: right;
 }
 
-/* line 68, ../../app/stylesheets/partials/_cymail.sass */
+/* line 70, ../../app/stylesheets/partials/_cymail.sass */
 .match {
   font-weight: bold;
   color: #68b068;
 }
 
-/* line 72, ../../app/stylesheets/partials/_cymail.sass */
+/* line 74, ../../app/stylesheets/partials/_cymail.sass */
 .list {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2581,25 +2583,25 @@ tr.currency, th.currency {
   border-radius: 5px;
 }
 
-/* line 75, ../../app/stylesheets/partials/_cymail.sass */
+/* line 77, ../../app/stylesheets/partials/_cymail.sass */
 .list li:hover {
   border-color: #000033;
 }
 
-/* line 79, ../../app/stylesheets/partials/_cymail.sass */
+/* line 81, ../../app/stylesheets/partials/_cymail.sass */
 .attachment {
   min-height: 32px;
 }
-/* line 82, ../../app/stylesheets/partials/_cymail.sass */
+/* line 84, ../../app/stylesheets/partials/_cymail.sass */
 .attachment .header {
   height: 32px;
 }
 
-/* line 85, ../../app/stylesheets/partials/_cymail.sass */
+/* line 87, ../../app/stylesheets/partials/_cymail.sass */
 .email.view {
   border: 0;
 }
-/* line 88, ../../app/stylesheets/partials/_cymail.sass */
+/* line 90, ../../app/stylesheets/partials/_cymail.sass */
 .email.view .body {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -2616,11 +2618,11 @@ tr.currency, th.currency {
   font-style: normal;
   white-space: pre-line;
 }
-/* line 99, ../../app/stylesheets/partials/_cymail.sass */
+/* line 101, ../../app/stylesheets/partials/_cymail.sass */
 .email.view .attachments {
   margin-top: 0.35em;
 }
-/* line 102, ../../app/stylesheets/partials/_cymail.sass */
+/* line 104, ../../app/stylesheets/partials/_cymail.sass */
 .email.view .attachments li.attachment {
   margin: 0;
 }

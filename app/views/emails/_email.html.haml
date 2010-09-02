@@ -1,7 +1,6 @@
 %li[email]{'data-href' => url_for(email), :class => [(email.reply? ? 'reply' : ''), (email.seen? ? 'seen' : 'unseen')]}
   .header
     %span.subject= link_to email.subject, email
-    %span.address= human_mail_address(email.from, email.name)
     .action-links
       %span.destroy
         = link_to image_tag('16x16/remove.png', :title => 'Destroy'), email_path(email), :remote => true, :method => :delete, :title => 'Destroy'
@@ -10,4 +9,5 @@
         = link_to image_tag('16x16/mark-unread.png', :title => 'Mark as unread'), mark_as_unread_email_path(email), :remote => true, :method => :post, :title => 'Mark as unread' if email.seen?
         = link_to image_tag('16x16/mark-read.png', :title => 'Mark as read'), mark_as_read_email_path(email), :remote => true, :method => :post, :title => 'Mark as read' unless email.seen?
     %span.date= time_ago_in_words(email.date) + " ago" if email.date
+    %span.address= human_mail_address(email.from, email.name)
   .body= auto_link(truncate(email.body, :length => 300))
