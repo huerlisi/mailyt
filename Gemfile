@@ -47,8 +47,11 @@ gem 'i18n_rails_helpers', '>= 0.8.0'
 # Attachments
 gem 'paperclip'
 
-# IMAP fetcher
-gem 'system_timer'
+# Gems only for ruby 1.8
+platforms :ruby_18 do
+  # IMAP fetcher
+  gem 'system_timer'
+end
 
 # Authentication
 gem 'devise', '>= 1.1'
