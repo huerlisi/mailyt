@@ -2,7 +2,11 @@ require 'spec_helper'
 
 describe EmailAccount do
   specify { should be_valid }
-
+  its(:port) { should == 143 }
+  its(:ssl) { should == false }
+  its(:use_login) { should == false }
+  its(:authentication) { should == 'PLAIN' }
+  
   describe "#to_s" do
     let(:email_account) { EmailAccount.new }
     
