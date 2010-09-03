@@ -20,43 +20,42 @@ class Basic < ActionMailer::Base
   end
 
   # Recive email
-   def receive(mail, uid, email_account)
-     mail
-     email = Email.new(
-       :email_account => email_account,
-       :uid => uid,
-       :message_id => mail.message_id,
-       :subject => mail.subject,
-       :date => mail.date
-     )
-     email.to = mail.to.join(', ') unless mail.to.nil?
-     email.from = mail.from.join(', ') unless mail.from.nil?
-
-     if mail.multipart?
-       email.body = Iconv.conv('UTF-8', mail.parts[0].charset, mail.parts[0].body.to_s)
-     else
-       email.body = mail.body.to_s
-     end
+  def receive(mail, uid, email_account)
+    mail
+    email = Email.new(
+      :email_account => email_account,
+      :uid => uid,
+      :message_id => mail.message_id,
+      :subject => mail.subject,
+      :date => mail.date
+    )
+    email.to = mail.to.join(', ') unless mail.to.nil?
+    email.from = mail.from.join(', ') unless mail.from.nil?
+    if mail.multipart?
+      email.body = Iconv.conv('UTF-8', mail.parts[0].charset, mail.parts[0].body.to_s)
+    else
+      email.body = mail.body.to_s
+    end
      
-     if mail.has_attachments?
-       for attachment in mail.attachments
-         a = email.attachments.build
-         Mail::AttachmentIO.open(attachment) {|string| a.attachment = string}
-       end
-     end
+    if mail.has_attachments?
+      for attachment in mail.attachments
+        a = email.attachments.build
+        Mail::AttachmentIO.open(attachment) {|string| a.attachment = string}
+      end
+    end
      
-     if mail.in_reply_to
-       email.in_reply_to = Email.where(:message_id => mail.in_reply_to).first
-     end
+    if mail.in_reply_to
+      email.in_reply_to = Email.where(:message_id => mail.in_reply_to).first
+    end
      
-     email.sync_from_imap
+    email.sync_from_imap
      
-     email.save
+    email.save
      
-     # Should be callbacks
-     email.thread_id
-     email.thread_date
+    # Should be callbacks
+    email.thread_id
+    email.thread_date
      
-     return mail
+    return mail
   end 
 end
