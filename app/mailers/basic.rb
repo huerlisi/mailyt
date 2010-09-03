@@ -24,15 +24,26 @@ class Basic < ActionMailer::Base
     mail
     email = Email.new(
       :email_account => email_account,
+      :user => email_account.user,
       :uid => uid,
       :message_id => mail.message_id,
       :subject => mail.subject,
       :date => mail.date
     )
-    email.to = mail.to.join(', ') unless mail.to.nil?
-    email.from = mail.from.join(', ') unless mail.from.nil?
+    if to = mail.to
+      to = to.join(', ') if to.is_a? Array
+      email.to = to
+    end
+    if from = mail.from
+      from = from.join(', ') if from.is_a? Array
+      email.from = from
+    end
     if mail.multipart?
-      email.body = Iconv.conv('UTF-8', mail.parts[0].charset, mail.parts[0].body.to_s)
+      begin
+        email.body = Iconv.conv('UTF-8', mail.parts[0].charset, mail.parts[0].body.to_s)
+      rescue
+        email.body = mail.parts[0].body.to_s
+      end
     else
       email.body = mail.body.to_s
     end
@@ -49,13 +60,12 @@ class Basic < ActionMailer::Base
     end
      
     email.sync_from_imap
-     
     email.save
      
     # Should be callbacks
     email.thread_id
     email.thread_date
      
-    return mail
+    return email
   end 
 end

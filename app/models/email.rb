@@ -21,7 +21,7 @@ class Email < ActiveRecord::Base
 
     super(defaults.merge(attributes))
   end
-  
+
   def to_s
     "%s -> %s: %s" % [from, to, subject]
   end
@@ -71,22 +71,19 @@ class Email < ActiveRecord::Base
     return self[:thread_date]
   end
   
-  # IMAP
   def sync_from_imap
     return false unless email_account
     
     imap_connection.select('INBOX')
 
     self.seen = imap_connection.uid_fetch(uid, 'FLAGS').first.attr['FLAGS'].include?(:Seen)
-
-    email_account.close_imap_connection
   end
 
   after_update :sync_to_imap
   after_destroy :sync_to_imap
   
   def sync_to_imap
-    return false unless email_account
+    return false unless email_account && uid
     
     imap_connection.select('INBOX')
 
@@ -102,8 +99,6 @@ class Email < ActiveRecord::Base
     else
       imap_connection.uid_store(uid, '-FLAGS', [:Deleted])
     end
-    
-    email_account.close_imap_connection
   end
 
   protected

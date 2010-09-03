@@ -36,18 +36,17 @@ describe EmailAccount do
       
       it "should call authenticate" do
         connection_mock.should_receive(:authenticate)
-        subject.establish_imap_connection
+        subject.establish_imap_connection.should == connection_mock
       end
     end
 
     describe "#close_imap_connection" do
       let(:connection_mock) { mock }
       before do
-        subject.instance_variable_set(:@imap_connection, connection_mock)
+        subject.stub(:imap_connection).and_return(connection_mock)
       end
       
       it "should call logout and disconnect" do
-        subject.instance_variable_set(:@imap_connection, connection_mock)
         connection_mock.should_receive(:disconnected?).and_return(false)
         connection_mock.should_receive(:logout)
         connection_mock.should_receive(:disconnect)
@@ -61,6 +60,98 @@ describe EmailAccount do
         connection = subject.imap_connection
         connection.should == subject.imap_connection
       end
+    end
+  end
+  
+  context "imap sync" do
+    describe "#sync_from_imap" do
+      let(:imap_connection_mock) { mock.as_null_object }
+      before do
+        subject.stub(:imap_connection).and_return(imap_connection_mock)
+        imap_connection_mock.should_receive(:uid_search).and_return([1,2,3,4])
+        subject.stub_chain(:user, :emails, :select, :all, :collect, :compact).and_return([3,4,5,6])
+        subject.stub(:delete_email_from_mailyt)
+        subject.stub(:create_email_from_imap)
+      end
+      
+      it "should select INBOX" do
+        imap_connection_mock.should_receive(:select).with('INBOX')
+        subject.sync_from_imap
+      end
+      
+      it "should use imap and mailyt uids to calculate fetches" do
+        subject.sync_from_imap
+      end
+      
+      it "should call create_email_from_imap for each mail only on imap" do
+        subject.should_receive(:create_email_from_imap).with(1)
+        subject.should_receive(:create_email_from_imap).with(2)
+        stub(:delete_email_from_mailyt)
+        subject.sync_from_imap
+      end
+
+      it "should call deleted_in_imap for each mail only in mailyt" do
+        subject.should_receive(:delete_email_from_mailyt).with(5)
+        subject.should_receive(:delete_email_from_mailyt).with(6)
+        
+        subject.sync_from_imap
+      end
+    end
+  end
+
+  context "with imap connection" do
+    let(:imap_connection_mock) { mock.as_null_object }
+    let(:imap_seen_message) {
+      message = mock.as_null_object
+      message.stub(:attr).and_return({
+        'FLAGS' => [:Seen],
+        'RFC822' => 'RFC822'
+      })
+      message
+    }
+    let(:imap_unseen_message) {
+      message = mock.as_null_object
+      message.stub(:attr).and_return({
+        'FLAGS' => [],
+        'RFC822' => 'RFC822'
+      })
+      message
+    }
+    
+    before do
+      subject.stub(:imap_connection).and_return(imap_connection_mock)
+      imap_connection_mock.stub(:uid_fetch).with(1, 'RFC822').and_return([imap_seen_message])
+      imap_connection_mock.stub(:uid_fetch).with(1, 'FLAGS').and_return([imap_seen_message])
+    end
+    
+    describe ".create_email_from_imap" do
+      it "should create an Email" do
+        subject.create_email_from_imap(1).should be_kind_of(Email)
+      end
+      
+      it "should fetch RFC822 from IMAP" do
+        imap_connection_mock.should_receive(:uid_fetch).with(1, 'RFC822').and_return([imap_seen_message])
+        subject.create_email_from_imap(1)
+      end
+
+      it "should let re-set seen flag if set" do
+        imap_connection_mock.should_receive(:uid_store).with(1, "+FLAGS", [:Seen])
+        subject.create_email_from_imap(1)
+      end
+
+      it "should let delete seen flag if not set before fetching" do
+        imap_connection_mock.stub(:uid_fetch).with(1, 'FLAGS').and_return([imap_unseen_message])
+        imap_connection_mock.should_receive(:uid_store).with(1, "-FLAGS", [:Seen])
+        subject.create_email_from_imap(1)
+      end
+      
+      it "should call Basic.receive" do
+        Basic.should_receive(:receive).with('RFC822', 1, subject)
+        subject.create_email_from_imap(1)
+      end
+    end
+  
+    describe ".deleted_in_imap" do
     end
   end
 end
