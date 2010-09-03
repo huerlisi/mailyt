@@ -26,4 +26,33 @@ describe EmailAccount do
       email_account.to_s { should == "test@mail.example.com" }
     end
   end
+  
+  context "imap connection" do
+    describe "#establish_imap_connection" do
+      let(:connection_mock) { mock }
+      before do
+        Net::IMAP.should_receive(:new).and_return(connection_mock)
+      end
+      
+      it "should call authenticate" do
+        connection_mock.should_receive(:authenticate)
+        subject.establish_imap_connection
+      end
+    end
+
+    describe "#close_imap_connection" do
+      let(:connection_mock) { mock }
+      before do
+        subject.instance_variable_set(:@imap_connection, connection_mock)
+      end
+      
+      it "should call logout and disconnect" do
+        subject.instance_variable_set(:@imap_connection, connection_mock)
+        connection_mock.should_receive(:disconnected?).and_return(false)
+        connection_mock.should_receive(:logout)
+        connection_mock.should_receive(:disconnect)
+        subject.close_imap_connection
+      end
+    end
+  end
 end
