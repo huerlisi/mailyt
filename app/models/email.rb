@@ -75,7 +75,6 @@ class Email < ActiveRecord::Base
   def sync_from_imap
     return false unless email_account
     
-    email_account.establish_imap_connection
     imap_connection.select('INBOX')
 
     self.seen = imap_connection.uid_fetch(uid, 'FLAGS').first.attr['FLAGS'].include?(:Seen)
@@ -89,7 +88,6 @@ class Email < ActiveRecord::Base
   def sync_to_imap
     return false unless email_account
     
-    email_account.establish_imap_connection
     imap_connection.select('INBOX')
 
     if seen?

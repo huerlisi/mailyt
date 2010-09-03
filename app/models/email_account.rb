@@ -1,6 +1,8 @@
 require 'vendor/plain_imap'
 
 class EmailAccount < ActiveRecord::Base
+  extend ActiveSupport::Memoizable
+  
   # Associations
   belongs_to :user
 
@@ -13,7 +15,11 @@ class EmailAccount < ActiveRecord::Base
 
   # IMAP
   # ====
-  attr_reader :imap_connection
+  def imap_connection
+    establish_imap_connection
+  end
+  memoize :imap_connection
+  
   def port
     143
   end

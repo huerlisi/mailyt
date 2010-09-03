@@ -54,5 +54,13 @@ describe EmailAccount do
         subject.close_imap_connection
       end
     end
+    
+    describe "imap_connection" do
+      it "should call establish_imap_connection only once" do
+        subject.should_receive(:establish_imap_connection)
+        connection = subject.imap_connection
+        connection.should == subject.imap_connection
+      end
+    end
   end
 end
