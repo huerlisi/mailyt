@@ -10,30 +10,12 @@ class ImapFetcherDaemon < Daemon::Base
   def self.start
     puts "Starting ImapFetcherDaemon"
 
-    email_accounts = EmailAccount.all
-    fetchers = {}
-    for email_account in email_accounts
-      puts "  for account #{email_account}"
-
-      email_account_options = {
-        :server         => email_account.server,
-        :username       => email_account.username,
-        :password       => email_account.password,
-        :email_account  => email_account
-      }
-      config = @config.merge(email_account_options)
-
-      # Add your own receiver object below
-      fetchers[email_account] = Fetcher.create({:receiver => nil}.merge(config))
-    end
-
     loop do
-      fetchers.each do |account, fetcher|
+      for account in EmailAccount.all
         begin
           account.sync_from_imap
-          fetcher.fetch
         rescue Exception => e
-          puts "Failed fetching account #{email_account}:"
+          puts "Failed fetching account #{account}:"
           puts e.message
         end
       end

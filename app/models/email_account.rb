@@ -15,10 +15,19 @@ class EmailAccount < ActiveRecord::Base
 
   # IMAP
   # ====
-  def imap_connection
-    establish_imap_connection
+  def get_imap_connection
+    Thread.current[:imap_connections] ||= {}
+    return Thread.current[:imap_connections][id]
   end
-  memoize :imap_connection
+  
+  def imap_connection
+    connection = get_imap_connection
+    if connection.nil? || connection.disconnected?
+      connection = establish_imap_connection
+    end
+    
+    return connection
+  end
   
   def port
     143
@@ -48,7 +57,10 @@ class EmailAccount < ActiveRecord::Base
               @imap_connection.authenticate(authentication, username, password)
             end
           end")
-   return @imap_connection
+    Thread.current[:imap_connections] ||= {}
+    Thread.current[:imap_connections][id] = @imap_connection
+    
+    return @imap_connection
   end
 
   # Log out
