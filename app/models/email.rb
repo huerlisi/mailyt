@@ -107,9 +107,7 @@ class Email < ActiveRecord::Base
   end
 
   protected
-  def imap_connection
-    email_account.imap_connection
-  end
+  delegate :imap_connection, :to => :email_account
 
   def imap_message
     connection = imap_connection
