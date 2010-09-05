@@ -8,105 +8,103 @@ describe EmailAccount do
   its(:authentication) { should == 'PLAIN' }
   
   describe "#to_s" do
-    let(:email_account) { EmailAccount.new }
-    
     it "should return empty string when new" do
-      email_account.stub(:username).and_return(nil)
-      email_account.stub(:server).and_return(nil)
-      email_account.to_s { should == "" }
+      subject.stub(:username).and_return(nil)
+      subject.stub(:server).and_return(nil)
+      to_s { should == "" }
 
-      email_account.stub(:username).and_return("")
-      email_account.stub(:server).and_return("")
-      email_account.to_s { should == "" }
+      subject.stub(:username).and_return("")
+      subject.stub(:server).and_return("")
+      to_s { should == "" }
     end
 
     it "should return email when set" do
-      email_account.should_receive(:username).at_least(1).and_return("test")
-      email_account.should_receive(:server).at_least(1).and_return("mail.example.com")
-      email_account.to_s { should == "test@mail.example.com" }
+      subject.should_receive(:username).at_least(1).and_return("test")
+      subject.should_receive(:server).at_least(1).and_return("mail.example.com")
+      subject.to_s { should == "test@mail.example.com" }
     end
   end
   
-    describe "#establish_imap_connection" do
-      let(:connection_mock) { mock }
-      before do
-        Net::IMAP.should_receive(:new).and_return(connection_mock)
-        connection_mock.stub(:authenticate)
-      end
-      
-      it "should call authenticate" do
-        connection_mock.should_receive(:authenticate)
-        subject.establish_imap_connection.should == connection_mock
-      end
-      
-      it "should return imap_connection" do
-        connection_mock = subject.establish_imap_connection
-      end
-    end
-
-    describe "#close_imap_connection" do
-      let(:connection_mock) { mock }
-      before do
-        subject.stub(:imap_connection).and_return(connection_mock)
-      end
-      
-      it "should call logout and disconnect" do
-        connection_mock.should_receive(:disconnected?).and_return(false)
-        connection_mock.should_receive(:logout)
-        connection_mock.should_receive(:disconnect)
-        subject.close_imap_connection
-      end
+  describe "#establish_imap_connection" do
+    let(:connection_mock) { mock }
+    before do
+      Net::IMAP.should_receive(:new).and_return(connection_mock)
+      connection_mock.stub(:authenticate)
     end
     
-    describe "#imap_connection" do
-      let(:connection_mock) { mock(:disconnected? => false).as_null_object }
-      let(:connection_mock_2) { mock.as_null_object }
-
-      before do
-        subject.stub(:establish_imap_connection).and_return(connection_mock)
-        Thread.current[:imap_connections] = {}
-        subject.id = 1
-      end
-
-      it "should call establish_connection if no connection is cached" do
-        subject.should_receive(:establish_imap_connection).and_return(connection_mock)
-        subject.imap_connection
-      end
-      
-      it "should return thread local connection if available" do
-        Thread.current[:imap_connections][1] = connection_mock
-        subject.imap_connection.should == connection_mock
-      end
-
-      it "should call established_connection if cached one is disconnected" do
-        Thread.current[:imap_connections][1] = connection_mock
-        connection_mock.stub(:disconnected?).and_return(true)
-
-        subject.should_receive(:establish_imap_connection).and_return(connection_mock_2)
-        subject.imap_connection.should == connection_mock_2
-      end
-
-      it "should call establish_imap_connection only once" do
-        subject.should_receive(:establish_imap_connection).and_return(connection_mock)
-        connection_mock.stub(:disconnected).and_return(false)
-        
-        connection = subject.imap_connection
-        connection.should == subject.imap_connection
-      end
-      
-      it "should call establish_imap_connection only once on multiple instances of same EmailAccount" do
-        subject.save
-        email_account_1 = EmailAccount.find(subject.id)
-        email_account_2 = EmailAccount.find(subject.id)
-
-        email_account_1.should_receive(:establish_imap_connection).and_return(connection_mock)
-        connection_1 = email_account_1.imap_connection
-        
-        email_account_2.should_not_receive(:establish_imap_connection)
-        connection_2 = email_account_2.imap_connection
-        connection_1.should == connection_2
-      end
+    it "should call authenticate" do
+      connection_mock.should_receive(:authenticate)
+      subject.establish_imap_connection
     end
+    
+    it "should return imap_connection" do
+      subject.establish_imap_connection.should == connection_mock
+    end
+  end
+
+  describe "#close_imap_connection" do
+    let(:connection_mock) { mock }
+    before do
+      subject.stub(:imap_connection).and_return(connection_mock)
+    end
+    
+    it "should call logout and disconnect" do
+      connection_mock.should_receive(:disconnected?).and_return(false)
+      connection_mock.should_receive(:logout)
+      connection_mock.should_receive(:disconnect)
+      subject.close_imap_connection
+    end
+  end
+    
+  describe "#imap_connection" do
+    let(:connection_mock) { mock(:disconnected? => false).as_null_object }
+    let(:connection_mock_2) { mock.as_null_object }
+
+    before do
+      subject.stub(:establish_imap_connection).and_return(connection_mock)
+      Thread.current[:imap_connections] = {}
+      subject.id = 1
+    end
+
+    it "should call establish_connection if no connection is cached" do
+      subject.should_receive(:establish_imap_connection).and_return(connection_mock)
+      subject.imap_connection
+    end
+    
+    it "should return thread local connection if available" do
+      Thread.current[:imap_connections][1] = connection_mock
+      subject.imap_connection.should == connection_mock
+    end
+
+    it "should call established_connection if cached one is disconnected" do
+      Thread.current[:imap_connections][1] = connection_mock
+      connection_mock.stub(:disconnected?).and_return(true)
+
+      subject.should_receive(:establish_imap_connection).and_return(connection_mock_2)
+      subject.imap_connection.should == connection_mock_2
+    end
+
+    it "should call establish_imap_connection only once" do
+      subject.should_receive(:establish_imap_connection).and_return(connection_mock)
+      connection_mock.stub(:disconnected).and_return(false)
+      
+      connection = subject.imap_connection
+      connection.should == subject.imap_connection
+    end
+    
+    it "should call establish_imap_connection only once on multiple instances of same EmailAccount" do
+      subject.save
+      email_account_1 = EmailAccount.find(subject.id)
+      email_account_2 = EmailAccount.find(subject.id)
+
+      email_account_1.should_receive(:establish_imap_connection).and_return(connection_mock)
+      connection_1 = email_account_1.imap_connection
+      
+      email_account_2.should_not_receive(:establish_imap_connection)
+      connection_2 = email_account_2.imap_connection
+      connection_1.should == connection_2
+    end
+  end
   
   context "imap sync" do
     describe "#sync_from_imap" do
