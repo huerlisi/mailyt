@@ -106,11 +106,14 @@ describe EmailAccount do
     end
   end
   
-  context "imap sync" do
+  context "with imap connection" do
+    let(:imap_connection_mock) { mock.as_null_object }
+    before do
+      subject.stub(:imap_connection).and_return(imap_connection_mock)
+    end
+    
     describe "#sync_from_imap" do
-      let(:imap_connection_mock) { mock.as_null_object }
       before do
-        subject.stub(:imap_connection).and_return(imap_connection_mock)
         imap_connection_mock.should_receive(:uid_search).and_return([1,2,3,4])
         subject.stub_chain(:emails, :select, :all, :collect, :compact).and_return([3,4,5,6])
         subject.stub(:delete_email_from_mailyt)
@@ -148,10 +151,7 @@ describe EmailAccount do
         subject.sync_from_imap
       end
     end
-  end
 
-  context "with imap connection" do
-    let(:imap_connection_mock) { mock.as_null_object }
     let(:imap_seen_message) {
       message = mock.as_null_object
       message.stub(:attr).and_return({
@@ -170,7 +170,6 @@ describe EmailAccount do
     }
     
     before do
-      subject.stub(:imap_connection).and_return(imap_connection_mock)
       imap_connection_mock.stub(:uid_fetch).with(1, 'RFC822').and_return([imap_seen_message])
       imap_connection_mock.stub(:uid_fetch).with(1, 'FLAGS').and_return([imap_seen_message])
     end
