@@ -15,15 +15,17 @@ class EmailAccount < ActiveRecord::Base
 
   # IMAP
   # ====
-  def get_imap_connection
-    Thread.current[:imap_connections] ||= {}
-    return Thread.current[:imap_connections][id]
-  end
-  
   def imap_connection
-    connection = get_imap_connection
+    # Lookup thread local cached connection
+    Thread.current[:imap_connections] ||= {}
+    connection = Thread.current[:imap_connections][id]
+
+    # Create new connection if no good one is available
     if connection.nil? || connection.disconnected?
       connection = establish_imap_connection
+
+      # Cache connection 
+      Thread.current[:imap_connections][id] = connection
     end
     
     return connection
@@ -57,9 +59,6 @@ class EmailAccount < ActiveRecord::Base
               @imap_connection.authenticate(authentication, username, password)
             end
           end")
-    Thread.current[:imap_connections] ||= {}
-    Thread.current[:imap_connections][id] = @imap_connection
-    
     return @imap_connection
   end
 
