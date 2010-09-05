@@ -5,6 +5,7 @@ class EmailAccount < ActiveRecord::Base
   
   # Associations
   belongs_to :user
+  has_many :emails
 
   # Helpers
   def to_s
@@ -76,10 +77,11 @@ class EmailAccount < ActiveRecord::Base
     imap_connection.select('INBOX')
     
     imap_uids = imap_connection.uid_search('UNDELETED')
-    mailyt_uids = user.emails.select(:uid).all.collect{|email| email.uid}.compact
+    mailyt_uids = emails.select(:uid).all.collect{|email| email.uid}.compact
     
     uids_to_fetch = (imap_uids - mailyt_uids)
     uids_to_delete = (mailyt_uids - imap_uids)
+    uids_to_sync = (imap_uids & mailyt_uids)
     
     for uid in uids_to_fetch
       create_email_from_imap(uid)
@@ -87,9 +89,13 @@ class EmailAccount < ActiveRecord::Base
     for uid in uids_to_delete
       delete_email_from_mailyt(uid)
     end
+    for uid in uids_to_sync
+      email = emails.where(:uid => uid).first
+      email.sync_from_imap
+      email.save
+    end
   end
 
-  # IMAP
   def create_email_from_imap(uid)
     # Save seen flag
     seen = imap_connection.uid_fetch(uid,'FLAGS').first.attr['FLAGS'].include?(:Seen)
@@ -109,6 +115,7 @@ class EmailAccount < ActiveRecord::Base
   def delete_email_from_mailyt(uid)
     email = Email.where(:uid => uid, :email_account_id => self.id).first
     
+    # Set uid to nil so that this won't trigger an imap delete again
     email.uid = nil
     email.destroy
   end

@@ -114,7 +114,7 @@ describe EmailAccount do
       before do
         subject.stub(:imap_connection).and_return(imap_connection_mock)
         imap_connection_mock.should_receive(:uid_search).and_return([1,2,3,4])
-        subject.stub_chain(:user, :emails, :select, :all, :collect, :compact).and_return([3,4,5,6])
+        subject.stub_chain(:emails, :select, :all, :collect, :compact).and_return([3,4,5,6])
         subject.stub(:delete_email_from_mailyt)
         subject.stub(:create_email_from_imap)
       end
@@ -138,6 +138,14 @@ describe EmailAccount do
       it "should call deleted_in_imap for each mail only in mailyt" do
         subject.should_receive(:delete_email_from_mailyt).with(5)
         subject.should_receive(:delete_email_from_mailyt).with(6)
+        
+        subject.sync_from_imap
+      end
+
+      it "should call Email#sync_from_imap for each mail in both imap and mailyt" do
+        email = mock_model(Email)
+        Email.stub_chain(:where, :first).and_return(email)
+        email.should_receive(:sync_from_imap).exactly(2)
         
         subject.sync_from_imap
       end
@@ -169,7 +177,7 @@ describe EmailAccount do
       imap_connection_mock.stub(:uid_fetch).with(1, 'FLAGS').and_return([imap_seen_message])
     end
     
-    describe ".create_email_from_imap" do
+    describe "#create_email_from_imap" do
       it "should create an Email" do
         subject.create_email_from_imap(1).should be_kind_of(Email)
       end
@@ -196,7 +204,14 @@ describe EmailAccount do
       end
     end
   
-    describe ".deleted_in_imap" do
+    describe "#deleted_in_imap" do
+      it "should not trigger Email#sync_from_imap" do
+        email = mock_model(Email).as_null_object
+        Email.stub_chain(:where, :first).and_return(email)
+        email.should_not_receive(:sync_from_imap)
+        
+        subject.delete_email_from_mailyt(1)
+      end
     end
   end
 end
