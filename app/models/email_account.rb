@@ -6,6 +6,7 @@ class EmailAccount < ActiveRecord::Base
   # Associations
   belongs_to :user
   has_many :emails
+  has_many :folders
 
   # Helpers
   def to_s
@@ -96,6 +97,30 @@ class EmailAccount < ActiveRecord::Base
     end
   end
 
+  def sync_folders_from_imap
+    imap_folder_names = imap_connection.list('', '*').collect{|folder| folder.name}
+    mailyt_folder_names = folders.all.collect{|folder| folder.title}
+    
+    folder_names_to_fetch = (imap_folder_names - mailyt_folder_names)
+    folder_names_to_delete = (mailyt_folder_names - imap_folder_names)
+    
+    for folder_name in folder_names_to_fetch
+      create_folder_from_imap(folder_name)
+    end
+    for folder_name in folder_names_to_delete
+      delete_folder_from_mailyt(folder_name)
+    end
+  end
+  
+  def create_folder_from_imap(foldername)
+    imap_folder = imap_connection.list('', foldername).first
+    folder = Folder.build_from_imap(imap_folder)
+    folder.email_account = self
+    folder.save
+    
+    return folder
+  end
+  
   def create_email_from_imap(uid)
     # Save seen flag
     seen = imap_connection.uid_fetch(uid,'FLAGS').first.attr['FLAGS'].include?(:Seen)

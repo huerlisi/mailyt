@@ -212,5 +212,33 @@ describe EmailAccount do
         subject.delete_email_from_mailyt(1)
       end
     end
+    
+    let(:node_folder) { Net::IMAP::MailboxList.new([:Hasnochildren], ".", "Node1") }
+    let(:parent_folder) { Net::IMAP::MailboxList.new([:Haschildren], ".", "Parent1") }
+    let(:child_folder_1) { Net::IMAP::MailboxList.new([:Hasnochildren], ".", "Parent1.Child1") }
+    let(:child_folder_2) { Net::IMAP::MailboxList.new([:Hasnochildren], ".", "Parent1.Child21") }
+    describe "#create_folder_from_imap" do
+      it "should create a Folder" do
+        imap_connection_mock.should_receive(:list).with('', 'INBOX').and_return([node_folder])
+        
+        folder = subject.create_folder_from_imap('INBOX')
+        folder.should be_a Folder
+        folder.should_not be_a_new_record
+      end
+    end
+
+    describe "#sync_folders_from_imap" do
+      context "on first sync" do
+        before do
+          imap_connection_mock.stub(:list).with('', '*').and_return([node_folder, parent_folder, child_folder_1, child_folder_2])
+        end
+        
+        it "should create all folders" do
+          expect {
+            subject.sync_folders_from_imap
+          }.to change{ Folder.count }.by(4)
+        end
+      end
+    end
   end
 end
