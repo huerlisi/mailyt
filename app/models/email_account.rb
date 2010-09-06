@@ -74,27 +74,38 @@ class EmailAccount < ActiveRecord::Base
     end
   end
 
-  def sync_from_imap
-    imap_connection.select('INBOX')
+  def sync_folder_from_imap(folder_name)
+    imap_connection.select(folder_name)
+    mailyt_folder = Folder.find_by_title(folder_name)
     
     imap_uids = imap_connection.uid_search('UNDELETED')
-    mailyt_uids = emails.all.collect{|email| email.uid}.compact
+    mailyt_uids = mailyt_folder.emails.all.collect{|email| email.uid}.compact
     
     uids_to_fetch = (imap_uids - mailyt_uids)
     uids_to_delete = (mailyt_uids - imap_uids)
     uids_to_sync = (imap_uids & mailyt_uids)
     
     for uid in uids_to_fetch
-      create_email_from_imap(uid)
+      email = create_email_from_imap(uid, mailyt_folder)
+      email.sync_from_imap
+      email.save
+
+      # Should be callbacks
+      email.thread_id
+      email.thread_date
     end
     for uid in uids_to_delete
       delete_email_from_mailyt(uid)
     end
     for uid in uids_to_sync
-      email = emails.where(:uid => uid).first
+      email = mailyt_folder.emails.where(:uid => uid).first
       email.sync_from_imap
       email.save
     end
+  end
+
+  def sync_from_imap
+    sync_folder_from_imap('INBOX')
   end
 
   def sync_folders_from_imap
@@ -121,7 +132,7 @@ class EmailAccount < ActiveRecord::Base
     return folder
   end
   
-  def create_email_from_imap(uid)
+  def create_email_from_imap(uid, folder)
     # Save seen flag
     seen = imap_connection.uid_fetch(uid,'FLAGS').first.attr['FLAGS'].include?(:Seen)
     # Fetch message
@@ -134,7 +145,10 @@ class EmailAccount < ActiveRecord::Base
       imap_connection.uid_store(uid, "-FLAGS", [:Seen])
     end
     
-    return Basic.receive(msg, uid, self)
+    email = Basic.receive(msg, uid, self)
+    email.folder = folder
+
+    return email
   end
   
   def delete_email_from_mailyt(uid)

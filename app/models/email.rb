@@ -1,6 +1,7 @@
 class Email < ActiveRecord::Base
   # Associations
   belongs_to :email_account
+  belongs_to :folder
   belongs_to :user
   belongs_to :in_reply_to, :class_name => 'Email'
   has_many :replies, :class_name => 'Email', :foreign_key => :in_reply_to_id
@@ -10,6 +11,7 @@ class Email < ActiveRecord::Base
   # Scopes
   scope :threaded, order(:thread_id)
   scope :by_user, proc {|value| where(:user_id => value)}
+  scope :by_folder, proc {|value| where(:folder_id => value)}
   scope :by_subject, proc {|value| where(:subject => value)}
   scope :by_text, proc {|value|
     where("(subject LIKE :like) OR (date = :value) OR (\"to\" LIKE :like) OR (name LIKE :like) OR (body LIKE :like)", :value => value, :like => "%#{value}%")
@@ -74,7 +76,7 @@ class Email < ActiveRecord::Base
   def sync_from_imap
     return false unless email_account
     
-    imap_connection.select('INBOX')
+    imap_connection.select(folder.title)
 
     self.seen = imap_connection.uid_fetch(uid, 'FLAGS').first.attr['FLAGS'].include?(:Seen)
   end
@@ -85,7 +87,7 @@ class Email < ActiveRecord::Base
   def sync_to_imap
     return false unless email_account && uid
     
-    imap_connection.select('INBOX')
+    imap_connection.select(folder.title)
 
     if seen?
       imap_connection.uid_store(uid, '+FLAGS', [:Seen])

@@ -59,13 +59,6 @@ class Basic < ActionMailer::Base
       email.in_reply_to = Email.where(:message_id => mail.in_reply_to).first
     end
      
-    email.sync_from_imap
-    email.save
-     
-    # Should be callbacks
-    email.thread_id
-    email.thread_date
-     
     return email
   end 
 end
