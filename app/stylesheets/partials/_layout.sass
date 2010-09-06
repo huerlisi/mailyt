@@ -7,6 +7,7 @@ body
 #container
   +container
   margin-top: $h2_size
+  width: 95%
 
 #main-menu
   ul
@@ -14,10 +15,10 @@ body
     
 #content-column
   +column($column_content)
+  +last
   
 #sidebar-column
   +column($column_sidebar)
-  +last
 
 #sidebar,
 #content

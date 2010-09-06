@@ -24,6 +24,10 @@
         #main-menu
           = render_navigation(:level => 1)
 
+      #sidebar-column
+        #sidebar
+          = yield :sidebar
+
       #content-column
         #content
           - if notice
@@ -31,7 +35,3 @@
           - if alert
             #alert.flash.alert= alert
           = yield
-
-      #sidebar-column
-        #sidebar
-          = yield :sidebar
