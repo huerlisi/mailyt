@@ -77,7 +77,7 @@ class EmailAccount < ActiveRecord::Base
     imap_connection.select('INBOX')
     
     imap_uids = imap_connection.uid_search('UNDELETED')
-    mailyt_uids = emails.select(:uid).all.collect{|email| email.uid}.compact
+    mailyt_uids = emails.all.collect{|email| email.uid}.compact
     
     uids_to_fetch = (imap_uids - mailyt_uids)
     uids_to_delete = (mailyt_uids - imap_uids)

@@ -115,7 +115,9 @@ describe EmailAccount do
     describe "#sync_from_imap" do
       before do
         imap_connection_mock.should_receive(:uid_search).and_return([1,2,3,4])
-        subject.stub_chain(:emails, :select, :all, :collect, :compact).and_return([3,4,5,6])
+        
+        subject.stub_chain(:emails, :all, :collect, :compact).and_return([3,4,5,6])
+        subject.stub_chain(:emails, :where, :first).and_return(mock_model(Email).as_null_object)
         subject.stub(:delete_email_from_mailyt)
         subject.stub(:create_email_from_imap)
       end
@@ -144,8 +146,8 @@ describe EmailAccount do
       end
 
       it "should call Email#sync_from_imap for each mail in both imap and mailyt" do
-        email = mock_model(Email)
-        Email.stub_chain(:where, :first).and_return(email)
+        email = mock_model(Email).as_null_object
+        subject.stub_chain(:emails, :where, :first).and_return(email)
         email.should_receive(:sync_from_imap).exactly(2)
         
         subject.sync_from_imap
