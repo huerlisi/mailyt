@@ -12,14 +12,13 @@ body
   ul
     +horizontal-list
     
-#content
+#content-column
   +column($column_content)
-  +last
   
-// #sidebar
-//   +column($column_sidebar)
-//   +last
-//  padding-top: $h2_size * 2
+#sidebar
+  +column($column_sidebar)
+  +last
+  padding-top: $h2_size * 2
 
 #sidebar,
 #content

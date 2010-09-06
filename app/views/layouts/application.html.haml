@@ -24,12 +24,14 @@
         #main-menu
           = render_navigation(:level => 1)
 
-      #content
-        - if notice
-          #notice.flash.notice= notice
-        - if alert
-          #alert.flash.alert= alert
-        = yield
+      #content-column
+        #content
+          - if notice
+            #notice.flash.notice= notice
+          - if alert
+            #alert.flash.alert= alert
+          = yield
 
-      #sidebar
-        = yield :sidebar
+      #sidebar-column
+        #sidebar
+          = yield :sidebar

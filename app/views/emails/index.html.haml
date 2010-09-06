@@ -3,3 +3,8 @@
 = paginated_section @emails do
   = render 'list' if @emails
 = highlight_words(@query, 'list')
+
+- content_for :sidebar do
+  %h2 Folders
+  %ul
+    = render Folder.all
