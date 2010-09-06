@@ -1,1 +1,1 @@
-%li= folder.title
+%li[folder]{:class => (folder.unseen_count > 0) ? 'unseen' : ''} #{folder.title} (#{folder.unseen_count})

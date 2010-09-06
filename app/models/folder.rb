@@ -11,4 +11,18 @@ class Folder < ActiveRecord::Base
     folder.title = imap_folder.name
     return folder
   end
+
+  def email_count
+    imap_connection.examine(title)
+    imap_connection.responses["EXISTS"][-1] || 0
+  end
+
+  def unseen_count
+    imap_connection.examine(title)
+    imap_connection.responses["UNSEEN"][-1] || 0
+  end
+
+  # IMAP
+  protected
+  delegate :imap_connection, :to => :email_account
 end
