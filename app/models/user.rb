@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
   # Associations
   has_many :emails
   has_many :email_accounts
-
+  has_many :folders, :through => :email_accounts
+  
   # Helpers
   def to_s
     return "" unless email.present?
