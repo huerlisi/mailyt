@@ -67,6 +67,17 @@ Mailyt::Application.routes.draw do
       post :mark_as_unread, :mark_as_read
     end
   end
+  resources :folders do |folder|
+    resources :emails do
+      collection do
+        get :search
+      end
+      member do
+        get :reply
+        post :mark_as_unread, :mark_as_read
+      end
+    end
+  end
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

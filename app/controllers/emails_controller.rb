@@ -8,7 +8,7 @@ class EmailsController < InheritedResources::Base
   # Scopes
   has_scope :order, :default => 'thread_date DESC, thread_id'
   has_scope :by_text, :as => :text
-  has_scope :by_folder
+  has_scope :by_folder, :as => :folder_id
 
   protected
     def collection

@@ -1,1 +1,1 @@
-%li[folder]{:class => (folder.unseen_count > 0) ? 'unseen' : ''} #{link_to(folder.title + "(#{folder.unseen_count})", emails_path(:by_folder => folder.id))}
+%li[folder]{:class => (folder.unseen_count > 0) ? 'unseen' : ''} #{link_to(folder.title + "(#{folder.unseen_count})", folder_emails_path(folder))}
