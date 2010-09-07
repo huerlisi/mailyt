@@ -112,14 +112,20 @@ describe EmailAccount do
       subject.stub(:imap_connection).and_return(imap_connection_mock)
     end
     
+    let(:inbox_folder_mock) { mock_model(Folder) }
+
     describe "#sync_from_imap" do
+
       before do
         imap_connection_mock.should_receive(:uid_search).and_return([1,2,3,4])
         
-        subject.stub_chain(:emails, :all, :collect, :compact).and_return([3,4,5,6])
-        subject.stub_chain(:emails, :where, :first).and_return(mock_model(Email).as_null_object)
+        inbox_folder_mock.stub_chain(:emails, :all, :collect, :compact).and_return([3,4,5,6])
+        inbox_folder_mock.stub_chain(:emails, :where, :first).and_return(mock_model(Email).as_null_object)
+        
         subject.stub(:delete_email_from_mailyt)
-        subject.stub(:create_email_from_imap)
+        subject.stub(:create_email_from_imap).and_return(mock_model(Email).as_null_object)
+        
+        Folder.stub(:find_by_title).with('INBOX').and_return(inbox_folder_mock)
       end
       
       it "should select INBOX" do
@@ -132,8 +138,8 @@ describe EmailAccount do
       end
       
       it "should call create_email_from_imap for each mail only on imap" do
-        subject.should_receive(:create_email_from_imap).with(1)
-        subject.should_receive(:create_email_from_imap).with(2)
+        subject.should_receive(:create_email_from_imap).with(1, inbox_folder_mock)
+        subject.should_receive(:create_email_from_imap).with(2, inbox_folder_mock)
         stub(:delete_email_from_mailyt)
         subject.sync_from_imap
       end
@@ -147,7 +153,7 @@ describe EmailAccount do
 
       it "should call Email#sync_from_imap for each mail in both imap and mailyt" do
         email = mock_model(Email).as_null_object
-        subject.stub_chain(:emails, :where, :first).and_return(email)
+        inbox_folder_mock.stub_chain(:emails, :where, :first).and_return(email)
         email.should_receive(:sync_from_imap).exactly(2)
         
         subject.sync_from_imap
@@ -178,28 +184,28 @@ describe EmailAccount do
     
     describe "#create_email_from_imap" do
       it "should create an Email" do
-        subject.create_email_from_imap(1).should be_kind_of(Email)
+        subject.create_email_from_imap(1, inbox_folder_mock).should be_kind_of(Email)
       end
       
       it "should fetch RFC822 from IMAP" do
         imap_connection_mock.should_receive(:uid_fetch).with(1, 'RFC822').and_return([imap_seen_message])
-        subject.create_email_from_imap(1)
+        subject.create_email_from_imap(1, inbox_folder_mock)
       end
 
       it "should let re-set seen flag if set" do
         imap_connection_mock.should_receive(:uid_store).with(1, "+FLAGS", [:Seen])
-        subject.create_email_from_imap(1)
+        subject.create_email_from_imap(1, inbox_folder_mock)
       end
 
       it "should let delete seen flag if not set before fetching" do
         imap_connection_mock.stub(:uid_fetch).with(1, 'FLAGS').and_return([imap_unseen_message])
         imap_connection_mock.should_receive(:uid_store).with(1, "-FLAGS", [:Seen])
-        subject.create_email_from_imap(1)
+        subject.create_email_from_imap(1, inbox_folder_mock)
       end
       
       it "should call Basic.receive" do
         Basic.should_receive(:receive).with('RFC822', 1, subject)
-        subject.create_email_from_imap(1)
+        subject.create_email_from_imap(1, inbox_folder_mock)
       end
     end
   
