@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100906222010) do
+ActiveRecord::Schema.define(:version => 20100909094053) do
 
   create_table "attachments", :force => true do |t|
     t.string   "attachment_file_name"
@@ -59,6 +59,8 @@ ActiveRecord::Schema.define(:version => 20100906222010) do
     t.integer  "email_account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "email_count"
+    t.integer  "unseen_count"
   end
 
   create_table "users", :force => true do |t|
