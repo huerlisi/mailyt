@@ -4,6 +4,12 @@ class Folder < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Folder'
   belongs_to :email_account
 
+  # IMAP
+  protected
+    delegate :imap_connection, :to => :email_account
+
+  public
+  
   # Constructors
   def self.build_from_imap(imap_folder)
     folder = Folder.new
@@ -12,6 +18,7 @@ class Folder < ActiveRecord::Base
     return folder
   end
 
+  # Accessors
   def email_count
     imap_connection.examine(title)
     imap_connection.responses["EXISTS"][-1] || 0
@@ -21,8 +28,4 @@ class Folder < ActiveRecord::Base
     imap_connection.examine(title)
     imap_connection.responses["UNSEEN"][-1] || 0
   end
-
-  # IMAP
-  protected
-  delegate :imap_connection, :to => :email_account
 end
