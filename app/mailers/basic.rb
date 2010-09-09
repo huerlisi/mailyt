@@ -40,9 +40,9 @@ class Basic < ActionMailer::Base
     end
     if mail.multipart?
       begin
-        email.body = Iconv.conv('UTF-8', mail.parts[0].charset, mail.parts[0].body.to_s)
+        email.body = Iconv.conv('UTF-8', mail.text_part.charset, mail.text_part.body.to_s)
       rescue
-        email.body = mail.parts[0].body.to_s
+        email.body = mail.text_part.body.to_s
       end
     else
       email.body = mail.body.to_s
