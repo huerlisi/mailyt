@@ -133,17 +133,10 @@ class EmailAccount < ActiveRecord::Base
   end
   
   def create_email_from_imap(uid, folder)
-    # Save seen flag
-    seen = imap_connection.uid_fetch(uid,'FLAGS').first.attr['FLAGS'].include?(:Seen)
+    # Use examine to select folder so we don't accidentialy update the seen flag
+    imap_connection.examine(folder.title)
     # Fetch message
     msg = imap_connection.uid_fetch(uid,'RFC822').first.attr['RFC822']
-    # Restore seen flag
-    msg = imap_connection.uid_fetch(uid, 'RFC822').first.attr['RFC822']
-    if seen
-      imap_connection.uid_store(uid, "+FLAGS", [:Seen])
-    else
-      imap_connection.uid_store(uid, "-FLAGS", [:Seen])
-    end
     
     email = Basic.receive(msg, uid, self)
     email.folder = folder
