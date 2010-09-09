@@ -97,11 +97,18 @@ class EmailAccount < ActiveRecord::Base
     for uid in uids_to_delete
       delete_email_from_mailyt(uid)
     end
-    for uid in uids_to_sync
-      email = mailyt_folder.emails.where(:uid => uid).first
-      email.sync_from_imap
-      email.save
-    end
+
+    # Now mailyt should have the same uid collection as imap
+    uids = imap_uids
+    
+    # Sync seen flag
+    imap_seen_uids = imap_connection.uid_search('SEEN')
+    mailyt_seen_uids = mailyt_folder.emails.where(:seen => true).collect{|email| email.uid}
+    mailyt_folder.emails.where(:uid => imap_seen_uids, :seen => false).update_all(:seen => true)
+
+    imap_unseen_uids = imap_connection.uid_search('UNSEEN')
+    mailyt_unseen_uids = mailyt_folder.emails.where(:seen => false).collect{|email| email.uid}
+    mailyt_folder.emails.where(:uid => imap_unseen_uids, :seen => true).update_all(:seen => false)
   end
 
   def sync_from_imap
