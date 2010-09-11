@@ -19,6 +19,8 @@ class EmailsController < InheritedResources::Base
   public
   def new
     @email = Email.new(params[:email])
+    @email.user = User.current
+    @email.email_account = User.current.email_accounts.first # Not always first
     @email.from = User.current.email
     @email.attachments.build
     
