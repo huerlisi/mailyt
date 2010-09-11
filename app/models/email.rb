@@ -111,6 +111,11 @@ class Email < ActiveRecord::Base
     return imap_connection.uid_fetch(uid, 'RFC822').first.attr['RFC822']
   end
   
+  def message=(value)
+    self.message_id = value.message_id
+    self.imap_message = value.to_s
+  end
+
   def imap_message=(value)
     imap_connection.append('Sent', value, [:Seen])
   end
