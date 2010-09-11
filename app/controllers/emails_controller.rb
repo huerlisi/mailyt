@@ -31,6 +31,8 @@ class EmailsController < InheritedResources::Base
     create!{emails_path}
     
     @email.message = Basic.text(@email).deliver
+    @email.folder = @email.email_account.folders.find_by_title('Sent')
+    @email.save
   end
 
   def show
