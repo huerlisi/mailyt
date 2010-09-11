@@ -106,8 +106,12 @@ class Email < ActiveRecord::Base
   protected
   delegate :imap_connection, :to => :email_account
 
+  public
   def imap_message
-    connection = imap_connection
-    return connection.uid_fetch(uid, 'RFC822').first.attr['RFC822']
+    return imap_connection.uid_fetch(uid, 'RFC822').first.attr['RFC822']
+  end
+  
+  def imap_message=(value)
+    imap_connection.append('Sent', value, [:Seen])
   end
 end

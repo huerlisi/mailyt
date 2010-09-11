@@ -30,7 +30,7 @@ class EmailsController < InheritedResources::Base
   def create
     create!{emails_path}
     
-    Basic.text(@email).deliver
+    @email.imap_message = Basic.text(@email).deliver.to_s
   end
 
   def show
