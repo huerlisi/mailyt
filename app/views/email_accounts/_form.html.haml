@@ -1,3 +1,6 @@
-= semantic_form_for @email_account do |form|
-  = form.inputs
-  = form.buttons
+= semantic_form_for @email_account do |f|
+  = f.inputs do
+    = f.input :server
+    = f.input :username
+    = f.input :password
+  = f.buttons

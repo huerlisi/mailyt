@@ -16,4 +16,11 @@ class EmailAccountsController < InheritedResources::Base
 
     new!
   end
+
+  def create
+    @email_account = EmailAccount.new(params[:email_account])
+    @email_account.user = User.current
+    
+    create!
+  end
 end
