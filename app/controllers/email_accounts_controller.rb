@@ -1,5 +1,7 @@
 class EmailAccountsController < InheritedResources::Base
+  # Aspects
   respond_to :html, :js
+  include SentientController
 
   protected
     def collection
