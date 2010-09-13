@@ -89,10 +89,6 @@ class EmailAccount < ActiveRecord::Base
       email = create_email_from_imap(uid, mailyt_folder)
       email.sync_from_imap
       email.save
-
-      # Should be callbacks
-      email.thread_id
-      email.thread_date
     end
     for uid in uids_to_delete
       delete_email_from_mailyt(uid)
@@ -103,11 +99,9 @@ class EmailAccount < ActiveRecord::Base
     
     # Sync seen flag
     imap_seen_uids = imap_connection.uid_search('SEEN')
-    mailyt_seen_uids = mailyt_folder.emails.seen.collect{|email| email.uid}
     mailyt_folder.emails.unseen.where(:uid => imap_seen_uids).update_all(:seen => true)
 
     imap_unseen_uids = imap_connection.uid_search('UNSEEN')
-    mailyt_unseen_uids = mailyt_folder.emails.unseen.collect{|email| email.uid}
     mailyt_folder.emails.seen.where(:uid => imap_unseen_uids).update_all(:seen => false)
   end
 
