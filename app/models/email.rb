@@ -9,6 +9,8 @@ class Email < ActiveRecord::Base
   accepts_nested_attributes_for :attachments
   
   # Scopes
+  scope :seen, where(:seen => true)
+  scope :unseen, where(:seen => false)
   scope :threaded, order(:thread_id)
   scope :by_user, proc {|value| where(:user_id => value)}
   scope :by_folder, proc {|value| where(:folder_id => value)}
@@ -59,6 +61,7 @@ class Email < ActiveRecord::Base
 
     return self[:thread_id]
   end
+  after_save :thread_id
   
   def calculate_thread_date
     return date if replies.empty?
@@ -72,6 +75,7 @@ class Email < ActiveRecord::Base
 
     return self[:thread_date]
   end
+  after_save :thread_date
   
   def sync_from_imap
     return false unless email_account

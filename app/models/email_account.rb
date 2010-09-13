@@ -103,12 +103,12 @@ class EmailAccount < ActiveRecord::Base
     
     # Sync seen flag
     imap_seen_uids = imap_connection.uid_search('SEEN')
-    mailyt_seen_uids = mailyt_folder.emails.where(:seen => true).collect{|email| email.uid}
-    mailyt_folder.emails.where(:uid => imap_seen_uids, :seen => false).update_all(:seen => true)
+    mailyt_seen_uids = mailyt_folder.emails.seen.collect{|email| email.uid}
+    mailyt_folder.emails.unseen.where(:uid => imap_seen_uids).update_all(:seen => true)
 
     imap_unseen_uids = imap_connection.uid_search('UNSEEN')
-    mailyt_unseen_uids = mailyt_folder.emails.where(:seen => false).collect{|email| email.uid}
-    mailyt_folder.emails.where(:uid => imap_unseen_uids, :seen => true).update_all(:seen => false)
+    mailyt_unseen_uids = mailyt_folder.emails.unseen.collect{|email| email.uid}
+    mailyt_folder.emails.seen.where(:uid => imap_unseen_uids).update_all(:seen => false)
   end
 
   def sync_from_imap
