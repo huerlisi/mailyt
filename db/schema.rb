@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100909094053) do
+ActiveRecord::Schema.define(:version => 20100913171128) do
 
   create_table "attachments", :force => true do |t|
     t.string   "attachment_file_name"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(:version => 20100909094053) do
     t.datetime "updated_at"
     t.integer  "email_count"
     t.integer  "unseen_count"
+    t.boolean  "subscribed"
+    t.boolean  "synced"
   end
 
   create_table "users", :force => true do |t|

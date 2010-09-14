@@ -4,6 +4,10 @@ class Folder < ActiveRecord::Base
   belongs_to :parent, :class_name => 'Folder'
   belongs_to :email_account
 
+  # Scopes
+  scope synced, where(:synced => true)
+  scope subscribed, where(:subscribed => true)
+  
   # IMAP
   protected
     delegate :imap_connection, :to => :email_account
