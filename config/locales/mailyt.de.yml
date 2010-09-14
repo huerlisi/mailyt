@@ -1,4 +1,7 @@
 en:
+  application:
+    title: Mailyt
+
   activerecord:
     models:
       email: E-Mail
