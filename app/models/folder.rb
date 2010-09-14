@@ -5,8 +5,8 @@ class Folder < ActiveRecord::Base
   belongs_to :email_account
 
   # Scopes
-  scope synced, where(:synced => true)
-  scope subscribed, where(:subscribed => true)
+  scope :synced, where(:synced => true)
+  scope :subscribed, where(:subscribed => true)
   
   # IMAP
   protected
