@@ -21,11 +21,10 @@ end
 group :test do
   gem 'rspec'
   gem 'rspec-rails', ">= 2.0.0.beta.19"
+  gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'cucumber'
-  gem 'capybara'
-  gem 'shoulda'
   gem 'webrat'
 end
 
