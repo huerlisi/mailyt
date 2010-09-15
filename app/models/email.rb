@@ -19,6 +19,7 @@ class Email < ActiveRecord::Base
     where("(subject LIKE :like) OR (date = :value) OR (\"to\" LIKE :like) OR (name LIKE :like) OR (body LIKE :like)", :value => value, :like => "%#{value}%")
   }
 
+  # Constructor
   def initialize(attributes = nil)
     attributes ||= {}
     defaults = {:date => DateTime.now, :user => User.current}
@@ -26,6 +27,7 @@ class Email < ActiveRecord::Base
     super(defaults.merge(attributes))
   end
 
+  # Helpers
   def to_s
     "%s -> %s: %s" % [from, to, subject]
   end
