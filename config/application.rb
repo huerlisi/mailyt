@@ -13,7 +13,7 @@ module Mailyt
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += "#{config.root}/lib"
+    config.autoload_paths += ["#{config.root}/lib"]
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -33,6 +33,9 @@ module Mailyt
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+
+    # JavaScript files you want as :defaults (application.js is always included).
+    config.action_view.javascript_expansions[:defaults] += %w(cyt)
 
     # Configure to log the deprecation notices
     config.active_support.deprecation = :log
