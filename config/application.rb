@@ -13,7 +13,7 @@ module Mailyt
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/lib)
+    config.autoload_paths += "#{config.root}/lib"
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
@@ -28,10 +28,14 @@ module Mailyt
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.fallbacks = [:'de-CH', :de, :en]
+    config.i18n.default_locale = 'de-CH'
 
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+
+    # Configure to log the deprecation notices
+    config.active_support.deprecation = :log
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
