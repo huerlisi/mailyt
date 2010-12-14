@@ -19,7 +19,6 @@ class EmailsController < InheritedResources::Base
   def new
     @email = Email.new(params[:email])
     @email.user = current_user
-    @email.email_account = current_user.email_accounts.first # Not always first
     @email.from = current_user.email
     @email.attachments.build
     
@@ -29,8 +28,9 @@ class EmailsController < InheritedResources::Base
   def create
     create!{emails_path}
     
-    @email.message = Basic.text(@email).deliver
+    @email.email_account = current_user.email_accounts.first # Not always first
     @email.folder = @email.email_account.folders.find_by_title(Email::SENT)
+    @email.message = Basic.text(@email).deliver
     @email.save
   end
 
@@ -49,7 +49,6 @@ class EmailsController < InheritedResources::Base
     
     params[:text] ||= params[:search][:text] || params[:search][:query] if params[:search]
     @query = params[:text]
-    
     
     index!
   end

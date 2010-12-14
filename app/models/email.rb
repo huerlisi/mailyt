@@ -126,6 +126,6 @@ class Email < ActiveRecord::Base
   end
 
   def imap_message=(value)
-    imap_connection.append(SENT, value, [:Seen])
+    imap_connection.append(folder.title, value, [:Seen])
   end
 end
