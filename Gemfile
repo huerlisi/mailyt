@@ -14,7 +14,7 @@ gem 'mysql'
 # ===========
 group :development do
   gem 'rails3-generators'
-  gem 'rspec-rails', "~> 2.1.0"
+  gem 'rspec-rails', "~> 2.1"
   # Haml generators
   gem 'hpricot'
   gem 'ruby_parser'
@@ -25,7 +25,8 @@ end
 # ====
 group :test do
   gem 'rspec'
-  gem 'rspec-rails', "~> 2.1.0"
+  gem 'rspec-rails', "~> 2.1"
+  gem 'mocha'
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
@@ -41,7 +42,7 @@ gem 'fancy-buttons'
 
 gem 'simple-navigation'
 
-gem 'formtastic', '~> 1.1.0'
+gem 'formtastic', '~> 1.2.1'
 gem 'will_paginate', :git => 'http://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
 gem 'inherited_resources'
 gem 'has_scope'
@@ -49,6 +50,9 @@ gem 'i18n_rails_helpers', '>= 0.8.0'
 
 # Mailyt
 # ======
+# Authentication
+gem 'devise', '~> 1.1'
+
 # Attachments
 gem 'paperclip'
 
@@ -57,6 +61,3 @@ platforms :ruby_18 do
   # IMAP fetcher
   gem 'system_timer'
 end
-
-# Authentication
-gem 'devise', '~> 1.1'
