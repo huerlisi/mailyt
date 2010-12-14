@@ -3,7 +3,6 @@ require 'ostruct'
 class EmailsController < InheritedResources::Base
   # Aspects
   respond_to :html, :js
-  include SentientController
   
   # Scopes
   has_scope :order, :default => 'thread_date DESC, thread_id'
@@ -19,9 +18,9 @@ class EmailsController < InheritedResources::Base
   public
   def new
     @email = Email.new(params[:email])
-    @email.user = User.current
-    @email.email_account = User.current.email_accounts.first # Not always first
-    @email.from = User.current.email
+    @email.user = current_user
+    @email.email_account = current_user.email_accounts.first # Not always first
+    @email.from = current_user.email
     @email.attachments.build
     
     new!
@@ -68,7 +67,8 @@ class EmailsController < InheritedResources::Base
   def reply
     original = Email.find(params[:id])
     @email = original.build_reply
-    @email.from = User.current.email
+    @email.from = current_user.email
+    @email.user = current_user
     
     new!
   end

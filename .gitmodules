@@ -1,9 +1,6 @@
 [submodule "vendor/plugins/fetcher"]
 	path = vendor/plugins/fetcher
 	url = git://github.com/huerlisi/fetcher.git
-[submodule "vendor/plugins/sentient_user"]
-	path = vendor/plugins/sentient_user
-	url = git://github.com/huerlisi/sentient_user.git
 [submodule "app/stylesheets/partials/formtastic"]
 	path = app/stylesheets/partials/formtastic
 	url = git://github.com/activestylus/formtastic-sass.git

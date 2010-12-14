@@ -1,7 +1,6 @@
 class EmailAccountsController < InheritedResources::Base
   # Aspects
   respond_to :html, :js
-  include SentientController
 
   protected
     def collection
@@ -12,14 +11,14 @@ class EmailAccountsController < InheritedResources::Base
   public
 
   def new
-    @email = Email.new(:from => User.current.email)
+    @email = Email.new(:from => current_user.email, :user => current_user)
 
     new!
   end
 
   def create
     @email_account = EmailAccount.new(params[:email_account])
-    @email_account.user = User.current
+    @email_account.user = current_user
     
     create!
   end
