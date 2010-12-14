@@ -1,4 +1,7 @@
 class Email < ActiveRecord::Base
+  # Folders
+  SENT = 'Sent'
+  
   # Associations
   belongs_to :email_account
   belongs_to :folder
@@ -123,6 +126,6 @@ class Email < ActiveRecord::Base
   end
 
   def imap_message=(value)
-    imap_connection.append('Sent', value, [:Seen])
+    imap_connection.append(SENT, value, [:Seen])
   end
 end
