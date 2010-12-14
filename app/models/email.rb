@@ -3,7 +3,6 @@ class Email < ActiveRecord::Base
   SENT = 'Sent'
   
   # Associations
-  belongs_to :email_account
   belongs_to :folder
   belongs_to :user
   belongs_to :in_reply_to, :class_name => 'Email'
@@ -35,6 +34,7 @@ class Email < ActiveRecord::Base
     "%s -> %s: %s" % [from, to, subject]
   end
   
+  # Actions
   def reply?
     !(in_reply_to.nil?)
   end
@@ -55,6 +55,7 @@ class Email < ActiveRecord::Base
     return reply
   end
 
+  # Threading
   def calculate_thread_id
     return id unless reply?
     
@@ -82,6 +83,8 @@ class Email < ActiveRecord::Base
   end
   after_save :thread_date
   
+  # IMAP
+  belongs_to :email_account
   def sync_from_imap
     return false unless email_account
     
