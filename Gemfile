@@ -53,6 +53,9 @@ gem 'i18n_rails_helpers', '~> 0.9'
 # Authentication
 gem 'devise', '~> 1.1'
 
+# Vcards
+gem 'has_vcards', '~> 0.6.1'
+
 # Attachments
 gem 'paperclip'
 
