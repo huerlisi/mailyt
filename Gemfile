@@ -37,24 +37,27 @@ end
 # Standard helpers
 # ================
 gem 'haml'
-gem 'compass', '~> 0.10.6'
+gem 'sass'
+gem 'compass'
 gem 'fancy-buttons'
 
 gem 'simple-navigation'
 
-gem 'formtastic', '~> 1.2.1'
+# Form framework
+gem 'formtastic'
+
 gem 'will_paginate', :git => 'http://github.com/huerlisi/will_paginate.git', :branch => 'rails3'
 gem 'inherited_resources'
 gem 'has_scope'
-gem 'i18n_rails_helpers', '~> 0.9'
+gem 'i18n_rails_helpers'
 
 # Mailyt
 # ======
 # Authentication
-gem 'devise', '~> 1.1'
+gem 'devise'
 
 # Vcards
-gem 'has_vcards', '~> 0.6.1'
+gem 'has_vcards'
 
 # Attachments
 gem 'paperclip'
