@@ -5,7 +5,6 @@ describe EmailAccountsController do
   before do
     user = Factory.create(:user)
     sign_in user
-    user.make_current
   end
 
   def mock_email_account(stubs={})
