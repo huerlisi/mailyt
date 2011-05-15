@@ -33,6 +33,9 @@ class Notmuch
     end
   end
   
+  # Folders
+  #
+  # Provices access to folders.
   class Folder
     # List of folders
     def self.names
