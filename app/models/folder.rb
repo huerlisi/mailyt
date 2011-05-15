@@ -28,7 +28,7 @@ class Folder < ActiveRecord::Base
     # Sync if requested or never done before
     do_sync = sync || cached_count.nil?
     
-    sync_counts if do_sync
+    notmuch_sync_counts if do_sync
     
     return read_attribute(:email_count)
   end
@@ -38,13 +38,20 @@ class Folder < ActiveRecord::Base
     # Sync if requested or never done before
     do_sync = sync || cached_count.nil?
     
-    sync_counts if do_sync
+    notmuch_sync_counts if do_sync
     
     return read_attribute(:unseen_count)
   end
 
   # Sync
-  def sync_counts
+  def notmuch_sync_counts
+    email = Notmuch.call("count", "folder:#{title}").first.to_i
+    unseen = Notmuch.call("count", "folder:#{title}", "tag:unread").first.to_i
+
+    update_attributes(:email_count => email, :unseen_count => unseen)
+  end
+  
+  def imap_sync_counts
     counts = imap_connection.status(title, ['UNSEEN', 'MESSAGES'])
     unseen = counts['UNSEEN']
     email = counts['MESSAGES']
