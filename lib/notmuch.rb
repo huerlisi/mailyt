@@ -35,7 +35,7 @@ class Notmuch
   
   # Folders
   #
-  # Provices access to folders.
+  # Provides access to folders.
   class Folder
     # List of folders
     def self.names
@@ -56,6 +56,14 @@ class Notmuch
     
     def self.main_folders
       folders.map{|folder| folder[0]}
+    end
+  end
+
+  # Messages
+  #
+  class Message
+    def self.tags(uid)
+      Notmuch.call('search', '--output=tags', "id:#{uid}")
     end
   end
 end
