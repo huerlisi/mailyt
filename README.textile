@@ -1,6 +1,8 @@
+This project is not worked on anymore. You may use parts of this code, or extend it as permitted by the OSS license. But I won't work it in the foreseeable future:-)
+
 h1. Mailyt
 
-Mailyt is a modern and intuitive webmail client.
+Mailyt was a modern and intuitive webmail client.
 
 h2. About Mailyt
 
